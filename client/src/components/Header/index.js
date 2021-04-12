@@ -11,8 +11,9 @@ function Header() {
                     News
                     </Typography>
                     <ButtonContainer>
-                        <Button color="inherit">Cart</Button>
-                        <Button color="inherit">Login</Button>
+                        <Button 
+                        color="inherit">Cart</Button>
+                        <Button variant='outlined'color="inherit">Login</Button>
                     </ButtonContainer>
                     
                     </NavContainer>
