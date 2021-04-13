@@ -1,0 +1,29 @@
+{
+  "name": "mern-e-commerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "styled-components": "^5.2.3"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.2"
+  },
+  "scripts": {
+    "start": "node server/server",
+    "server": "nodemon server/server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chiragdatwani/mern-e-commerce.git"
+  },
+  "author": "Chirag Datwani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chiragdatwani/mern-e-commerce/issues"
+  },
+  "homepage": "https://github.com/chiragdatwani/mern-e-commerce#readme"
+}
