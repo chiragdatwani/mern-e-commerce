@@ -19,7 +19,6 @@ export const ButtonContainer = styled.div`
 export const Container = styled.div`
     margin-top: 1.5rem;
     
-   
 `
 
 export const AddToCartContainer = styled.div`

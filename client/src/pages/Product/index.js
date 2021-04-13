@@ -12,7 +12,7 @@ function Product(props) {
     console.log(product);
     return (
         <Container>
-            <Grid container spacing={2}>
+            <Grid container spacing={3}>
                 <Grid item md={6} >
                     
                     <img  style={{width: '100%', height: 'auto'}} src={product.image} alt={product.name} />

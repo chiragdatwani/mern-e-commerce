@@ -5,7 +5,7 @@ import React from 'react'
 
 function Product({product}) {
     return (
-        <Grid item xs={6} sm={4} md={3} >
+        <Grid item xs={12} sm={4}  md={3}>
             <Card>
                 <StyledLink to={`/product/${product._id}`} >
                 
