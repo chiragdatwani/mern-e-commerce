@@ -7,7 +7,7 @@ function HomePage() {
     return (
         <div>
             <h1>Latest Products</h1>
-            <Grid container spacing={3}>
+            <Grid container spacing={2} >
                 {products.map( product => (
                      <Product key={product._id}product={product}/>
                 ))}

@@ -1,17 +1,20 @@
 import React from 'react'
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core'
-import {NavContainer, ButtonContainer} from './Header.elements'
+import {NavContainer, ButtonContainer, StyledLink} from './Header.elements'
+
 function Header() {
     return (
         <header>
             <AppBar position="static">
                 <Toolbar>
                     <NavContainer>
-                    <Typography variant="h6" edge='start'>
-                    News
+                    <Typography variant="h6" >
+                    <StyledLink to='/'>
+                        Store
+                    </StyledLink>
                     </Typography>
                     <ButtonContainer>
-                        <Button 
+                        <Button variant='outlined'
                         color="inherit">Cart</Button>
                         <Button variant='outlined'color="inherit">Login</Button>
                     </ButtonContainer>
