@@ -1,11 +1,14 @@
+import React, { useEffect, useRef } from 'react'
 import { Card, CardActionArea, CardContent, CardMedia, Grid, Typography} from '@material-ui/core';
 import {StyledLink} from './Product.elements'
 import Stars from '../Stars/index'
-import React from 'react'
+
 
 function Product({product}) {
+
+    
     return (
-        <Grid item xs={12} sm={4}  md={3}>
+        <Grid  item xs={12} sm={4}  md={3}>
             <Card>
                 <StyledLink to={`/product/${product._id}`} >
                 
