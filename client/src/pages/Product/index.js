@@ -9,13 +9,15 @@ import Loader from '../../components/Loader/Loader'
 
 function Product(props) {
 
+    const [isLoading, setIsLoading] = useState(true)
+
     const [product, setProduct] = useState({});
 
     useEffect(()=>{
 
         const fetchProduct = async() => {
             const {data} = await axios.get(`/api/products/${props.match.params.id}`);
-
+            setIsLoading(false)
             setProduct(data);
         };
 
@@ -26,7 +28,7 @@ function Product(props) {
     
     return (
         <Container>
-            {!product.image ? <Loader /> :
+            {isLoading ? <Loader /> :
             
                 <Grid container spacing={3}>
                     <Grid item md={6} sm={12} >
