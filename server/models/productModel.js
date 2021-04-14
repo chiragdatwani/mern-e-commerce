@@ -1,6 +1,6 @@
-import {model, Schema} from 'mongoose';
+import mongoose from 'mongoose';
 
-const ReviewSchema = new Schema({
+const ReviewSchema = new mongoose.Schema({
     name: {
         type:String,
         required: true
@@ -15,9 +15,9 @@ const ReviewSchema = new Schema({
     }
 }, {timestamps: true})
 
-const ProductSchema = new Schema({
+const ProductSchema = new mongoose.Schema({
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User '
     },
@@ -63,6 +63,6 @@ const ProductSchema = new Schema({
     }
 })
 
-const Prodcut = model('Product', ProductSchema);
+const Product = mongoose.model('Product', ProductSchema);
 
 export default Product;

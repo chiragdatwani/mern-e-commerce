@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
+    "express-async-handler": "^1.1.4",
     "mongoose": "^5.12.3",
     "styled-components": "^5.2.3"
   },
@@ -16,7 +18,9 @@
     "start": "node server/server",
     "server": "nodemon server/server",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node server/seeder",
+    "data:destroy": "node server/seeder -d"
   },
   "repository": {
     "type": "git",
