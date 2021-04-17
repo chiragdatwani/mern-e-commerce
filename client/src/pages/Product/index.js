@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
 import {fetchProduct} from '../../actions/productActions'
-import {Divider, Grid} from '@material-ui/core'
+import {Divider, FormControl, Grid, InputLabel, MenuItem, NativeSelect, Select} from '@material-ui/core'
 import Stars from '../../components/Stars';
 import { InfoContainer, Container, AddToCartContainer, StyledButton, ButtonContainer } from './Product.elements';
 import Loader from '../../components/Loader/Loader'
@@ -10,6 +10,8 @@ import { Alert } from '@material-ui/lab';
 
 
 function Product(props) {
+
+    const [quantity, setQuantity] = useState(0);
 
     const dispatch = useDispatch();
 
@@ -26,10 +28,9 @@ function Product(props) {
         // };
         dispatch(fetchProduct(props.match.params.id))
         // fetchProduct();
-    
+        
     }, [dispatch])
  
-    
     return (
         <Container>
             {loading ? <Loader /> :
@@ -59,7 +60,30 @@ function Product(props) {
                                 <Divider />
                                 <h3>{`Status: ${product.countInStock ? 'In Stock': 'Out of stock'}`}</h3>
                                 <Divider />
+                                {
+                                    product.countInStock > 0 &&
+                                    <FormControl>
+                                    <InputLabel htmlFor='qty'>Quantity</InputLabel>
+                                    <Select
+                                        value={quantity}
+                                        onChange={e => setQuantity(e.target.value)}
+                                        // displayEmpty
+                                        inputProps={{ 
+                                            name: 'quantity',
+                                            id: 'qty'
+                                         }}
+                                    > 
+                                        <option value="" disabled>Quantity</option>
+          
+                                        {[...Array(product.countInStock).keys()].map(x => (
+                                            <option key={x+1} value={x+1}>{x + 1}</option>
+                                        ))}
+                                    </Select>
+                                    </FormControl>
+                                }
+                                
                                 <ButtonContainer>
+                                
                                 <StyledButton variant='contained' disabled={product.countInStock ? false:true} >Add To Cart</StyledButton>
                                 </ButtonContainer>
                                 

@@ -14,6 +14,14 @@ export const StyledButton = styled(Button)`
 `
 export const ButtonContainer = styled.div`
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0 auto;
+    > * {
+        width: 65%;
+    }
 `
 
 export const Container = styled.div`
@@ -22,13 +30,14 @@ export const Container = styled.div`
 `
 
 export const AddToCartContainer = styled.div`
-    width:100%;
+    
     border: 1px solid black;
     border-radius: 3px;
     /* display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; */
+    padding: 0 1.5rem;
 
     > * {
         width: 100%;
