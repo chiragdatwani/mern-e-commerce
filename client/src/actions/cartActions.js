@@ -4,7 +4,7 @@ import types from './types';
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
 
-    const { data } = await axios.get(`api/products/${id}`)
+    const { data } = await axios.get(`/api/products/${id}`)
 
     dispatch({
         type: types.CART_ADD_ITEM,

@@ -1,6 +1,6 @@
 import types from '../actions/types';
 
-const cartReducer = (state = {cartItems: []}, action) => {
+export const cartReducer = (state = {cartItems: []}, action) => {
 
     switch (action.type) {
         case types.CART_ADD_ITEM:
@@ -16,6 +16,8 @@ const cartReducer = (state = {cartItems: []}, action) => {
             }
     
         default:
-            return state    }
+            return state
+        
+        }
 
 }

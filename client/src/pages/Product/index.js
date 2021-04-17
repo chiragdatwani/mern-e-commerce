@@ -9,9 +9,9 @@ import Loader from '../../components/Loader/Loader'
 import { Alert } from '@material-ui/lab';
 
 
-function Product(props) {
+function Product({match, history}) {
 
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
 
     const dispatch = useDispatch();
 
@@ -21,16 +21,13 @@ function Product(props) {
 
     useEffect(()=>{
 
-        // const fetchProduct = async() => {
-        //     const {data} = await axios.get(`/api/products/${props.match.params.id}`);
-        //     setIsLoading(false)
-        //     setProduct(data);
-        // };
-        dispatch(fetchProduct(props.match.params.id))
-        // fetchProduct();
+        dispatch(fetchProduct(match.params.id))
         
-    }, [dispatch])
- 
+    }, [dispatch, match])
+
+    const addToCartHandler = () => {
+        history.push(`/cart/${match.params.id}?qty=${quantity}`)
+    }
     return (
         <Container>
             {loading ? <Loader /> :
@@ -84,7 +81,11 @@ function Product(props) {
                                 
                                 <ButtonContainer>
                                 
-                                <StyledButton variant='contained' disabled={product.countInStock ? false:true} >Add To Cart</StyledButton>
+                                <StyledButton 
+                                    variant='contained' 
+                                    disabled={product.countInStock ? false:true} 
+                                    onClick={()=>{addToCartHandler()}}
+                                    >Add To Cart</StyledButton>
                                 </ButtonContainer>
                                 
                             </AddToCartContainer>
