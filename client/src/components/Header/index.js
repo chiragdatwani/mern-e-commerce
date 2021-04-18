@@ -14,8 +14,11 @@ function Header() {
                     </StyledLink>
                     </Typography>
                     <ButtonContainer>
-                        <Button variant='outlined'
+                    <StyledLink to='/cart'>
+                    <Button variant='outlined'
                         color="inherit">Cart</Button>
+                    </StyledLink>
+                        
                         <Button variant='outlined'color="inherit">Login</Button>
                     </ButtonContainer>
                     

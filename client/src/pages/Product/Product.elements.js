@@ -37,7 +37,7 @@ export const AddToCartContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center; */
-    padding: 0 1.5rem;
+    padding: 1rem 1.5rem;
 
     > * {
         width: 100%;
@@ -45,4 +45,10 @@ export const AddToCartContainer = styled.div`
         text-align: center;
     }
 
+`
+export const StyledOption = styled.option`
+    cursor: pointer;
+    & :hover{
+        background-color: gray !important
+    }
 `

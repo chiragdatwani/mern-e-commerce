@@ -18,7 +18,7 @@ const App = () => {
             <Route path='/' exact component={HomePage} />
             <Route path='/product/:id' exact component={Product} />
             </Container>
-            <Route path='/cart/:id' component={CartPage} />
+            <Route path='/cart/:id?' component={CartPage} />
           </main>
         <Footer />
       </div>

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
 import {fetchProduct} from '../../actions/productActions'
-import {Divider, FormControl, Grid, InputLabel, MenuItem, NativeSelect, Select} from '@material-ui/core'
+import {Divider, FormControl, Grid, InputLabel, Select} from '@material-ui/core'
 import Stars from '../../components/Stars';
-import { InfoContainer, Container, AddToCartContainer, StyledButton, ButtonContainer } from './Product.elements';
+import { InfoContainer, Container, AddToCartContainer, StyledButton, ButtonContainer, StyledOption } from './Product.elements';
 import Loader from '../../components/Loader/Loader'
 import { Alert } from '@material-ui/lab';
 
@@ -70,10 +69,10 @@ function Product({match, history}) {
                                             id: 'qty'
                                          }}
                                     > 
-                                        <option value="" disabled>Quantity</option>
+                                        <StyledOption value="" disabled>Quantity</StyledOption>
           
                                         {[...Array(product.countInStock).keys()].map(x => (
-                                            <option key={x+1} value={x+1}>{x + 1}</option>
+                                            <StyledOption key={x+1} value={x+1}>{x + 1}</StyledOption>
                                         ))}
                                     </Select>
                                     </FormControl>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { Card, CardActionArea, CardContent, CardMedia, Grid, Typography} from '@material-ui/core';
 import {StyledLink} from './Product.elements'
 import Stars from '../Stars/index'
