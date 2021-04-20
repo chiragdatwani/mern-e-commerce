@@ -7,6 +7,7 @@ import HomePage from './pages/Home';
 import { Container } from '@material-ui/core';
 import CartPage from './pages/Cart';
 import LoginPage from './pages/Login';
+import RegisterPage from './pages/Register';
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
             </Container>
             <Route path='/cart/:id?' component={CartPage} />
             <Route path='/login' component={LoginPage} />
+            <Route path='/register' component={RegisterPage} />
           </main>
         <Footer />
       </div>

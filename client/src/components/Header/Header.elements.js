@@ -10,7 +10,9 @@ export const NavContainer = styled(Container)`
 `
 
 export const ButtonContainer = styled(Container)`
-    text-align: end;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
     margin-right: -25px;
     > *{
         margin-left: 8px;
