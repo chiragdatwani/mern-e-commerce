@@ -63,7 +63,7 @@ function Product({match, history}) {
                                     <Select
                                         value={quantity}
                                         onChange={e => setQuantity(e.target.value)}
-                                        // displayEmpty
+                                        
                                         inputProps={{ 
                                             name: 'quantity',
                                             id: 'qty'

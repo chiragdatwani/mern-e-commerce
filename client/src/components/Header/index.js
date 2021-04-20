@@ -1,5 +1,7 @@
 import React from 'react'
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import PersonIcon from '@material-ui/icons/Person';
 import {NavContainer, ButtonContainer, StyledLink} from './Header.elements'
 
 function Header() {
@@ -14,12 +16,16 @@ function Header() {
                     </StyledLink>
                     </Typography>
                     <ButtonContainer>
-                    <StyledLink to='/cart'>
-                    <Button variant='outlined'
-                        color="inherit">Cart</Button>
-                    </StyledLink>
-                        
-                        <Button variant='outlined'color="inherit">Login</Button>
+                        <StyledLink to='/cart'>
+                            <Button color="inherit">
+                                <ShoppingCartIcon />Cart
+                            </Button>
+                        </StyledLink>
+                        <StyledLink to='/login'>
+                            <Button color="inherit">
+                                <PersonIcon />Login
+                            </Button>
+                        </StyledLink>
                     </ButtonContainer>
                     
                     </NavContainer>

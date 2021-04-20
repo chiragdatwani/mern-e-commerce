@@ -10,6 +10,11 @@ export const StyledButton = styled(Button)`
     color: white;
     text-align: center;
 
+    & :hover{
+        color: black;
+        font-weight:bold;
+    }
+
     
 `
 export const ButtonContainer = styled.div`
