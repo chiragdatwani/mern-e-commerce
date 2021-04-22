@@ -48,7 +48,6 @@ function Header() {
                                 <PersonIcon />{userInfo.name}<ArrowDropDownIcon/>
                             </Button>
                             <Menu
-                                id="simple-menu"
                                 anchorEl={anchorEl}
                                 keepMounted
                                 open={Boolean(anchorEl)}

@@ -32,7 +32,7 @@ function Product({match, history}) {
             {loading ? <Loader /> :
                 error ? <Alert severity="error">{error}</Alert> :
                     <Grid container spacing={3}>
-                        <Grid item md={6} sm={12} >
+                        <Grid item md={6} xs={12} >
                             
                             <img  style={{width: '100%', height: 'auto'}} src={product.image} alt={product.name} />
                             

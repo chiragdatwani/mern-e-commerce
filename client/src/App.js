@@ -8,6 +8,7 @@ import { Container } from '@material-ui/core';
 import CartPage from './pages/Cart';
 import LoginPage from './pages/Login';
 import RegisterPage from './pages/Register';
+import ProfilePage from './pages/Profile';
 
 
 const App = () => {
@@ -16,13 +17,14 @@ const App = () => {
       <div className="App">
         <Header />
           <main>
-            <Container maxWidth='lg'>
-            <Route path='/' exact component={HomePage} />
-            <Route path='/product/:id' exact component={Product} />
+            <Container maxWidth={'lg'}>
+              <Route path='/' exact component={HomePage} />
+              <Route path='/product/:id' exact component={Product} />
+              <Route path='/cart/:id?' component={CartPage} />
+              <Route path='/login' component={LoginPage} />
+              <Route path='/register' component={RegisterPage} />
+              <Route path='/profile' component={ProfilePage} />
             </Container>
-            <Route path='/cart/:id?' component={CartPage} />
-            <Route path='/login' component={LoginPage} />
-            <Route path='/register' component={RegisterPage} />
           </main>
         <Footer />
       </div>
