@@ -25,7 +25,7 @@ function HomePage(props) {
             <h1>Latest Products</h1>
             {loading ? <Loader /> : 
                 error ? <Alert severity="error">{error}</Alert>:
-                    <Grid container spacing={2} >
+                    <Grid container spacing={3} >
                         {products.map( product => (
                             <Product key={product._id}product={product}/>
                         ))}

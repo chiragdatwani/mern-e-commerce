@@ -37,8 +37,13 @@ const LoginPage = ({location, history}) => {
                 {error && <Alert severity='error'>{error}</Alert>}
                 {loading && <Alert severity='info'>{error}</Alert>}
                 <form onSubmit={submitHandler}>
-                <TextField required id="standard-required" margin='dense' type='email' fullWidth label="Email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
-                <TextField required id="standard-required" type='password' fullWidth label="Password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                <TextField required
+                variant='outlined'
+                margin='dense' type='email' fullWidth label="Email" value={email} onChange={(e)=>setEmail(e.target.value)}/>
+                <TextField required
+                margin='dense'
+                variant='outlined'
+                type='password' fullWidth label="Password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                 <StyledButton type='submit'>Sign In</StyledButton>
                 </form>
 

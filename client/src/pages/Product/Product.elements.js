@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {List, Button} from '@material-ui/core'
+import {List, Button, MenuItem} from '@material-ui/core'
 
 export const InfoContainer = styled(List)`
     width: 100%;
@@ -51,9 +51,4 @@ export const AddToCartContainer = styled.div`
     }
 
 `
-export const StyledOption = styled.option`
-    cursor: pointer;
-    & :hover{
-        background-color: gray !important
-    }
-`
+

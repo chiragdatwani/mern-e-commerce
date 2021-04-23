@@ -61,7 +61,7 @@ const ProfilePage = ({location, history}) => {
                         {message && <Alert severity='error'>{message}</Alert>}
                         {success && <Alert severity='success'>{'Profile Updated'}</Alert>}
                         {error && <Alert severity='error'>{error}</Alert>}
-                        {loading && <Alert severity='info'>{error}</Alert>}
+                        {loading && <Alert severity='info'>{'Updating...'}</Alert>}
                         <form onSubmit={submitHandler}>
                         <TextField 
                             required 

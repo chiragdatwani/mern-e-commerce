@@ -1,5 +1,5 @@
 import React from 'react'
-import { Paper, Table, TableBody, TableCell, TableRow, Select } from '@material-ui/core'
+import { Paper, Table, TableBody, TableCell, TableRow, Select, MenuItem } from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Image,StyledLink,StyledOption,StyledTable } from './CartItems.elements'
 import { useDispatch } from 'react-redux';
@@ -43,9 +43,9 @@ const CartItems = ({items}) => {
                                 name: 'quantity',
                                 id: 'qty'
                              }} >
-                                 <StyledOption value="" disabled>Quantity</StyledOption>
+                                 <MenuItem value="" disabled>Quantity</MenuItem>
                                 {[...Array(item.countInStock).keys()].map(x => (
-                                    <StyledOption key={x+1} value={x+1}>{x + 1}</StyledOption>
+                                    <MenuItem key={x+1} value={x+1}>{x + 1}</MenuItem>
                                 ))}
                             </Select>
                         }</TableCell>

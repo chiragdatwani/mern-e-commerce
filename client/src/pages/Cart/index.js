@@ -29,7 +29,7 @@ const CartPage = ({match, location, history}) => {
     
     return (
         <div className='cart-page'>
-            <Container maxWidth='lg'>
+
             <>
             <p style={{fontSize: '2em'}}>Shopping Cart</p>
             <Grid container spacing={3} justify='center'>
@@ -58,8 +58,6 @@ const CartPage = ({match, location, history}) => {
             
             
             </>
-            </Container>
-            
             
         </div>
     )

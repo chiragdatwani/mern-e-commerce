@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {fetchProduct} from '../../actions/productActions'
-import {Divider, FormControl, Grid, InputLabel, Select} from '@material-ui/core'
+import {Divider, FormControl, Grid, InputLabel, MenuItem, Select} from '@material-ui/core'
 import Stars from '../../components/Stars';
 import { InfoContainer, Container, AddToCartContainer, StyledButton, ButtonContainer, StyledOption } from './Product.elements';
 import Loader from '../../components/Loader/Loader'
@@ -61,6 +61,7 @@ function Product({match, history}) {
                                     <FormControl>
                                     <InputLabel htmlFor='qty'>Quantity</InputLabel>
                                     <Select
+                                        defaultValue={quantity}
                                         value={quantity}
                                         onChange={e => setQuantity(e.target.value)}
                                         
@@ -69,10 +70,10 @@ function Product({match, history}) {
                                             id: 'qty'
                                          }}
                                     > 
-                                        <StyledOption value="" disabled>Quantity</StyledOption>
+                                        <MenuItem value="" disabled>Quantity</MenuItem>
           
                                         {[...Array(product.countInStock).keys()].map(x => (
-                                            <StyledOption key={x+1} value={x+1}>{x + 1}</StyledOption>
+                                            <MenuItem key={x+1} value={x+1}>{x + 1}</MenuItem>
                                         ))}
                                     </Select>
                                     </FormControl>
