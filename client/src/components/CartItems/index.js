@@ -1,7 +1,7 @@
 import React from 'react'
 import { Paper, Table, TableBody, TableCell, TableRow, Select, MenuItem } from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete';
-import { Image,StyledLink,StyledOption,StyledTable } from './CartItems.elements'
+import { Image,StyledLink,StyledTable } from './CartItems.elements'
 import { useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '../../actions/cartActions';
 

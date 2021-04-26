@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {List, Button, MenuItem, Card} from '@material-ui/core'
+import {List, Button, Card} from '@material-ui/core'
 
 export const InfoContainer = styled(List)`
     width: 100%;

@@ -13,8 +13,8 @@ const ProfilePage = ({location, history}) => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const [message, setMessage] = useState(null)
-    const redirect = location.search ? location.search.split('=')[1] : '/';
+    const [message, setMessage] = useState(null);
+
 
     const dispatch = useDispatch();
     

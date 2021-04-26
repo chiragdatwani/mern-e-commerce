@@ -1,17 +1,40 @@
-import { Button, ButtonBase, Card, CardContent, Container, Divider, Grid, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { Button, Card, CardContent, Container, Divider, Grid } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { createOrder } from '../../actions/orderActions';
 import StepperNav from '../../components/StepperNav'
 import { OrderItem, ShippingMessage, SummaryItem } from './PlaceOrder.elements';
 
-const PlaceOrder = () => {
+const PlaceOrder = ({history}) => {
 
     const cart = useSelector( state => state.cart );
 
     cart.itemsPrice = cart.cartItems.reduce( (acc,item) => acc + item.price * item.qty , 0).toFixed(2)
 
     cart.shippingPrice = cart.itemsPrice > 100 ? 0 : 10
+    const orderCreate = useSelector(state => state.orderCreate)
+
+    const { order, success, error } = orderCreate;
+
+    useEffect(() => {
+        if(success){
+            history.push(`/order/${order._id}`)
+        }
+        // eslint-disable-next-line
+    }, [history, success])
+
+    const dispatch = useDispatch();
+    const handleSubmit = () => {
+        dispatch(createOrder({
+            orderItems: cart.cartItems,
+            shippingAddress: cart.shippingAddress,
+            paymentMethod: cart.paymentMethod,
+            itemsPrice: cart.itemsPrice,
+            shippingPrice: cart.shippingPrice,
+            totalPrice: cart.totalPrice
+        }))
+    }
 
     return (
         <div className='placerorder-page'>
@@ -57,8 +80,9 @@ const PlaceOrder = () => {
                         <SummaryItem>Shipping:  <strong>${cart.shippingPrice}</strong></SummaryItem>
                         <SummaryItem>Total:  <strong>${cart.itemsPrice + cart.shippingPrice}</strong></SummaryItem>
                         <ShippingMessage>(Orders above $100 have free shipping)</ShippingMessage>
+                        {error ? <Alert severity='error'>{error}</Alert>: <></>}
                         <Divider />
-                        <Button>PLACE ORDER</Button>
+                        <Button onClick={handleSubmit}>PLACE ORDER</Button>
                         </CardContent>
                     </Card>
                     </Container>

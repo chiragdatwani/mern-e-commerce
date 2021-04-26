@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {fetchProduct} from '../../actions/productActions'
 import {Divider, FormControl, Grid, InputLabel, MenuItem, Paper, Select} from '@material-ui/core'
 import Stars from '../../components/Stars';
-import { InfoContainer, Container, AddToCartContainer, StyledButton, ButtonContainer, StyledOption } from './Product.elements';
+import { InfoContainer, Container, AddToCartContainer, StyledButton, ButtonContainer } from './Product.elements';
 import Loader from '../../components/Loader/Loader'
 import { Alert } from '@material-ui/lab';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Step, StepLabel, Stepper } from '@material-ui/core';
+import { Step, StepLabel } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { StyledStepper } from './Stepper.elements';
 

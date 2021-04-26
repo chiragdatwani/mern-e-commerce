@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { addToCart } from '../../actions/cartActions';
-import { Card, CardContent, Container, Grid } from '@material-ui/core'
+import { Card, CardContent, Grid } from '@material-ui/core'
 import { Alert } from '@material-ui/lab';
 import CartItems from '../../components/CartItems'
 import { StyledButton } from './Cart.elements';

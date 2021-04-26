@@ -3,7 +3,6 @@ import { Paper, TextField } from '@material-ui/core';
 import { FormContainer, StyledButton } from './Shipping.elements';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveShippingAddress } from '../../actions/cartActions';
-import Stepper from '../../components/StepperNav'
 import StepperNav from '../../components/StepperNav';
 
 
@@ -14,14 +13,14 @@ const ShippingPage = ({ history }) => {
 
     const [address, setAddress] = useState(shippingAddress.address);
     const [city, setCity] = useState(shippingAddress.city);
-    const [postalcode, setPostalcode] = useState(shippingAddress.postalcode);
+    const [postalCode, setPostalCode] = useState(shippingAddress.postalcode);
     const [country, setCountry] = useState(shippingAddress.country);
 
     const dispatch = useDispatch()
 
     const submitHandler = (e) => {
         e.preventDefault();
-        dispatch(saveShippingAddress({ address, city, postalcode, country }));
+        dispatch(saveShippingAddress({ address, city, postalCode, country }));
         history.push('/payment')
     }
     return (
@@ -52,8 +51,8 @@ const ShippingPage = ({ history }) => {
                 variant='outlined'
                 fullWidth
                 label="Postal Code"
-                value={postalcode}
-                onChange={(e)=>setPostalcode(e.target.value)}/>
+                value={postalCode}
+                onChange={(e)=>setPostalCode(e.target.value)}/>
                 <TextField 
                 required
                 margin='dense'
