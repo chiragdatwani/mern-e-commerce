@@ -12,7 +12,10 @@ const PlaceOrder = ({history}) => {
 
     cart.itemsPrice = cart.cartItems.reduce( (acc,item) => acc + item.price * item.qty , 0).toFixed(2)
 
-    cart.shippingPrice = cart.itemsPrice > 100 ? 0 : 10
+    cart.shippingPrice = cart.itemsPrice > 100 ? 0.00 : 10.00
+
+    cart.totalPrice = Number(cart.itemsPrice + cart.shippingPrice).toFixed(2);
+
     const orderCreate = useSelector(state => state.orderCreate)
 
     const { order, success, error } = orderCreate;
@@ -44,7 +47,7 @@ const PlaceOrder = ({history}) => {
                     <h3>SHIPPING</h3>
                     <p>
                         <strong>Address: </strong>
-                        {`${cart.shippingAddress.address}, ${cart.shippingAddress.city}, ${cart.shippingAddress.postalcode} ${cart.shippingAddress.country}`
+                        {`${cart.shippingAddress.address}, ${cart.shippingAddress.city}, ${cart.shippingAddress.postalCode} ${cart.shippingAddress.country}`
                         }
                     </p>
                     <Divider />
@@ -78,7 +81,7 @@ const PlaceOrder = ({history}) => {
                         <Divider/>
                         <SummaryItem>Items:  <strong>${cart.itemsPrice}</strong></SummaryItem>
                         <SummaryItem>Shipping:  <strong>${cart.shippingPrice}</strong></SummaryItem>
-                        <SummaryItem>Total:  <strong>${cart.itemsPrice + cart.shippingPrice}</strong></SummaryItem>
+                        <SummaryItem>Total:  <strong>${cart.totalPrice}</strong></SummaryItem>
                         <ShippingMessage>(Orders above $100 have free shipping)</ShippingMessage>
                         {error ? <Alert severity='error'>{error}</Alert>: <></>}
                         <Divider />
