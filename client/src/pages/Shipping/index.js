@@ -22,7 +22,7 @@ const ShippingPage = ({ history }) => {
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(saveShippingAddress({ address, city, postalcode, country }));
-        history.push('/payments')
+        history.push('/payment')
     }
     return (
         <div className='shipping-page'>

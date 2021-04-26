@@ -10,21 +10,14 @@ import LoginPage from './pages/Login';
 import RegisterPage from './pages/Register';
 import ProfilePage from './pages/Profile';
 import ShippingPage from './pages/Shipping';
-import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { myTheme } from './theme';
 import PaymentPage from './pages/Payment';
+import PlaceOrder from './pages/PlaceOrder';
 
 
 
 const App = () => {
 
-  const useStyles = makeStyles( (theme) => ({
-    root: {
-      backgroundColor: theme.palette.background.default
-    }
-  }));
-
-  const classes = useStyles();
 
   return (
     <Router>
@@ -32,7 +25,7 @@ const App = () => {
       
       
       <ThemeProvider theme={myTheme}>
-      <Box component={'div'} className={classes.root} >
+      <Box component={'div'} >
         <Header />
           <main>
             <Container maxWidth={'lg'}>
@@ -43,7 +36,8 @@ const App = () => {
               <Route path='/register' component={RegisterPage} />
               <Route path='/profile' component={ProfilePage} />
               <Route path='/shipping' component={ShippingPage} />
-              <Route path='/payments' component={PaymentPage} />
+              <Route path='/payment' component={PaymentPage} />
+              <Route path='/placeorder' component={PlaceOrder} />
             </Container>
           </main>
         <Footer />

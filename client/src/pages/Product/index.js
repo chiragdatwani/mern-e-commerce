@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {fetchProduct} from '../../actions/productActions'
-import {Divider, FormControl, Grid, InputLabel, MenuItem, Select} from '@material-ui/core'
+import {Divider, FormControl, Grid, InputLabel, MenuItem, Paper, Select} from '@material-ui/core'
 import Stars from '../../components/Stars';
 import { InfoContainer, Container, AddToCartContainer, StyledButton, ButtonContainer, StyledOption } from './Product.elements';
 import Loader from '../../components/Loader/Loader'
@@ -32,12 +32,12 @@ function Product({match, history}) {
             {loading ? <Loader /> :
                 error ? <Alert severity="error">{error}</Alert> :
                     <Grid container spacing={3}>
-                        <Grid item md={6} xs={12} >
+                        <Grid item md={5} xs={12} >
                             
                             <img  style={{width: '100%', height: 'auto'}} src={product.image} alt={product.name} />
                             
                         </Grid>
-                        <Grid item md={3} sm={6}>
+                        <Grid item md={4} sm={6}>
                             <InfoContainer component='div'>
                             <h2>{product.name}</h2>
 
@@ -51,7 +51,7 @@ function Product({match, history}) {
                         </Grid>
 
                         <Grid item md={3} sm={6} xs={12}>
-                            <AddToCartContainer>
+                            <AddToCartContainer component={Paper}>
                                 <h3>{`Price: $${product.price}`}</h3>
                                 <Divider />
                                 <h3>{`Status: ${product.countInStock ? 'In Stock': 'Out of stock'}`}</h3>

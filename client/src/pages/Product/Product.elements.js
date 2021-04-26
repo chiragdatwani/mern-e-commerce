@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {List, Button, MenuItem} from '@material-ui/core'
+import {List, Button, MenuItem, Card} from '@material-ui/core'
 
 export const InfoContainer = styled(List)`
     width: 100%;
@@ -34,14 +34,8 @@ export const Container = styled.div`
     
 `
 
-export const AddToCartContainer = styled.div`
+export const AddToCartContainer = styled(Card)`
     
-    border: 1px solid black;
-    border-radius: 3px;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
     padding: 1rem 1.5rem;
 
     > * {

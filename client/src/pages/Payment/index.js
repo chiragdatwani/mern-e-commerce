@@ -34,7 +34,7 @@ const PaymentPage = ({ history }) => {
                     <FormControl component='fieldset'>
                         <RadioGroup value={paymentMethod} onChange={ e => setPaymentMethod(e.target.value)}>
                             <FormControlLabel value='PayPal' control={<Radio/>} label='PayPal or Credit Card'/>
-                            <FormControlLabel value='cod' control={<Radio/>} label='Cash on delivery'/>
+                            <FormControlLabel value='Cash on Delivery' control={<Radio/>} label='Cash on delivery'/>
                         </RadioGroup>
                     </FormControl>
                 <StyledButton type='submit'>Continue</StyledButton>

@@ -8,7 +8,7 @@ const StepperNav = ({stepNumber}) => {
 
     const steps = ['Login', 'Shipping', 'Payment', 'Place Order']
     return (
-        <StyledStepper component={Paper} activeStep={stepNumber}>
+        <StyledStepper activeStep={stepNumber}>
             {steps.map( (step, index) => (
                 <Step key={step} >
                     <StepLabel>
@@ -18,7 +18,6 @@ const StepperNav = ({stepNumber}) => {
                             {<h4>{step}</h4>}  
                             </Link>
                             }
-                        
                     </StepLabel>
                 </Step>
             ))}

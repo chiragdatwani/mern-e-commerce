@@ -37,9 +37,10 @@ main {
 footer{
     position: absolute;
     display: flex;
+    align-items: center;
+    justify-content: center;
     bottom: 0;
     left:0;
     height: 80px;
     width: 100%;
-    align-items: flex-end;
 }
