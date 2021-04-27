@@ -49,7 +49,7 @@ const ProfilePage = ({location, history}) => {
         if(!userInfo){
             history.push('/login') 
         }else{
-            if(!user.hasOwnProperty('name')){
+            if(!user || !user.hasOwnProperty('name')){
                 dispatch(getUserDetails('profile'))
                 dispatch(getMyOrders());
             } else {
