@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Alert } from '@material-ui/lab';
-import { Paper, TextField } from '@material-ui/core';
+import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserDetails, updateUserProfile } from '../../actions/userActions'
-import { FormContainer, StyledButton } from './Profile.elements'
-import { Container, Grid } from '@material-ui/core';
+import { FormContainer, StyledButton, StyledLink } from './Profile.elements'
+import { Grid } from '@material-ui/core';
+import ClearIcon from '@material-ui/icons/Clear';
+import { getMyOrders } from '../../actions/orderActions';
+import Loader from '../../components/Loader/Loader';
 
 const ProfilePage = ({location, history}) => {
 
@@ -28,6 +31,10 @@ const ProfilePage = ({location, history}) => {
 
     const { success } = userUpdateProfile;
 
+    const myOrders = useSelector(state => state.myOrders);
+
+    const { loading:ordersLoading, orders, error:ordersError } = myOrders;
+
     const submitHandler = (e) => {
         e.preventDefault();
         if(password !== confirmPassword){
@@ -44,6 +51,7 @@ const ProfilePage = ({location, history}) => {
         }else{
             if(!user.hasOwnProperty('name')){
                 dispatch(getUserDetails('profile'))
+                dispatch(getMyOrders());
             } else {
                 setName(user.name);
                 setEmail(user.email)
@@ -52,8 +60,8 @@ const ProfilePage = ({location, history}) => {
         }
     }, [history, userInfo, user, dispatch])
     return (
-        <div className='profile-page '>
-            <Container maxWidth={'lg'}>
+        <div className='profile-page'>
+
                 <Grid container spacing={3}>
                     <Grid item md={3} xs={12}>
                         <h2>Profile</h2>
@@ -100,13 +108,44 @@ const ProfilePage = ({location, history}) => {
                         </FormContainer>
                     </Grid>
 
-                    <Grid item md={9} xs={12}>
-                        <h2>Your Orders</h2>
+                    <Grid item md={9} xs={12} >
+                        <h2 style={{marginBottom: '30px'}}>Your Orders</h2>
+                        { ordersLoading? <Loader /> :
+                            ordersError ? <Alert severity='error'>{error}</Alert> :
+                            orders.length === 0 ? <Alert severity='info'>You have no orders</Alert> :
+
+                        <TableContainer component={Paper}>
+                            <Table>
+                            <TableHead fullWidth>
+                                <TableRow>
+                                    <TableCell component="th" scope="row">ID</TableCell>
+                                    <TableCell align='right'>Date</TableCell>
+                                    <TableCell align='right'>Total</TableCell>
+                                    <TableCell align='right'>Paid</TableCell>
+                                    <TableCell align='right'>Delivered</TableCell>
+                                    <TableCell></TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {orders.map( order => (
+                                    <TableRow key={order._id}>
+                                        <TableCell>{order._id}</TableCell>
+                                        <TableCell align='right'>{order.createdAt.slice(0,10)}</TableCell>
+                                        <TableCell align='right'>${order.totalPrice}</TableCell>
+                                        <TableCell align='right'>{order.isPaid ? <p style={{color:`green`}}>{order.paidAt.slice(0,10)}</p> : <ClearIcon style={{color:'red'}}/> }</TableCell>
+                                        <TableCell align='right'>{order.isDelivered ? <p style={{color:`green`}}>{order.deliveredeAt.slice(0,10)}</p> : <ClearIcon style={{color:'red'}}/>}</TableCell>
+                                        <TableCell><StyledLink to={`/order/${order._id}`}><Button variant='contained'>Details</Button></StyledLink></TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                            </Table>
+                        </TableContainer>
+                        }
                     </Grid>
 
 
                 </Grid>
-            </Container>
+            
         </div>
     )
 }

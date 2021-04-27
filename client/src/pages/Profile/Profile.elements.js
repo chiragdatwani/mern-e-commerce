@@ -1,6 +1,7 @@
 import { Container } from '@material-ui/core';
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 export const FormContainer = styled(Container)`
     margin-top: 30px;
@@ -21,4 +22,9 @@ export const StyledButton = styled(Button)`
         font-weight: bold;
     }
 
+`
+
+export const StyledLink = styled(Link)`
+        color: inherit;
+        text-decoration: none;
 `

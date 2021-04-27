@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import {Card, CardActionArea, CardContent, CircularProgress, Container, Divider, Grid } from '@material-ui/core';
+import {Button, Card, CardActionArea, CardContent, CircularProgress, Container, Divider, Grid } from '@material-ui/core';
 import { PayPalButton } from 'react-paypal-button-v2';
 import { Alert } from '@material-ui/lab';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrderDetails, payOrder } from '../../actions/orderActions';
 import Loader from '../../components/Loader/Loader';
-import { Message, OrderItem, ShippingMessage, SummaryItem } from './Order.elements';
+import { Message, OrderItem, ShippingMessage, SummaryItem, StyledLink } from './Order.elements';
 import axios from 'axios';
 import types from '../../actions/types';
 
@@ -32,17 +32,17 @@ const Order = ({match}) => {
             script.type = 'text/javascript';
             script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
             script.async = true;
-            script.onLoad = () => {
-                setSdkReady(true)
-            }
+            script.addEventListener('load', ()=>{setSdkReady(true)})
             document.body.appendChild(script);
         }
 
-        if(!order || successPay){
+        if(!order || order._id !== orderId || successPay){
             dispatch({ type: types.ORDER_PAY_RESET })
             dispatch(getOrderDetails(orderId))
         } else if (!order.isPaid){
+            console.log('HEYYYYs');
             if(!window.paypal){
+                console.log('HEYYYYssss')
                 addPayPalScript()
             }else {
                 setSdkReady(true)
@@ -97,7 +97,7 @@ const Order = ({match}) => {
                     </p>
                     <Message>
                     {order.isPaid ? 
-                        <Alert severity='success'>Paid on {order.paidAt}</Alert> :
+                        <Alert severity='success'>Paid on {order.paidAt.slice(0,10)}</Alert> :
                         <Alert
                         severity='error'>
                             Not Paid
@@ -134,15 +134,20 @@ const Order = ({match}) => {
                         <ShippingMessage>(Orders above $100 have free shipping)</ShippingMessage>
                         </CardContent>
                         <CardActionArea>
-                            {!order.isPaid && (
+                            {!order.isPaid ? (
                             <div>
                                 {loadingPay && <CircularProgress/>}
-                                {!sdkReady ? <CircularProgress/> : (
+                                {sdkReady ? (
                                     <PayPalButton amount={order.totalPrice}
                                     onSuccess={successPaymentHandler}/>
-                                )}
+                                ) :
+                                <CircularProgress/>}
                                 </div>
-                            )}
+                            ):
+                            <StyledLink to='/'>
+                                <Button variant='contained'>Continue Shopping</Button>
+                            </StyledLink>
+                            }
                         </CardActionArea>
                     </Card>
                     </Container>

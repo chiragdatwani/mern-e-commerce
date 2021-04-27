@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const OrderItem = styled.div`
@@ -20,4 +21,9 @@ export const SummaryItem = styled.p`
 
 export const Message = styled.div`
     margin-bottom: 5px;
+`
+
+export const StyledLink = styled(Link)`
+        color: inherit;
+        text-decoration: none;
 `
