@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUserList } from '../../actions/userActions';
+import { deleteUser, getUserList } from '../../actions/userActions';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
-import DeleteIcon from '@material-ui/icons/Delete';
 import Loader from '../../components/Loader/Loader';
+import { Delete } from './UserList.elements';
 
 const UserList = ({history}) => {
 
@@ -18,8 +18,12 @@ const UserList = ({history}) => {
 
     const dispatch = useDispatch();
 
-    const deleteHandler = () => {
-        console.log('delete user');
+    const deleteHandler = (id) => {
+        if(window.confirm('Are you sure')){
+            dispatch(deleteUser(id));
+            dispatch(getUserList())
+        }
+        
     }
 
     useEffect(() => {
@@ -55,7 +59,7 @@ const UserList = ({history}) => {
                                         <TableCell align='right'>{user.name}</TableCell>
                                         <TableCell align='right'><a href={`mailto:${user.email}`}>{user.email}</a></TableCell>
                                         <TableCell align='right'>{user.isAdmin ? <CheckIcon style={{color:`green`}} /> : <ClearIcon style={{color:'red'}}/> }</TableCell>
-                                        <TableCell align='right'><DeleteIcon onClick={deleteHandler}/></TableCell>
+                                        <TableCell align='right'><Delete onClick={()=> deleteHandler(user._id)}/></TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
