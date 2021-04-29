@@ -21,91 +21,88 @@ function Header() {
     const [anchorEl, setAnchorEl] = useState(null);
     const handleMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
-      };
+    };
     const handleMenuClose = () => {
         setAnchorEl(null);
-      };
+    };
     
     //AdminMenu Toggle
     const [anchorElAdmin, setAnchorElAdmin] = useState(null);
     const handleAdminMenuOpen = (event) => {
         setAnchorElAdmin(event.currentTarget);
-      };
+    };
     const handleAdminMenuClose = () => {
         setAnchorElAdmin(null);
-      };
+    };
 
     return (
         <header>
             <AppBar position="static">
                 <Toolbar>
                     <NavContainer>
-                    <Typography variant="h6" >
-                    <StyledLink to='/'>
-                        Store
-                    </StyledLink>
-                    </Typography>
-                    <ButtonContainer>
-                        <StyledLink to='/cart'>
-                            <Button color="inherit">
-                                <ShoppingCartIcon />Cart
-                            </Button>
+                        <Typography variant="h6" >
+                        <StyledLink to='/'>
+                            Store
                         </StyledLink>
-                        {userInfo ? 
-                            <div>
-                            <Button color="inherit" onClick={handleMenuOpen}>
-                                <PersonIcon />{userInfo.name}<ArrowDropDownIcon/>
-                            </Button>
-                            <Menu
-                                anchorEl={anchorEl}
-                                keepMounted
-                                open={Boolean(anchorEl)}
-                                onClose={handleMenuClose}
-                            >
-                                <MenuItem>
-                                    <StyledLink to='/profile'>Profile</StyledLink>
-                                </MenuItem>
-                                
-                                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                            </Menu>
-                            </div>
-                        :
-                        <StyledLink to='/login'>
-                            <Button color="inherit">
-                                <PersonIcon />Login
-                            </Button>
-                        </StyledLink>
-                        }
-                        {
-                            userInfo && userInfo.isAdmin && (
+                        </Typography>
+                        <ButtonContainer>
+                            <StyledLink to='/cart'>
+                                <Button color="inherit">
+                                    <ShoppingCartIcon />Cart
+                                </Button>
+                            </StyledLink>
+                            {userInfo ? 
                                 <div>
-                            <Button color="inherit" onClick={handleAdminMenuOpen}>
-                                Admin<ArrowDropDownIcon/>
-                            </Button>
-                            <Menu
-                                anchorEl={anchorElAdmin}
-                                keepMounted
-                                open={Boolean(anchorElAdmin)}
-                                onClose={handleAdminMenuClose}
-                            >
-                                <MenuItem>
-                                    <StyledLink to='/admin/userlist'>Users</StyledLink>
-                                </MenuItem>
-                                <MenuItem>
-                                    <StyledLink to='/admin/productlist'>Products</StyledLink>
-                                </MenuItem>
-                                <MenuItem>
-                                    <StyledLink to='/admin/orderlist'>Orders</StyledLink>
-                                </MenuItem>
-                                
-                            </Menu>
-                            </div>
-                            )
-                        }
-                    </ButtonContainer>
-                    
+                                <Button color="inherit" onClick={handleMenuOpen}>
+                                    <PersonIcon />{userInfo.name}<ArrowDropDownIcon/>
+                                </Button>
+                                <Menu
+                                    anchorEl={anchorEl}
+                                    keepMounted
+                                    open={Boolean(anchorEl)}
+                                    onClose={handleMenuClose}
+                                >
+                                    <MenuItem>
+                                        <StyledLink to='/profile'>Profile</StyledLink>
+                                    </MenuItem>
+                                    
+                                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                                </Menu>
+                                </div>
+                            :
+                            <StyledLink to='/login'>
+                                <Button color="inherit">
+                                    <PersonIcon />Login
+                                </Button>
+                            </StyledLink>
+                            }
+                            {
+                                userInfo && userInfo.isAdmin && (
+                                    <div>
+                                <Button color="inherit" onClick={handleAdminMenuOpen}>
+                                    Admin<ArrowDropDownIcon/>
+                                </Button>
+                                <Menu
+                                    anchorEl={anchorElAdmin}
+                                    keepMounted
+                                    open={Boolean(anchorElAdmin)}
+                                    onClose={handleAdminMenuClose}
+                                >
+                                    <MenuItem>
+                                        <StyledLink to='/admin/userlist'>Users</StyledLink>
+                                    </MenuItem>
+                                    <MenuItem>
+                                        <StyledLink to='/admin/productlist'>Products</StyledLink>
+                                    </MenuItem>
+                                    <MenuItem>
+                                        <StyledLink to='/admin/orderlist'>Orders</StyledLink>
+                                    </MenuItem>
+                                </Menu>
+                                </div>
+                                )
+                            }
+                        </ButtonContainer>
                     </NavContainer>
-                    
                 </Toolbar>
             </AppBar>
         </header>

@@ -8,7 +8,10 @@ import ClearIcon from '@material-ui/icons/Clear';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Loader from '../../components/Loader/Loader';
 
-const UserList = () => {
+const UserList = ({history}) => {
+
+    const currentUser = useSelector( state => state.currentUser);
+    const { userInfo } = currentUser;
 
     const userList = useSelector( state => state.userList);
     const { users, loading, error } = userList;
@@ -20,8 +23,13 @@ const UserList = () => {
     }
 
     useEffect(() => {
-        dispatch(getUserList())
-    }, [dispatch])
+        if(userInfo && userInfo.isAdmin){
+            dispatch(getUserList())
+        }else{
+            history.push('/login')
+        }
+        
+    }, [dispatch, history])
 
     return (
         <div className='userlist_page'>
@@ -53,8 +61,7 @@ const UserList = () => {
                             </TableBody>
                             </Table>
                         </TableContainer>
-                    </>
-
+                </>
             )
             }
         </div>
