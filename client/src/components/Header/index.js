@@ -25,6 +25,15 @@ function Header() {
     const handleMenuClose = () => {
         setAnchorEl(null);
       };
+    
+    //AdminMenu Toggle
+    const [anchorElAdmin, setAnchorElAdmin] = useState(null);
+    const handleAdminMenuOpen = (event) => {
+        setAnchorElAdmin(event.currentTarget);
+      };
+    const handleAdminMenuClose = () => {
+        setAnchorElAdmin(null);
+      };
 
     return (
         <header>
@@ -53,9 +62,10 @@ function Header() {
                                 open={Boolean(anchorEl)}
                                 onClose={handleMenuClose}
                             >
-                                <StyledLink to='/profile'>
-                                    <MenuItem>Profile</MenuItem>
-                                </StyledLink>
+                                <MenuItem>
+                                    <StyledLink to='/profile'>Profile</StyledLink>
+                                </MenuItem>
+                                
                                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
                             </Menu>
                             </div>
@@ -65,6 +75,32 @@ function Header() {
                                 <PersonIcon />Login
                             </Button>
                         </StyledLink>
+                        }
+                        {
+                            userInfo && userInfo.isAdmin && (
+                                <div>
+                            <Button color="inherit" onClick={handleAdminMenuOpen}>
+                                Admin<ArrowDropDownIcon/>
+                            </Button>
+                            <Menu
+                                anchorEl={anchorElAdmin}
+                                keepMounted
+                                open={Boolean(anchorElAdmin)}
+                                onClose={handleAdminMenuClose}
+                            >
+                                <MenuItem>
+                                    <StyledLink to='/admin/userlist'>Users</StyledLink>
+                                </MenuItem>
+                                <MenuItem>
+                                    <StyledLink to='/admin/productlist'>Products</StyledLink>
+                                </MenuItem>
+                                <MenuItem>
+                                    <StyledLink to='/admin/orderlist'>Orders</StyledLink>
+                                </MenuItem>
+                                
+                            </Menu>
+                            </div>
+                            )
                         }
                     </ButtonContainer>
                     

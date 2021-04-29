@@ -14,6 +14,7 @@ import { myTheme } from './theme';
 import PaymentPage from './pages/Payment';
 import PlaceOrder from './pages/PlaceOrder';
 import Order from './pages/Order';
+import UserList from './pages/UserList';
 
 
 
@@ -40,6 +41,7 @@ const App = () => {
               <Route path='/payment' component={PaymentPage} />
               <Route path='/placeorder' component={PlaceOrder} />
               <Route path='/order/:id' component={Order} />
+              <Route path='/admin/userlist' component={UserList} />
             </Container>
           </main>
         <Footer />
