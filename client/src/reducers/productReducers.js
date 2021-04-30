@@ -42,3 +42,19 @@ export const productDeleteReducer = (state = {}, action) => {
             return state
     }
 };
+
+export const productCreateReducer = (state = {}, action) => {
+
+    switch (action.type) {
+        case types.PRODUCT_CREATE_REQUEST:
+            return {loading: true}
+        case types.PRODUCT_CREATE_SUCCESS:
+            return {loading: false, product: action.payload, success:true}
+        case types.PRODUCT_CREATE_FAIL:
+            return {loading: false, error: action.payload}
+        case types.PRODUCT_CREATE_RESET:
+            return {}
+        default:
+            return state
+    }
+};

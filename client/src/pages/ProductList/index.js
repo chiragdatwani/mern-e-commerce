@@ -4,8 +4,10 @@ import { deleteUser, getUserList } from '../../actions/userActions';
 import { Button, CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import Loader from '../../components/Loader/Loader';
-import { fetchProductsList, deleteProductAdmin } from '../../actions/productActions';
+import { fetchProductsList, deleteProductAdmin, createProductAdmin } from '../../actions/productActions';
 import { Edit, Delete, ButtonContainer } from './ProductList.elements';
+import types from '../../actions/types';
+
 
 const ProductList = ({history}) => {
 
@@ -18,6 +20,9 @@ const ProductList = ({history}) => {
     const deleteProduct = useSelector( state => state.deleteProduct);
     const { loading: loadingDelete, error: errorDelete, success: successDelete } = deleteProduct;
 
+    const createProduct = useSelector( state => state.createProduct);
+    const { loading: loadingCreate, error: errorCreate, success: successCreate, product: createdProduct} = createProduct;
+
     const dispatch = useDispatch();
 
     const deleteHandler = (id) => {
@@ -26,14 +31,25 @@ const ProductList = ({history}) => {
         }
     };
 
+    const createProductHandler = () => {
+        dispatch(createProductAdmin())
+    }
+
     useEffect(() => {
-        if(userInfo && userInfo.isAdmin){
-            dispatch(fetchProductsList())
-        }else{
+        dispatch({
+            type: types.PRODUCT_CREATE_RESET
+        });
+
+        if(!userInfo || !userInfo.isAdmin){
             history.push('/login')
         }
         
-    }, [dispatch, history, userInfo, successDelete])
+        if(successCreate){
+            history.push(`/admin/product/${createdProduct._id}/edit`)
+        }else{
+            dispatch(fetchProductsList())
+        }
+    }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct])
 
     return (
         <div className='productlist_page'>
@@ -42,9 +58,17 @@ const ProductList = ({history}) => {
                 <>
                 <h1>Products</h1>
                 <ButtonContainer>
-                    <Button color='primary' variant='contained'>Add Product</Button>
+                    { loadingCreate ? <CircularProgress /> :
+                    <Button 
+                        color='primary' 
+                        variant='contained'
+                        onClick={createProductHandler}
+                    >Add Product
+                    </Button>
+                    }
                 </ButtonContainer>
                 {errorDelete && <Alert severity='error'>{errorDelete}</Alert>}
+                {errorCreate && <Alert severity='error'>{errorCreate}</Alert>}
                 <TableContainer component={Paper}>
                             <Table>
                             <TableHead>

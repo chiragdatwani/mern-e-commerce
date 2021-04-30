@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+
 export const Delete = styled(DeleteIcon)`
     color: red;
     & :hover{

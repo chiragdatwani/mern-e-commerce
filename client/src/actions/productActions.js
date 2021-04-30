@@ -62,3 +62,31 @@ export const deleteProductAdmin = (id) => async(dispatch, getState) => {
         })
     }
 };
+
+export const createProductAdmin = () => async(dispatch, getState) => {
+
+    try {
+        dispatch({ type: types.PRODUCT_CREATE_REQUEST });
+
+        const {currentUser: {userInfo}} = getState();
+
+        const config ={
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.post(`/api/products`,{}, config);
+
+        dispatch({ 
+            type: types.PRODUCT_CREATE_SUCCESS,
+            payload: data   
+        });
+
+    } catch (error) {
+        dispatch({
+            type: types.PRODUCT_CREATE_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        })
+    }
+};

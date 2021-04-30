@@ -16,6 +16,7 @@ import PlaceOrder from './pages/PlaceOrder';
 import Order from './pages/Order';
 import UserList from './pages/UserList';
 import ProductList from './pages/ProductList';
+import ProductEdit from './pages/ProductEdit';
 
 
 
@@ -44,7 +45,8 @@ const App = () => {
               <Route path='/order/:id' component={Order} />
               <Route path='/admin/userlist' component={UserList} />
               <Route path='/admin/productlist' component={ProductList} />
-            </Container>
+              <Route path='/admin/product/:id/edit' component={ProductEdit} />
+            </Container> 
           </main>
         <Footer />
         </Box>
