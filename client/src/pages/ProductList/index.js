@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteUser, getUserList } from '../../actions/userActions';
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@material-ui/core';
+import { Button, CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import CheckIcon from '@material-ui/icons/Check';
-import ClearIcon from '@material-ui/icons/Clear';
 import Loader from '../../components/Loader/Loader';
-import { fetchProductsList } from '../../actions/productActions';
+import { fetchProductsList, deleteProductAdmin } from '../../actions/productActions';
 import { Edit, Delete, ButtonContainer } from './ProductList.elements';
 
 const ProductList = ({history}) => {
@@ -17,12 +15,16 @@ const ProductList = ({history}) => {
     const productList = useSelector( state => state.productList);
     const { products, loading, error } = productList;
 
+    const deleteProduct = useSelector( state => state.deleteProduct);
+    const { loading: loadingDelete, error: errorDelete, success: successDelete } = deleteProduct;
+
     const dispatch = useDispatch();
 
     const deleteHandler = (id) => {
-        console.log('delete');
-        
-    }
+        if(window.confirm('Are you sure?')){
+            dispatch(deleteProductAdmin(id));
+        }
+    };
 
     useEffect(() => {
         if(userInfo && userInfo.isAdmin){
@@ -31,7 +33,7 @@ const ProductList = ({history}) => {
             history.push('/login')
         }
         
-    }, [dispatch, history, userInfo])
+    }, [dispatch, history, userInfo, successDelete])
 
     return (
         <div className='productlist_page'>
@@ -42,7 +44,7 @@ const ProductList = ({history}) => {
                 <ButtonContainer>
                     <Button color='primary' variant='contained'>Add Product</Button>
                 </ButtonContainer>
-                
+                {errorDelete && <Alert severity='error'>{errorDelete}</Alert>}
                 <TableContainer component={Paper}>
                             <Table>
                             <TableHead>
@@ -67,10 +69,11 @@ const ProductList = ({history}) => {
                                             <Button>
                                             <Edit />
                                             </Button>
-                                            <Button>
+                                            { loadingDelete ? <CircularProgress /> :
+                                            <Button onClick={() => deleteHandler(product._id)}>
                                             <Delete />
                                             </Button>
-                                            
+                                            }
                                         </TableCell>
                                     </TableRow>
                                 ))}

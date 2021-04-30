@@ -19,6 +19,7 @@ export const fetchProductsList = () => async(dispatch) => {
     }
 };
 
+
 export const fetchProduct = (id) => async (dispatch) => {
     try {
         dispatch({ type:types.FETCH_PRODUCT_REQUEST })
@@ -36,3 +37,28 @@ export const fetchProduct = (id) => async (dispatch) => {
         })
     }
 }
+
+export const deleteProductAdmin = (id) => async(dispatch, getState) => {
+
+    try {
+        dispatch({ type: types.PRODUCT_DELETE_REQUEST });
+
+        const {currentUser: {userInfo}} = getState();
+
+        const config ={
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        await axios.delete(`/api/products/${id}`, config);
+
+        dispatch({ type: types.PRODUCT_DELETE_SUCCESS });
+
+    } catch (error) {
+        dispatch({
+            type: types.PRODUCT_DELETE_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        })
+    }
+};
