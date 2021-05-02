@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Alert } from '@material-ui/lab';
 import { Paper, TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProduct } from '../../actions/productActions'
+import { fetchProduct, updateProductAdmin } from '../../actions/productActions'
 import { FormContainer, StyledButton, StyledLink } from './ProductEdit.elements'
+import types from '../../actions/types';
 
 const ProductEdit = ({match, history}) => {
 
     const productId = match.params.id;
-
+ 
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
     const [image, setImage] = useState('');
@@ -28,35 +29,54 @@ const ProductEdit = ({match, history}) => {
     const currentUser = useSelector(state => state.currentUser);
     const { userInfo } = currentUser;
 
+    const updateProduct = useSelector(state => state.updateProduct);
+    const { error: updateError, success: updateSuccess } = updateProduct;
+
 
     const submitHandler = (e) => {
         e.preventDefault();
-        //Update Product
+        dispatch(updateProductAdmin({
+            _id: productId,
+            name,
+            price,
+            image,
+            brand,
+            countInStock,
+            category,
+            description
+        }))
     }
     
     useEffect(() => { 
         if(!userInfo){
             history.push('/login') 
         }else{
-            if(!product.name || product._id !== productId){
-                dispatch(fetchProduct(productId))
-            } else {
-                setName(product.name);
-                setPrice(product.price);
-                setImage(product.image);
-                setBrand(product.brand);
-                setCategory(product.category);
-                setCountInStock(product.countInStock);
-                setDescription(product.description);
+            if(updateSuccess){
+                dispatch({type: types.PRODUCT_UPDATE_RESET});
+                history.push('/admin/productList')
+            }else{
+                if(!product.name || product._id !== productId){
+                    dispatch(fetchProduct(productId))
+                } else {
+                    setName(product.name);
+                    setPrice(product.price);
+                    setImage(product.image);
+                    setBrand(product.brand);
+                    setCategory(product.category);
+                    setCountInStock(product.countInStock);
+                    setDescription(product.description);
+                }
             }
-
         }
-    }, [history, userInfo, product, dispatch])
+    }, [history, userInfo, product._id, dispatch,updateSuccess])
 
 
     return (
         <div className='productedit-page'>
             <StyledLink to='/admin/productlist'>Go Back</StyledLink>
+                {updateError && <Alert severity='error'>{updateError}</Alert>}
+                {updateSuccess && <Alert severity='success'>Updated Successfully</Alert>
+                }
                 <FormContainer component={Paper} justify='left' maxWidth='xs'>
                         <h2>Edit Product</h2>
                         {error && <Alert severity='error'>{error}</Alert>}

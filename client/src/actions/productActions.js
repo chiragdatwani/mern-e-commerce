@@ -90,3 +90,32 @@ export const createProductAdmin = () => async(dispatch, getState) => {
         })
     }
 };
+
+export const updateProductAdmin = (product) => async(dispatch, getState) => {
+
+    try {
+        dispatch({ type: types.PRODUCT_UPDATE_REQUEST });
+
+        const {currentUser: {userInfo}} = getState();
+
+        const config ={
+            headers: {
+                'Cntent-Type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.put(`/api/products/${product._id}`,product, config);
+
+        dispatch({ 
+            type: types.PRODUCT_UPDATE_SUCCESS,
+            payload: data   
+        });
+
+    } catch (error) {
+        dispatch({
+            type: types.PRODUCT_UPDATE_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        })
+    }
+};

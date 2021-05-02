@@ -90,7 +90,9 @@ const ProductList = ({history}) => {
                                         <TableCell align='right'>{product.category}</TableCell>
                                         <TableCell align='right'>{product.countInStock}</TableCell>
                                         <TableCell>
-                                            <Button>
+                                            <Button 
+                                                onClick={()=>{ history.push(`/admin/product/${product._id}/edit`)}}
+                                            >
                                             <Edit />
                                             </Button>
                                             { loadingDelete ? <CircularProgress /> :
