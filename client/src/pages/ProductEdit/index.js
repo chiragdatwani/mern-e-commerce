@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 import { Alert } from '@material-ui/lab';
-import { Paper, TextField } from '@material-ui/core';
+import { CircularProgress, Input, Paper, TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct, updateProductAdmin } from '../../actions/productActions'
 import { FormContainer, StyledButton, StyledLink } from './ProductEdit.elements'
@@ -16,7 +17,8 @@ const ProductEdit = ({match, history}) => {
     const [brand, setBrand] = useState('');
     const [category, setCategory] = useState('');
     const [description, setDescription] = useState('');
-    const [countInStock, setCountInStock] = useState(0); 
+    const [countInStock, setCountInStock] = useState(0);
+    const [uploading, setUploading] = useState(false);
 
     
 
@@ -47,6 +49,28 @@ const ProductEdit = ({match, history}) => {
         }))
     }
     
+    const uploadImageHandler = async (e) => {
+        const file = e.target.files[0];
+        const formData = new FormData();
+        formData.append('image', file);
+        setUploading(true)
+
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+
+            const { data } = await axios.post('/api/upload', formData, config);
+
+            setImage(data)
+            setUploading(false)
+        } catch(err) {
+            console.log(err);
+            setUploading(false);
+        }
+    }
     useEffect(() => { 
         if(!userInfo){
             history.push('/login') 
@@ -104,6 +128,12 @@ const ProductEdit = ({match, history}) => {
                             value={image}
                             onChange={(e)=>setImage(e.target.value)}
                         />
+                        <Input
+                        fullWidth
+                        type='file' 
+                        onChange={uploadImageHandler}
+                        />
+                        {uploading && <CircularProgress />}
                         <TextField 
                             required 
                             margin='dense'
