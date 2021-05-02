@@ -1,4 +1,4 @@
-import { Container } from '@material-ui/core';
+import { Container, TableRow } from '@material-ui/core';
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -27,4 +27,11 @@ export const StyledButton = styled(Button)`
 export const StyledLink = styled(Link)`
         color: inherit;
         text-decoration: none;
+`
+
+export const StyledTableRow = styled(TableRow)`
+    & :hover{
+        cursor: pointer;
+        background-color: #f5f5f5f5;
+    }
 `

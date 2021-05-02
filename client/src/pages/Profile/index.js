@@ -3,7 +3,7 @@ import { Alert } from '@material-ui/lab';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserDetails, updateUserProfile } from '../../actions/userActions'
-import { FormContainer, StyledButton, StyledLink } from './Profile.elements'
+import { FormContainer, StyledButton, StyledLink, StyledTableRow } from './Profile.elements'
 import { Grid } from '@material-ui/core';
 import ClearIcon from '@material-ui/icons/Clear';
 import { getMyOrders } from '../../actions/orderActions';
@@ -121,21 +121,24 @@ const ProfilePage = ({location, history}) => {
                                     <TableCell component="th" scope="row">ID</TableCell>
                                     <TableCell align='right'>Date</TableCell>
                                     <TableCell align='right'>Total</TableCell>
+                                    <TableCell align='right'>Items</TableCell>
                                     <TableCell align='right'>Paid</TableCell>
                                     <TableCell align='right'>Delivered</TableCell>
-                                    <TableCell></TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {orders.map( order => (
-                                    <TableRow key={order._id}>
+                                    <StyledTableRow 
+                                        key={order._id}
+                                        onClick={()=>{history.push(`/order/${order._id}`)}}
+                                    >
                                         <TableCell>{order._id}</TableCell>
                                         <TableCell align='right'>{order.createdAt.slice(0,10)}</TableCell>
                                         <TableCell align='right'>${order.totalPrice}</TableCell>
+                                        <TableCell align='right'>{order.orderItems.reduce((total, item) => (total+item.qty), 0)}</TableCell>
                                         <TableCell align='right'>{order.isPaid ? <p style={{color:`green`}}>{order.paidAt.slice(0,10)}</p> : <ClearIcon style={{color:'red'}}/> }</TableCell>
-                                        <TableCell align='right'>{order.isDelivered ? <p style={{color:`green`}}>{order.deliveredeAt.slice(0,10)}</p> : <ClearIcon style={{color:'red'}}/>}</TableCell>
-                                        <TableCell><StyledLink to={`/order/${order._id}`}><Button variant='contained'>Details</Button></StyledLink></TableCell>
-                                    </TableRow>
+                                        <TableCell align='right'>{order.isDelivered ? <p style={{color:`green`}}>{order.deliveredAt.slice(0,10)}</p> : <ClearIcon style={{color:'red'}}/>}</TableCell>
+                                    </StyledTableRow>
                                 ))}
                             </TableBody>
                             </Table>
