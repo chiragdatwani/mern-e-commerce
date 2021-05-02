@@ -93,4 +93,20 @@ export const orderListReducer = (state = {orders:[]}, action) => {
         default:
             return state;
     }
-}; 
+};
+
+export const orderListAdminReducer = (state={orders: []}, action) => {
+
+    switch (action.type) {
+        case types.ORDERS_LIST_ADMIN_REQUEST:
+            return { loading: true }
+        case types.ORDERS_LIST_ADMIN_REQUEST:
+            return { loading: false, orders: action.payload }
+        case types.ORDERS_LIST_ADMIN_REQUEST:
+            return { loading: false, error: action.payload }
+        case types.ORDERS_LIST_ADMIN_REQUEST:
+            return { orders: [] }
+        default:
+            return state
+    }
+};

@@ -35,6 +35,7 @@ export const logout = ()=> (dispatch) => {
     dispatch({ type: types.USER_LOGOUT });
     dispatch({ type: types.ORDER_LIST_RESET });
     dispatch({ type: types.USER_LIST_RESET });
+    dispatch({type: types.ORDERS_LIST_ADMIN_RESET});
 }
 
 export const registerUser = (name, email, password) => async (dispatch) =>{
