@@ -92,6 +92,7 @@ const ProductEdit = ({match, history}) => {
                 }
             }
         }
+        //eslint-disable-next-line
     }, [history, userInfo, product._id, dispatch,updateSuccess])
 
 

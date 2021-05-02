@@ -100,13 +100,37 @@ export const orderListAdminReducer = (state={orders: []}, action) => {
     switch (action.type) {
         case types.ORDERS_LIST_ADMIN_REQUEST:
             return { loading: true }
-        case types.ORDERS_LIST_ADMIN_REQUEST:
+        case types.ORDERS_LIST_ADMIN_SUCCESS:
             return { loading: false, orders: action.payload }
-        case types.ORDERS_LIST_ADMIN_REQUEST:
+        case types.ORDERS_LIST_ADMIN_FAIL:
             return { loading: false, error: action.payload }
-        case types.ORDERS_LIST_ADMIN_REQUEST:
+        case types.ORDERS_LIST_ADMIN_RESET:
             return { orders: [] }
         default:
             return state
+    }
+};
+
+export const orderDeliverReducer = (state = {}, action) => {
+
+    switch (action.type) {
+        case types.ORDER_DELIVER_REQUEST:
+            return {
+                loading: true
+            }
+        case types.ORDER_DELIVER_SUCCESS:
+            return {
+                loading: false,
+                success: true
+            }
+        case types.ORDER_DELIVER_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
+        case types.ORDER_DELIVER_RESET:
+            return {}
+        default:
+            return state;
     }
 };

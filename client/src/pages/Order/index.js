@@ -3,17 +3,20 @@ import {Button, Card, CardActionArea, CardContent, CircularProgress, Container, 
 import { PayPalButton } from 'react-paypal-button-v2';
 import { Alert } from '@material-ui/lab';
 import { useDispatch, useSelector } from 'react-redux';
-import { getOrderDetails, payOrder } from '../../actions/orderActions';
+import { deliverOrder, getOrderDetails, payOrder } from '../../actions/orderActions';
 import Loader from '../../components/Loader/Loader';
 import { Message, OrderItem, ShippingMessage, SummaryItem, StyledLink } from './Order.elements';
 import axios from 'axios';
 import types from '../../actions/types';
 
-const Order = ({match}) => {
+const Order = ({match, history}) => {
 
     const orderId = match.params.id;
 
     const [ sdkReady, setSdkReady ] = useState(false);
+
+    const currentUser = useSelector( state => state.currentUser);
+    const { userInfo } = currentUser;
 
     const orderDetails = useSelector( state => state.orderDetails); 
     const { order, loading, error } = orderDetails;
@@ -21,9 +24,16 @@ const Order = ({match}) => {
     const orderPay = useSelector( state => state.orderPay); 
     const { success:successPay, loading:loadingPay} = orderPay;
 
+    const orderDeliver = useSelector( state => state.orderDeliver); 
+    const { success:successDeliver } = orderDeliver;
+
     const dispatch = useDispatch();
 
     useEffect(() => {
+
+        if(!userInfo || !userInfo.name){
+            history.push('/login')
+        }
 
         const addPayPalScript = async () => {
             const {data: clientId } = await axios.get('/api/config/paypal');
@@ -36,13 +46,13 @@ const Order = ({match}) => {
             document.body.appendChild(script);
         }
 
-        if(!order || order._id !== orderId || successPay){
+        if(!order || order._id !== orderId || successPay || successDeliver){
             dispatch({ type: types.ORDER_PAY_RESET })
+            dispatch({ type: types.ORDER_DELIVER_RESET })
             dispatch(getOrderDetails(orderId))
         } else if (!order.isPaid){
-            console.log('HEYYYYs');
+
             if(!window.paypal){
-                console.log('HEYYYYssss')
                 addPayPalScript()
             }else {
                 setSdkReady(true)
@@ -50,12 +60,17 @@ const Order = ({match}) => {
         }
          
 
-    }, [order, orderId, successPay, dispatch])
+    }, [history, userInfo, order, orderId, successPay, successDeliver, dispatch])
 
     const successPaymentHandler = (paymentResult) => {
         console.log(paymentResult);
         dispatch(payOrder(orderId, paymentResult))
     }
+
+    const deliverHandler = () => {
+        dispatch(deliverOrder(orderId))
+    }
+
     return (
         <div className='placerorder-page'>
             { loading ? <Loader /> : 
@@ -148,6 +163,11 @@ const Order = ({match}) => {
                                 <Button variant='contained'>Continue Shopping</Button>
                             </StyledLink>
                             }
+                            {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
+                                <Button onClick={deliverHandler}>
+                                    Mark As Delivered
+                                </Button>
+                            )}
                         </CardActionArea>
                     </Card>
                     </Container>

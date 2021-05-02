@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteUser, getUserList } from '../../actions/userActions';
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@material-ui/core';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
@@ -33,7 +33,7 @@ const UserList = ({history}) => {
             history.push('/login')
         }
         
-    }, [dispatch, history])
+    }, [dispatch, history, userInfo])
 
     return (
         <div className='userlist_page'>

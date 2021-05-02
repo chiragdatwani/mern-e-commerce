@@ -110,4 +110,58 @@ export const getMyOrders = () => async(dispatch, getState) => {
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
         });
     }
+};
+
+export const getOrders = () => async(dispatch, getState) => {
+    try {
+        dispatch({ type: types.ORDERS_LIST_ADMIN_REQUEST })
+
+        const { currentUser: { userInfo }} = getState();
+
+        const config = {  
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.get(`/api/orders`, config)
+
+        dispatch({
+            type: types.ORDERS_LIST_ADMIN_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: types.ORDERS_LIST_ADMIN_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        });
+    }
+};
+
+export const deliverOrder = (id) => async(dispatch, getState) => {
+    try {
+        dispatch({ type: types.ORDER_DELIVER_REQUEST })
+
+        const { currentUser: { userInfo }} = getState();
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }  
+
+        const { data } = await axios.put(`/api/orders/${id}/deliver`,{},  config)
+
+        dispatch({
+            type: types.ORDER_DELIVER_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: types.ORDER_DELIVER_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        });
+    }
 }
