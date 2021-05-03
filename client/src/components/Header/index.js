@@ -6,6 +6,7 @@ import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import {NavContainer, ButtonContainer, StyledLink} from './Header.elements'
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../actions/userActions';
+import SearchBox from '../SearchBox';
 
 function Header() {
 
@@ -41,20 +42,21 @@ function Header() {
                 <Toolbar>
                     <NavContainer>
                         <Typography variant="h6" >
-                        <StyledLink to='/'>
-                            Store
-                        </StyledLink>
+                            <StyledLink to='/'>
+                                Store
+                            </StyledLink>
                         </Typography>
+                        <SearchBox />
                         <ButtonContainer>
                             <StyledLink to='/cart'>
                                 <Button color="inherit">
-                                    <ShoppingCartIcon />Cart
+                                    <ShoppingCartIcon /><p className='nav-label'>Cart</p>
                                 </Button>
                             </StyledLink>
                             {userInfo ? 
                                 <div>
                                 <Button color="inherit" onClick={handleMenuOpen}>
-                                    <PersonIcon />{userInfo.name.split(' ')[0]}<ArrowDropDownIcon/>
+                                    <PersonIcon /><p className='nav-label'>{userInfo.name.split(' ')[0]}</p><ArrowDropDownIcon/>
                                 </Button>
                                 <Menu
                                     anchorEl={anchorEl}

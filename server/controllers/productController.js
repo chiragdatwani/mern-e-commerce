@@ -25,6 +25,18 @@ export const getProductById = asyncHandler( async (req,res) => {
     }
 });
 
+// @desc Search products
+// @route GET /api/products/search/:keyword
+// @access Public
+export const searchProducts = asyncHandler( async (req,res) => {
+
+    const keyword = req.params.keyword
+    const regex = new RegExp(keyword, 'ig')
+    const products = await Product.find({name: regex});
+    res.json(products)
+});
+
+
 // @desc Delete Product
 // @route DELETE /api/products/:id
 // @access Private/Admin

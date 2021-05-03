@@ -145,7 +145,7 @@ function Product({match, history}) {
                                         color='primary' 
                                         onClick={handleOpen}
                                     >
-                                        Write a review
+                                        Submit a review
                                     </Button>
                                     <Modal
                                         open={open}

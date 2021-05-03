@@ -2,12 +2,14 @@ import express from 'express';
 import {isAdmin, protectRoute} from '../middleware/authMiddleware.js';
 const router = express.Router();
 
-import { getProducts, getProductById, deleteProduct, updateProduct, createProduct, addProductReview } from '../controllers/productController.js'
+import { getProducts, getProductById, deleteProduct, updateProduct, createProduct, addProductReview, searchProducts } from '../controllers/productController.js'
 
 router.route('/').get(getProducts).post(protectRoute, isAdmin, createProduct);
+
+router.route('/search/:keyword').get(searchProducts)
 
 router.route('/:id').get(getProductById).delete(protectRoute, isAdmin, deleteProduct).put(protectRoute, isAdmin, updateProduct);
 
 router.route('/:id/reviews').post(protectRoute, addProductReview)
 
-export default router
+export default router;
