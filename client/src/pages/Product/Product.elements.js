@@ -46,3 +46,25 @@ export const AddToCartContainer = styled(Card)`
 
 `
 
+export const ReviewContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid gray;
+    padding: 10px;
+
+    & > h4{
+        margin: 0;
+    }
+
+    & > .MuiRating-root{
+        margin: 12px;
+    }
+
+    & > h5{
+        margin: 0px 0 5px 15px;
+        font-size: 15px;
+        font-weight: 550
+    }
+
+`
+

@@ -2,7 +2,7 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 
-import {productListReducer, productDetailsReducer, productDeleteReducer, productCreateReducer, productUpdateReducer} from './reducers/productReducers';
+import {productListReducer, productDetailsReducer, productDeleteReducer, productCreateReducer, productUpdateReducer,  productCreateReviewReducer} from './reducers/productReducers';
 import {cartReducer} from './reducers/cartReducers';
 import { orderCreateReducer, orderDetailsReducer, orderPayReducer, orderDeliverReducer, orderListReducer, orderListAdminReducer } from './reducers/orderReducers';
 import { userDeleteReducer, userDetailsReducer, userListReducer, userLoginReducer, userProfileUpdateReducer, userRegisterReducer } from './reducers/userReducers';
@@ -26,7 +26,8 @@ const reducer = combineReducers({
     deleteUser: userDeleteReducer,
     deleteProduct: productDeleteReducer,
     createProduct: productCreateReducer,
-    updateProduct: productUpdateReducer
+    updateProduct: productUpdateReducer,
+    productReviewCreate: productCreateReviewReducer
 });
 
 const cartItemsLocalStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [];
