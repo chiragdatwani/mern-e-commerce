@@ -14,10 +14,19 @@ export const ButtonContainer = styled(Container)`
     justify-content: flex-end;
     width: 100%;
     margin-right: -25px;
-    > *{
+    & > *{
         margin-left: 8px;
     }
 
+    @media (max-width: 500px){
+        margin-right: -30px;
+        padding: 0;
+
+        & > *{
+        margin: 0;
+        padding: 0;
+    }
+    }
 `
 export const StyledLink = styled(Link)`
     color: inherit;

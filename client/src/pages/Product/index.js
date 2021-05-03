@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {fetchProduct, createProductReview} from '../../actions/productActions'
-import {Divider, FormControl, Grid, InputLabel, MenuItem, Paper, Select} from '@material-ui/core'
+import {Button, Divider, FormControl, Grid, InputLabel, MenuItem, Modal, Paper, Select, TextField} from '@material-ui/core'
 import Stars from '../../components/Stars';
-import { InfoContainer, Container, AddToCartContainer, StyledButton, ButtonContainer, ReviewContainer } from './Product.elements';
+import { InfoContainer, Container, AddToCartContainer, StyledButton, ButtonContainer, ReviewContainer, ModalBody } from './Product.elements';
 import Loader from '../../components/Loader/Loader'
 import { Alert, Rating } from '@material-ui/lab';
+import types from '../../actions/types';
 
 
 function Product({match, history}) {
 
     const [quantity, setQuantity] = useState(1);
-    const [rating, setRating] = useState(0);
-    const [comment, setComment] = useState('');
+    const [open, setOpen] = useState(false);
+    const [ratingValue, setRatingValue] = useState(3);
+    const [reviewValue, setReviewValue ] = useState('');
 
     const dispatch = useDispatch();
 
@@ -27,13 +29,37 @@ function Product({match, history}) {
 
     useEffect(()=>{
 
+        if(successReview){
+            alert('Thanks for your review');
+            setRatingValue(3);
+            setReviewValue('');
+            dispatch({type: types.PRODUCT_CREATE_REVIEW_RESET })
+            setOpen(false)
+        }
+
         dispatch(fetchProduct(match.params.id))
         
-    }, [dispatch, match])
+    }, [dispatch, match, successReview])
 
     const addToCartHandler = () => {
         history.push(`/cart/${match.params.id}?qty=${quantity}`)
     }
+
+    const submitReviewHandler = () => {
+
+        dispatch(createProductReview(match.params.id, { rating: ratingValue, comment: reviewValue }))
+
+    }
+
+    //to control the add-review modal
+    const handleOpen = () => {
+        setOpen(true);
+    };
+    
+    const handleClose = () => {
+        setOpen(false);
+    };
+
     return (
         <Container>
             {loading ? <Loader /> :
@@ -75,7 +101,7 @@ function Product({match, history}) {
                                         inputProps={{ 
                                             name: 'quantity',
                                             id: 'qty'
-                                         }}
+                                        }}
                                     > 
                                         <MenuItem value="" disabled>Quantity</MenuItem>
           
@@ -101,7 +127,7 @@ function Product({match, history}) {
                                 <h2>Reviews</h2>
                                 {product.reviews.length === 0 && <Alert severity='info'>No Reviews</Alert>}
                                 {product.reviews.map( review => (
-                                    <ReviewContainer>
+                                    <ReviewContainer key={review._id}>
                                         <h4>{review.name}</h4>
                                         
                                         <Rating 
@@ -112,6 +138,50 @@ function Product({match, history}) {
                                         <h5>{`"${review.comment}"`}</h5>
                                     </ReviewContainer>
                                 ))}
+                                {userInfo && (
+                                    <div style={{marginTop:'12px'}}>
+                                    <Button
+                                        variant='contained'
+                                        color='primary' 
+                                        onClick={handleOpen}
+                                    >
+                                        Write a review
+                                    </Button>
+                                    <Modal
+                                        open={open}
+                                        onClose={handleClose}
+                                    >
+                                        <ModalBody component={Paper}>
+                                        <h3>Write a review</h3>
+                                        {errorReview && <Alert severity='error'>{errorReview}</Alert> }
+                                        {successReview && <Alert severity='success'>Thanks for your review</Alert>}
+                                        <Rating
+                                            value={ratingValue}
+                                            onChange={(e, newValue) => setRatingValue(newValue)}
+                                        />
+                                        <TextField 
+                                            id="review-input"
+                                            label="Review"
+                                            multiline
+                                            fullWidth
+                                            rows={3}
+                                            placeholder="Write your review here"
+                                            value={reviewValue}
+                                            onChange={ e => setReviewValue(e.target.value) }
+                                            variant="outlined"
+                                        />
+                                        <Button 
+                                            variant='contained'
+                                            color='primary'
+                                            onClick={submitReviewHandler}
+                                        >
+                                            Hellooo
+                                        </Button>
+                                        </ModalBody>
+                                        
+                                    </Modal>
+                                    </div>
+                                )}
 
                         </Grid>
                     </Grid>

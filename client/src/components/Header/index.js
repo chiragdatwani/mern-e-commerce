@@ -54,7 +54,7 @@ function Header() {
                             {userInfo ? 
                                 <div>
                                 <Button color="inherit" onClick={handleMenuOpen}>
-                                    <PersonIcon />{userInfo.name}<ArrowDropDownIcon/>
+                                    <PersonIcon />{userInfo.name.split(' ')[0]}<ArrowDropDownIcon/>
                                 </Button>
                                 <Menu
                                     anchorEl={anchorEl}

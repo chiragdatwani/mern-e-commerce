@@ -57,7 +57,8 @@ export const ReviewContainer = styled.div`
     }
 
     & > .MuiRating-root{
-        margin: 12px;
+        margin: 10px;
+        font-size: 1.2rem;
     }
 
     & > h5{
@@ -65,6 +66,25 @@ export const ReviewContainer = styled.div`
         font-size: 15px;
         font-weight: 550
     }
+`
 
+export const ModalBody = styled(Card)`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    outline: none;
+    width: 400px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    & > .MuiTextField-root{
+        margin: 10px 0;
+    }
+
+    @media (max-width: 470px){
+        width: 80vw;
+    }
 `
 
