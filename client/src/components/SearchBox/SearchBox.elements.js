@@ -12,8 +12,10 @@ export const SearchContainer = styled.div`
 `
 
 export const MyList = styled(List)`
-    margin-top: '5px';
+    
     color: black;
+    background-color: #ffffff;
+    padding: 0;
 `
   
 export const MyListItem = styled(ListItem)`
@@ -25,9 +27,11 @@ export const MyListItem = styled(ListItem)`
 export const SearchList = styled.div`
 
     position: absolute;
-    width: 35%;
+    margin-top: 5px;
+    width: 36%;
     z-index: 111;
-    /* -webkit-box-shadow: 0px 18px 23px 1px rgba(0,0,0,0.71);
-    -moz-box-shadow: 0px 18px 23px 1px rgba(0,0,0,0.71);
-    box-shadow: 0px 18px 23px 1px rgba(0,0,0,0.71); */
+    box-shadow: 0px 18px 23px 1px rgba(0,0,0,0.65); 
+    @media (max-width: 500px){
+        width: 50%
+    }
 `

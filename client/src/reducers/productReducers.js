@@ -5,7 +5,7 @@ export const productListReducer = (state = {products: []}, action) => {
         case types.FETCH_PRODUCTSLIST_REQUEST:
             return {products: [], loading: true}
         case types.FETCH_PRODUCTSLIST_SUCCESS:
-            return {products: action.payload, loading: false}
+            return {products: action.payload.products, page: action.payload.page, totalPages: action.payload.totalPages, loading: false}
         case types.FETCH_PRODUCTSLIST_FAIL:
             return {loading: false, error: action.payload}
         default:

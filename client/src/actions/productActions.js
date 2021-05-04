@@ -1,11 +1,11 @@
 import types from './types';
 import axios from 'axios';
 
-export const fetchProductsList = () => async(dispatch) => {
+export const fetchProductsList = (page = '') => async(dispatch) => {
     try {
         dispatch({type: types.FETCH_PRODUCTSLIST_REQUEST})
 
-        const {data} = await axios.get('/api/products');
+        const {data} = await axios.get(`/api/products?page=${page}`);
         
         dispatch({
             type: types.FETCH_PRODUCTSLIST_SUCCESS,

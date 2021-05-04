@@ -4,33 +4,54 @@ import { Grid } from '@material-ui/core';
 import Product from '../../components/Product';
 import Loader from '../../components/Loader/Loader';
 import {fetchProductsList} from '../../actions/productActions';
-import { Alert } from '@material-ui/lab';
+import { Alert, Pagination } from '@material-ui/lab';
+import { PaginationContainer } from './Home.elements';
 
 
-function HomePage(props) {
+
+function HomePage({match, history}) {
+
+    const pageNumber = Number(match.params.page) || 1;
 
     const dispatch = useDispatch();
 
     const productList = useSelector((state) => state.productList)
-    const{loading, error, products} = productList
+    const{loading, error, products, page, totalPages} = productList
 
     useEffect(()=>{
 
-        dispatch(fetchProductsList());
+        dispatch(fetchProductsList(pageNumber));
     
-    }, [dispatch])
+    }, [dispatch, pageNumber])
+
+    const handlePagination = (e, v) => {
+        history.push(`/page/${v}`)
+    }
 
     return (
         <div className='home-page'>
             <h1>Latest Products</h1>
             {loading ? <Loader /> : 
                 error ? <Alert severity="error">{error}</Alert>:
+                <>
                     <Grid container spacing={3} >
                         {products.map( product => (
                             <Product key={product._id}product={product}/>
                         ))}
                     </Grid>
+                    <PaginationContainer>
+                        <Pagination 
+                        count={totalPages} 
+                        page={page} 
+                        onChange={handlePagination}
+                        size='large'
+                        color='primary'
+                        />
+                    </PaginationContainer>
+                    
+                </>
             }
+            
         </div>
     )
 };

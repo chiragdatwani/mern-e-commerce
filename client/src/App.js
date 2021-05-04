@@ -35,6 +35,7 @@ const App = () => {
           <main>
             <Container maxWidth={'lg'}>
               <Route path='/' exact component={HomePage} />
+              <Route path='/page/:page' exact component={HomePage} />
               <Route path='/product/:id' exact component={Product} />
               <Route path='/cart/:id?' component={CartPage} />
               <Route path='/login' component={LoginPage} />
