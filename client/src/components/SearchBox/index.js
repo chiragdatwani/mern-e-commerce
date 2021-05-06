@@ -1,4 +1,4 @@
-import { Divider, InputAdornment, ListItemText, TextField } from '@material-ui/core'
+import { Divider, ListItemText } from '@material-ui/core'
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
@@ -47,8 +47,9 @@ const SearchBox = () => {
                     setKeyword(e.target.value);
                 }}
                 >
-
+                
                 </StyledInput>
+                <SearchIcon />
             </form>
             {
                 products.length > 0 && keyword.length > 2 && (

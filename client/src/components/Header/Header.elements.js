@@ -45,5 +45,17 @@ export const ButtonContainer = styled.div`
 export const StyledLink = styled(Link)`
     color: inherit;
     text-decoration:none;
+    display: flex;
+    align-items: center;
+    & > img{
+        width: 50px;
+        margin-top: 10px;
+    }
+    
+    @media (max-width:400px){
+        & > img{
+        width: 35px;
+    }
+    }
 `
 

@@ -4,7 +4,7 @@ import Header from './components/Header/';
 import Product from './pages/Product'
 import Footer from './components/Footer/';
 import HomePage from './pages/Home';
-import { Box, Container, ThemeProvider } from '@material-ui/core';
+import { Box, ThemeProvider } from '@material-ui/core';
 import CartPage from './pages/Cart';
 import LoginPage from './pages/Login';
 import RegisterPage from './pages/Register';
@@ -33,7 +33,6 @@ const App = () => {
       <Box component={'div'} >
         <Header />
           <main>
-            <Container maxWidth={'lg'}>
               <Route path='/' exact component={HomePage} />
               <Route path='/page/:page' exact component={HomePage} />
               <Route path='/product/:id' exact component={Product} />
@@ -49,7 +48,6 @@ const App = () => {
               <Route path='/admin/productlist' component={ProductList} />
               <Route path='/admin/product/:id/edit' component={ProductEdit} />
               <Route path='/admin/orderlist' component={OrderList} />
-            </Container> 
           </main>
         <Footer />
         </Box>

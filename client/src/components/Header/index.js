@@ -43,7 +43,8 @@ function Header() {
                     <NavContainer>
                         <Typography variant="h6" >
                             <StyledLink to='/'>
-                                Store
+                                <img src={process.env.PUBLIC_URL + '/icon/open-book.png'} alt='logo'
+                                />
                             </StyledLink>
                         </Typography>
                         <SearchBox />

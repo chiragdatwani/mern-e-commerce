@@ -8,6 +8,20 @@ export const SearchContainer = styled.div`
     & .MuiInputBase-input{
         padding: 9.5px 14px !important;
         color: #ffffff !important;
+    };
+    & form{
+        position: relative;
+        & .MuiSvgIcon-root {
+            position: absolute;
+            right: 15%;
+            top: 15%;
+            @media (max-width: 750px){
+                right: 5%;
+            }
+            @media (max-width: 450px){
+               display: none;
+            }
+        }
     }
 `
 
@@ -42,14 +56,23 @@ export const SearchList = styled.div`
 export const StyledInput = styled.input`
     color: #ffffff;
     font-size: 16px;
-    border: 2px solid #ffffff;
+    border: none;
     border-radius: 16px;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, .15);  
     outline: none;
     width: 80%;
-    padding: 7px 20px;
+    padding: 9px 20px;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
     ::placeholder{
         color: #ffffff;
+    };
+    &:hover{
+        background-color: rgba(255, 255, 255, .25);
+    };
+    &:focus{
+        background-color: rgba(255, 255, 255, .25);
     }
-
+    @media (max-width: 750px){
+            font-size: 16px;
+            }
 `
