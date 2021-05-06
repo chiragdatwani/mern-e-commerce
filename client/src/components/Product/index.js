@@ -10,8 +10,9 @@ function Product({product}) {
     return (
         <Grid  item xs={12} sm={4}  md={3}>
             <Paper elevation={6}>
-            <Card >
-                <StyledLink to={`/product/${product._id}`} >
+            <StyledLink to={`/product/${product._id}`} >
+            <Card style={{display: 'flex'}}>
+                
                 
                 <CardActionArea>
                     <CardMedia 
@@ -34,8 +35,9 @@ function Product({product}) {
                         </Typography>
                     </CardContent>
                 </CardActionArea>
-                </StyledLink>
+                
             </Card>
+            </StyledLink>
             </Paper>
         </Grid>
     )

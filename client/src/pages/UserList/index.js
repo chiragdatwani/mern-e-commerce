@@ -27,6 +27,7 @@ const UserList = ({history}) => {
     }
 
     useEffect(() => {
+        document.title = 'Users List';
         if(userInfo && userInfo.isAdmin){
             dispatch(getUserList())
         }else{

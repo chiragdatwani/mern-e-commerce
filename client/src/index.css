@@ -26,13 +26,40 @@ code {
 main {
   padding: 10px 10px;
   margin-bottom: 80px;
+  min-height: 80vh;
 }
 
 .App{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background: linear-gradient(155deg, #2200FF, #8472FF, #FFFFFF);
+    background-size: 600% 600%;
+    animation: GradientBackground 8s ease infinite;
 }
+
+
+body {
+ 
+}
+
+@keyframes GradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+};
+
+
+
+
 
 footer{
     position: absolute;
@@ -44,3 +71,4 @@ footer{
     height: 80px;
     width: 100%;
 }
+

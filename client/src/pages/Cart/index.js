@@ -22,6 +22,7 @@ const CartPage = ({match, location, history}) => {
     }
 
     useEffect(() => {
+        document.title = 'My Cart';
         if(productId){
             dispatch(addToCart(productId, qty))
         }

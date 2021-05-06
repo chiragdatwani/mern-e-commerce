@@ -12,7 +12,7 @@ const PlaceOrder = ({history}) => {
 
     cart.itemsPrice = cart.cartItems.reduce( (acc,item) => acc + item.price * item.qty , 0).toFixed(2)
 
-    cart.shippingPrice = cart.itemsPrice > 100 ? 0.00 : 10.00
+    cart.shippingPrice = cart.itemsPrice > 50 ? 0.00 : 10.00
 
     cart.totalPrice = Number(cart.itemsPrice + cart.shippingPrice).toFixed(2);
 
@@ -82,7 +82,7 @@ const PlaceOrder = ({history}) => {
                         <SummaryItem>Items:  <strong>${cart.itemsPrice}</strong></SummaryItem>
                         <SummaryItem>Shipping:  <strong>${cart.shippingPrice}</strong></SummaryItem>
                         <SummaryItem>Total:  <strong>${cart.totalPrice}</strong></SummaryItem>
-                        <ShippingMessage>(Orders above $100 have free shipping)</ShippingMessage>
+                        <ShippingMessage>(Orders above $50 have free shipping)</ShippingMessage>
                         {error ? <Alert severity='error'>{error}</Alert>: <></>}
                         <Divider />
                         <Button onClick={handleSubmit}>PLACE ORDER</Button>

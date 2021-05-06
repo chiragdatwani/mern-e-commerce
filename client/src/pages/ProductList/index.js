@@ -35,6 +35,7 @@ const ProductList = ({history}) => {
     }
 
     useEffect(() => {
+        document.title = 'Products List';
         dispatch({
             type: types.PRODUCT_CREATE_RESET
         });
@@ -74,6 +75,7 @@ const ProductList = ({history}) => {
                                 <TableRow>
                                     <TableCell component="th" scope="row"><strong>ID</strong></TableCell>
                                     <TableCell align='right'><strong>NAME</strong></TableCell>
+                                    <TableCell align='right'><strong>AUTHOR</strong></TableCell>
                                     <TableCell align='right'><strong>PRICE</strong></TableCell>
                                     <TableCell align='right'><strong>CATEGORY</strong></TableCell>
                                     <TableCell align='right'><strong>STOCK</strong></TableCell>
@@ -85,6 +87,7 @@ const ProductList = ({history}) => {
                                     <TableRow key={product._id}>
                                         <TableCell>{product._id}</TableCell>
                                         <TableCell align='right'>{product.name}</TableCell>
+                                        <TableCell align='right'>{product.author}</TableCell>
                                         <TableCell align='right'>${product.price}</TableCell>
                                         <TableCell align='right'>{product.category}</TableCell>
                                         <TableCell align='right'>{product.countInStock}</TableCell>

@@ -14,7 +14,8 @@ const ProductEdit = ({match, history}) => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
     const [image, setImage] = useState('');
-    const [brand, setBrand] = useState('');
+    const [author, setAuthor] = useState('');
+    const [publication, setPublication] = useState('');
     const [category, setCategory] = useState('');
     const [description, setDescription] = useState('');
     const [countInStock, setCountInStock] = useState(0);
@@ -42,7 +43,8 @@ const ProductEdit = ({match, history}) => {
             name,
             price,
             image,
-            brand,
+            author,
+            publication,
             countInStock,
             category,
             description
@@ -85,7 +87,8 @@ const ProductEdit = ({match, history}) => {
                     setName(product.name);
                     setPrice(product.price);
                     setImage(product.image);
-                    setBrand(product.brand);
+                    setAuthor(product.author);
+                    setPublication(product.publication);
                     setCategory(product.category);
                     setCountInStock(product.countInStock);
                     setDescription(product.description);
@@ -115,6 +118,13 @@ const ProductEdit = ({match, history}) => {
                             onChange={(e)=>setName(e.target.value)}
                         />
                         <TextField 
+                            required 
+                            margin='dense'
+                            fullWidth label="Author" 
+                            value={author}
+                            onChange={(e)=>setAuthor(e.target.value)}
+                        />
+                        <TextField 
                             required
                             type='number'
                             margin='dense'
@@ -138,9 +148,9 @@ const ProductEdit = ({match, history}) => {
                         <TextField 
                             required 
                             margin='dense'
-                            fullWidth label="Brand" 
-                            value={brand}
-                            onChange={(e)=>setBrand(e.target.value)}
+                            fullWidth label="Publication" 
+                            value={publication}
+                            onChange={(e)=>setPublication(e.target.value)}
                         />
                         <TextField 
                             required 

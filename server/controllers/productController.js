@@ -65,8 +65,10 @@ export const createProduct = asyncHandler( async (req,res) => {
         price: 0,
         user: req.user._id,
         image: '/images/sample.jpg',
-        brand: 'Brand',
+        author: 'Author',
         category: 'Category',
+        ISBN: '0000000000',
+        publication: 'Publication',
         countInStock: 0,
         numReviews: 0,
         description: 'Product Description'
@@ -83,7 +85,7 @@ export const createProduct = asyncHandler( async (req,res) => {
 export const updateProduct = asyncHandler( async (req,res) => {
 
     const { name, price, description,
-    image, brand, category, countInStock } = req.body;
+    image, publication, author, category, countInStock } = req.body;
 
     const product = await Product.findById(req.params.id);
 
@@ -93,7 +95,8 @@ export const updateProduct = asyncHandler( async (req,res) => {
         product.price = price,
         product.description = description,
         product.image = image,
-        product.brand = brand,
+        product.publication = publication,
+        product.author = author,
         product.category = category,
         product.countInStock = countInStock
 
@@ -130,9 +133,9 @@ export const addProductReview = asyncHandler( async (req,res) => {
         }
         product.reviews.push(review)
 
-        product.numReviews = product.reviews.length
+        product.numReviews = product.numReviews + 1
 
-        product.rating = Number(product.reviews.reduce((acc, item) => ( acc + item.rating), 0) / product.reviews.length)
+        product.rating = Number(product.reviews.reduce((acc, item) => ( acc + item.rating), 0) / product.reviews.length).toFixed(2);
 
         await product.save()
         res.status(201).json({message: 'Review Added'});

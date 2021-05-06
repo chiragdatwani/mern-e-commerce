@@ -30,11 +30,19 @@ const ProductSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    brand: {
+    author: {
         type: String,
         required: true
     },
     category: {
+        type: String,
+        required: true
+    },
+    publication: {
+        type: String,
+        required: true
+    },
+    ISBN: {
         type: String,
         required: true
     },

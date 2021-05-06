@@ -18,7 +18,7 @@ const ProductCarousel = () => {
     },[products])
 
     return (
-        <Carousel>
+        <Carousel animation='slide' >
             {products.length > 0 && (
                 products.map( product => (
                     <div key={product._id}>

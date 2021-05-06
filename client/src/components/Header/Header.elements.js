@@ -7,6 +7,7 @@ export const NavContainer = styled(Container)`
     justify-content: space-between !important;
     align-items: center;
     width: 100%;
+    color: #ffffff
 `
 
 export const ButtonContainer = styled.div`

@@ -6,6 +6,7 @@ import Loader from '../../components/Loader/Loader';
 import {fetchProductsList} from '../../actions/productActions';
 import { Alert, Pagination } from '@material-ui/lab';
 import { PaginationContainer } from './Home.elements';
+import ProductCarousel from '../../components/ProductsCarousel';
 
 
 
@@ -30,6 +31,8 @@ function HomePage({match, history}) {
 
     return (
         <div className='home-page'>
+            <h1 style={{color: '#ffffff'}}>Lose yourself between the lines. Choose from a wide range of books</h1>
+            <ProductCarousel />
             <h1>Latest Products</h1>
             {loading ? <Loader /> : 
                 error ? <Alert severity="error">{error}</Alert>:

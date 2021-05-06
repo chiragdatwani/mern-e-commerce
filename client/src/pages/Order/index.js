@@ -30,6 +30,7 @@ const Order = ({match, history}) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        document.title = 'Order';
 
         if(!userInfo || !userInfo.name){
             history.push('/login')

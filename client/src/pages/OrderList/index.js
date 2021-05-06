@@ -20,7 +20,7 @@ const OrderList = ({history}) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-
+        document.title = 'Orders List';
         if(!userInfo || !userInfo.isAdmin){
             history.push('/login')
         }

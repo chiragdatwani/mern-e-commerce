@@ -25,6 +25,8 @@ const LoginPage = ({location, history}) => {
     const [password, setPassword] = useState('');
 
     useEffect(() => {
+        document.title = 'Login';
+
         if(userInfo){
             history.push(redirect) 
         }

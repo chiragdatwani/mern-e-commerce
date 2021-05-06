@@ -7,7 +7,7 @@ import StepperNav from '../../components/StepperNav';
 
 
 const PaymentPage = ({ history }) => {
-
+    document.title = 'Payment';
     const cart = useSelector(state => state.cart);
     const {shippingAddress} = cart
 

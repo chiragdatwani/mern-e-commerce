@@ -38,8 +38,11 @@ function Product({match, history}) {
         }
 
         dispatch(fetchProduct(match.params.id))
+        if(product && product.name){
+            document.title = product.name
+        }
         
-    }, [dispatch, match, successReview])
+    }, [dispatch, match, successReview, product])
 
     const addToCartHandler = () => {
         history.push(`/cart/${match.params.id}?qty=${quantity}`)
@@ -73,13 +76,17 @@ function Product({match, history}) {
                         <Grid item md={4} sm={6}>
                             <InfoContainer component='div'>
                             <h2>{product.name}</h2>
-
+                            <p>{`by ${product.author}`}</p>
                             <Divider/>
                             <Stars rating={product.rating} text={`from ${product.numReviews} reviews`}/>
+                            <Divider />
+                            <p>{`Category: ${product.category}`}</p>
                             <Divider />
                             <h4>{`Price: $${product.price}`}</h4>
                             <Divider />
                             <p>{product.description}</p>
+                            <Divider />
+                            <p>{`Publication: ${product.publication}`}</p>
                             </InfoContainer>
                         </Grid>
 

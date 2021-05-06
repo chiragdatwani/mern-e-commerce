@@ -38,7 +38,7 @@ function Header() {
 
     return (
         <header>
-            <AppBar position="static">
+            <AppBar position="static" color='transparent'>
                 <Toolbar>
                     <NavContainer>
                         <Typography variant="h6" >

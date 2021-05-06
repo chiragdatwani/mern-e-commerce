@@ -45,7 +45,9 @@ const ProfilePage = ({location, history}) => {
         
     }
     
-    useEffect(() => { 
+    useEffect(() => {
+        document.title = 'Join Now!';
+
         if(!userInfo){
             history.push('/login') 
         }else{
@@ -54,7 +56,8 @@ const ProfilePage = ({location, history}) => {
                 dispatch(getMyOrders());
             } else {
                 setName(user.name);
-                setEmail(user.email)
+                setEmail(user.email);
+                document.title = user.name;
             }
 
         }
