@@ -14,11 +14,11 @@ export const SearchContainer = styled.div`
         & .MuiSvgIcon-root {
             position: absolute;
             right: 15%;
-            top: 15%;
+            top: 18%;
             @media (max-width: 750px){
-                right: 5%;
+                right: -5%;
             }
-            @media (max-width: 450px){
+            @media (max-width: 620px){
                display: none;
             }
         }
@@ -61,7 +61,8 @@ export const StyledInput = styled.input`
     background-color: rgba(255, 255, 255, .15);  
     outline: none;
     width: 80%;
-    padding: 9px 20px;
+    text-overflow: ellipsis;
+    padding: 10px 20px;
     box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
     ::placeholder{
         color: #ffffff;
@@ -71,8 +72,10 @@ export const StyledInput = styled.input`
     };
     &:focus{
         background-color: rgba(255, 255, 255, .25);
-    }
+    };
     @media (max-width: 750px){
-            font-size: 16px;
+            font-size: 15px;
+            padding: 11px 10px;
+            width: 100%
             }
 `

@@ -26,7 +26,6 @@ const ProductCarousel = () => {
             animation='fade'
             NextIcon={<ArrowForwardIosRoundedIcon />}
             PrevIcon={<ArrowBackIosRoundedIcon />}
-            
             navButtonsProps={{
                 style: {
                     backgroundColor: 'cornflowerblue',
@@ -41,6 +40,7 @@ const ProductCarousel = () => {
             }}
             activeIndicatorIconButtonProps={{
                 style: {
+                    transition: 'all .3s ease-out',
                     transform: 'scale(1.5)'
                 }
             }}

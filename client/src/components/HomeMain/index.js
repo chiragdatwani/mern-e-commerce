@@ -9,8 +9,8 @@ const HomeMain = () => {
             <Container maxWidth={'lg'}>
                 <Main>
                     <Heading>
-                        Lose yourself between the lines.
-                        Choose from a wide range of books.
+                        Lose yourself between the lines!
+                        Select from a wide range of books.
                     </Heading>
                     
                     <div>

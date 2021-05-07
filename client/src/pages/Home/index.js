@@ -7,6 +7,7 @@ import {fetchProductsList} from '../../actions/productActions';
 import { Alert, Pagination } from '@material-ui/lab';
 import { PaginationContainer } from './Home.elements';
 import HomeMain from '../../components/HomeMain';
+import GenreSelector from '../../components/GenreSelector';
 
 
 
@@ -33,8 +34,7 @@ function HomePage({match, history}) {
         <div className='home-page'>
             <HomeMain />
             <Container maxWidth={'lg'}>
-
-            
+            <GenreSelector />
             <h1>Latest Products</h1>
             {loading ? <Loader /> : 
                 error ? <Alert severity="error">{error}</Alert>:

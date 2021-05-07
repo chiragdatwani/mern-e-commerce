@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const CarouselItem = styled(Paper)`
     background-color: rgba(255,255,255,0.25);
+    backdrop-filter: hue-rotate(5deg);
     display: flex;
     height: 15rem;
     color: white;
@@ -81,12 +82,10 @@ export const CarouselItem = styled(Paper)`
 
             &:hover{
                 cursor: pointer;
-                border: none;
                 background-color: white;
                 color: black;
                 text-decoration: none;
-                width: 65%;
-                padding: 12px 12px;
+                width: 70%;
         }
         }
     }

@@ -7,6 +7,7 @@ export const NavContainer = styled(Container)`
     justify-content: space-between !important;
     align-items: center;
     width: 100%;
+    margin-top: 5px;
     color: #ffffff
 `
 
@@ -54,7 +55,8 @@ export const StyledLink = styled(Link)`
     
     @media (max-width:400px){
         & > img{
-        width: 35px;
+        width: 40px;
+        margin-left:-12px
     }
     }
 `

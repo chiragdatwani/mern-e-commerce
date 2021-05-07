@@ -40,12 +40,12 @@ main {
 }
 
 .home-main{
-    background: linear-gradient(114deg, #2200FF, #6851FF, #A597FF);
+    background: linear-gradient(114deg, #A597FF, #6851FF,#2200FF );
     background-size: 600% 600%;
-    animation: GradientBackground 10s ease infinite;
-    margin-top: -65px;
-    padding: 150px 0 0 0;
-    height: 55vh;
+    animation: GradientBackground 9s ease infinite;
+    margin: -70px auto 0 auto;
+    padding: 145px 0 0 0;
+    height: 400px;
 }
 
 .back-blur{
@@ -56,7 +56,7 @@ main {
   left: 0;
   width: 100%;
   height: 100.2%;
-  background: linear-gradient(0deg, rgba(255,255,255,1) 2%,rgba(255,255,255,0) 25%);
+  background: linear-gradient(0deg, rgba(255,255,255,1) 0%,rgba(255, 255, 255, 0) 25%);
 }
 
 @keyframes GradientBackground {
@@ -89,5 +89,12 @@ footer{
     margin-top: -65px;
     padding: 100px 0 0 0;
     height: 55vh;
+}
+}
+
+@media (max-height: 800px) and (orientation: portrait){
+
+  .home-main{
+    height: 450px;
 }
 }

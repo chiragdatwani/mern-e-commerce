@@ -9,6 +9,12 @@ export const Main = styled.div`
     @media (max-width: 700px){
         flex-direction:column;
         align-items:center;
+    };
+    @media (min-width: 1640px){
+        right: 0;
+        & h1{
+            font-size: 3rem;
+        }
     }
     
 `
