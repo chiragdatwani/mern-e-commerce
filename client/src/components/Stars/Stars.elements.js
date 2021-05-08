@@ -2,10 +2,13 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    
 
     > .rating-text{
-        padding-top: 3px;
-        margin-left: 5px;
+        font-size:12px;
+    };
+    & .MuiRating-icon {
+        font-size: 1.3rem;
     }
 `

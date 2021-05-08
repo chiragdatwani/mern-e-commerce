@@ -5,7 +5,7 @@ import Product from '../../components/Product';
 import Loader from '../../components/Loader/Loader';
 import {fetchProductsList} from '../../actions/productActions';
 import { Alert, Pagination } from '@material-ui/lab';
-import { PaginationContainer } from './Home.elements';
+import { PaginationContainer, TopRated } from './Home.elements';
 import HomeMain from '../../components/HomeMain';
 import GenreSelector from '../../components/GenreSelector';
 
@@ -35,15 +35,22 @@ function HomePage({match, history}) {
             <HomeMain />
             <Container maxWidth={'lg'}>
             <GenreSelector />
-            <h1>Latest Products</h1>
-            {loading ? <Loader /> : 
+            <TopRated>
+
+            
+            <h1>Top Rated Books</h1>
+            {loading ?<div style={{height:'488px', width:'1254.5px'}}> <Loader /></div> : 
                 error ? <Alert severity="error">{error}</Alert>:
                 <>
-                    <Grid container spacing={3} >
+                
+                    
+                    <Grid container spacing={3} justify={'center'} alignContent={'center'} alignItems={'center'}>
                         {products.map( product => (
                             <Product key={product._id}product={product}/>
                         ))}
                     </Grid>
+                    
+                    
                     <PaginationContainer>
                         <Pagination 
                         count={totalPages} 
@@ -56,6 +63,7 @@ function HomePage({match, history}) {
                     
                 </>
             }
+            </TopRated>
             </Container>
             
         </div>

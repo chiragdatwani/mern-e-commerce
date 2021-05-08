@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Carousel from 'react-material-ui-carousel';
+import Loader from '../Loader/Loader.js'
 import { CarouselItem, StyledLink } from './ProductCarousel.elements';
 import ArrowForwardIosRoundedIcon from '@material-ui/icons/ArrowForwardIosRounded';
 import ArrowBackIosRoundedIcon from '@material-ui/icons/ArrowBackIosRounded';
@@ -22,7 +23,10 @@ const ProductCarousel = () => {
     },[products])
 
     return (
+        <>
+        {products.length === 0 && <Loader />}
         <Carousel 
+        
             animation='fade'
             NextIcon={<ArrowForwardIosRoundedIcon />}
             PrevIcon={<ArrowBackIosRoundedIcon />}
@@ -67,6 +71,7 @@ const ProductCarousel = () => {
                 ))
             )}
         </Carousel>
+        </>
     )
 }
 

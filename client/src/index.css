@@ -40,9 +40,9 @@ main {
 }
 
 .home-main{
-    background: linear-gradient(114deg, #A597FF, #6851FF,#2200FF );
+    background: linear-gradient( 114deg, #bdb4fa, #7965fd,#3113f8 );
     background-size: 600% 600%;
-    animation: GradientBackground 9s ease infinite;
+    animation: GradientBackground 10s ease infinite;
     margin: -70px auto 0 auto;
     padding: 145px 0 0 0;
     height: 400px;

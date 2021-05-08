@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, CardActionArea, CardContent, CardMedia, Grid, Paper, Typography} from '@material-ui/core';
-import {StyledLink} from './Product.elements'
+import {CardContainer, ImageContainer, Info, StyledLink} from './Product.elements'
 import Stars from '../Stars/index'
 
 
@@ -8,37 +8,20 @@ function Product({product}) {
 
     
     return (
-        <Grid  item xs={12} sm={4}  md={3}>
-            <Paper elevation={6}>
+        <Grid item  md={3}>
             <StyledLink to={`/product/${product._id}`} >
-            <Card style={{display: 'flex'}}>
-                
-                
-                <CardActionArea>
-                    <CardMedia 
-                        component='img'
-                        image={product.image}
-                        title={product.name}
-                    />
-                    <CardContent>
-                        <Typography
-                        
-                        variant='h6'>
-                            {product.name}
-                        </Typography>
-                        
-                        <Stars rating={product.rating} text={`from ${product.numReviews} reviews`} />
-                        
-                        <Typography 
-                        variant='h4'>
-                            {`$${product.price}`}
-                        </Typography>
-                    </CardContent>
-                </CardActionArea>
-                
-            </Card>
+            <CardContainer elevation={5}>
+                <ImageContainer>
+                    <img src={product.image} alt={product.name}/>
+                </ImageContainer>
+                <Info>
+                    <h4>{product.name}</h4>
+                    <Stars rating={product.rating} text={`from ${product.numReviews} reviews`} />
+                    <p>${product.price}</p>
+                </Info>
+            </CardContainer>
             </StyledLink>
-            </Paper>
+            
         </Grid>
     )
 }

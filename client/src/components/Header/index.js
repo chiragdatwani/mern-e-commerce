@@ -65,7 +65,7 @@ function Header() {
                                     open={Boolean(anchorEl)}
                                     onClose={handleMenuClose}
                                 >
-                                    <MenuItem>
+                                    <MenuItem onClick={handleMenuClose}>
                                         <StyledLink to='/profile'>Profile</StyledLink>
                                     </MenuItem>
                                     
@@ -75,13 +75,13 @@ function Header() {
                             :
                             <StyledLink to='/login'>
                                 <Button color="inherit">
-                                    <PersonIcon />Login
+                                    <PersonIcon /><p className='nav-label'>Login</p>
                                 </Button>
                             </StyledLink>
                             }
                             {
                                 userInfo && userInfo.isAdmin && (
-                                    <div>
+                                <>
                                 <Button color="inherit" onClick={handleAdminMenuOpen}>
                                     Admin<ArrowDropDownIcon/>
                                 </Button>
@@ -91,17 +91,17 @@ function Header() {
                                     open={Boolean(anchorElAdmin)}
                                     onClose={handleAdminMenuClose}
                                 >
-                                    <MenuItem>
+                                    <MenuItem onClick={handleAdminMenuClose}>
                                         <StyledLink to='/admin/userlist'>Users</StyledLink>
                                     </MenuItem>
-                                    <MenuItem>
+                                    <MenuItem onClick={handleAdminMenuClose}>
                                         <StyledLink to='/admin/productlist'>Products</StyledLink>
                                     </MenuItem>
-                                    <MenuItem>
+                                    <MenuItem onClick={handleAdminMenuClose}>
                                         <StyledLink to='/admin/orderlist'>Orders</StyledLink>
                                     </MenuItem>
                                 </Menu>
-                                </div>
+                                </>
                                 )
                             }
                         </ButtonContainer>

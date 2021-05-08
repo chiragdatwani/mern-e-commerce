@@ -2,7 +2,6 @@ import path from 'path'
 import express from 'express'
 import dotenv from 'dotenv';
 import connectDB from './config/db.js'
-import products from './data/products.js'
 import productRoutes from './routes/productRouter.js';
 import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
