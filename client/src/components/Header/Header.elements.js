@@ -7,7 +7,7 @@ export const NavContainer = styled(Container)`
     justify-content: space-between !important;
     align-items: center;
     width: 100%;
-    margin-top: 5px;
+    margin-top: 2px;
     color: #ffffff
 `
 

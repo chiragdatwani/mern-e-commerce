@@ -1,22 +1,26 @@
 import styled from 'styled-components';
-import {List, Button, Card} from '@material-ui/core'
+import {List, Button, Card, Container} from '@material-ui/core'
 
-export const InfoContainer = styled(List)`
-    width: 100%;
-   
-`
-export const StyledButton = styled(Button)`
-    background-color: black;
-    color: white;
-    text-align: center;
+export const InfoContainer = styled.div`
 
-    & :hover{
-        color: black;
-        font-weight:bold;
+    max-height: 100%;
+    & p{
+        margin: 10px 0;
+    };
+
+    @media (max-width: 900px){
+        & h2{
+            font-size: 22px;
+        }
+    };
+    @media (max-width: 500px){
+        & h2{
+            font-size: 19px;
+        }
     }
-
     
 `
+
 export const ButtonContainer = styled.div`
     width: 100%;
     display: flex;
@@ -29,8 +33,8 @@ export const ButtonContainer = styled.div`
     }
 `
 
-export const Container = styled.div`
-    margin-top: 1.5rem;
+export const StyledContainer = styled(Container)`
+    margin-top: 2rem;
     
 `
 
@@ -88,3 +92,41 @@ export const ModalBody = styled(Card)`
     }
 `
 
+export const ImgAndInfo = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 250px;
+    & img{
+        width: 160px;
+        height: 250px;
+        margin-right: 15px;
+    }
+    & h2{
+        margin: 0;
+    }
+`
+
+export const RatingContainer = styled.div`
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    & .num-review {
+        margin-left: 8px;
+        font-size:12px;
+    }
+`
+
+export const DescriptionContainer = styled.div`
+    margin-top: 40px;
+
+    & p{
+        white-space: pre-line;
+        &::first-letter{
+            font-size: 2rem;
+            font-weight: 400;
+            color: #4A2FF9;
+            line-height: 30px;
+        }
+    }
+`

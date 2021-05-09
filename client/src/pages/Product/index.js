@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {fetchProduct, createProductReview} from '../../actions/productActions'
-import {Button, Divider, FormControl, Grid, InputLabel, MenuItem, Modal, Paper, Select, TextField} from '@material-ui/core'
+import {Button, Divider, FormControl, Grid, InputLabel, MenuItem, Modal, Paper, Select, TextField } from '@material-ui/core'
 import Stars from '../../components/Stars';
-import { InfoContainer, Container, AddToCartContainer, StyledButton, ButtonContainer, ReviewContainer, ModalBody } from './Product.elements';
+import { InfoContainer, AddToCartContainer, StyledContainer, StyledButton, ButtonContainer, ReviewContainer, ModalBody, ImgAndInfo, RatingContainer, DescriptionContainer } from './Product.elements';
 import Loader from '../../components/Loader/Loader'
 import { Alert, Rating } from '@material-ui/lab';
 import types from '../../actions/types';
@@ -28,7 +28,6 @@ function Product({match, history}) {
     const {loading:loadingReview, success:successReview, error:errorReview} = productReviewCreate;
 
     useEffect(()=>{
-
         if(successReview){
             alert('Thanks for your review');
             setRatingValue(3);
@@ -38,11 +37,8 @@ function Product({match, history}) {
         }
 
         dispatch(fetchProduct(match.params.id))
-        if(product && product.name){
-            document.title = product.name
-        }
         
-    }, [dispatch, match, successReview, product])
+    }, [dispatch, match, successReview])
 
     const addToCartHandler = () => {
         history.push(`/cart/${match.params.id}?qty=${quantity}`)
@@ -64,33 +60,39 @@ function Product({match, history}) {
     };
 
     return (
-        <Container>
+        <StyledContainer maxWidth={'lg'} >
             {loading ? <Loader /> :
                 error ? <Alert severity="error">{error}</Alert> :
-                    <Grid container spacing={3}>
-                        <Grid item md={5} xs={12} >
-                            
-                            <img  style={{width: '100%', height: 'auto'}} src={product.image} alt={product.name} />
-                            
-                        </Grid>
-                        <Grid item md={4} sm={6}>
+                    <Grid container justify='space-between' spacing={3}>
+                        <Grid item md={7} sm={7} xs={12} >
+                            <ImgAndInfo>
+                            <img src={product.image} alt={product.name} />
                             <InfoContainer component='div'>
                             <h2>{product.name}</h2>
-                            <p>{`by ${product.author}`}</p>
+                            <p>Author: <strong>{product.author}</strong></p>
                             <Divider/>
-                            <Stars rating={product.rating} text={`from ${product.numReviews} reviews`}/>
+                            
+                            <p>Genre: <strong>{product.category && product.category.charAt(0).toUpperCase() + product.category.slice(1)}</strong></p>
                             <Divider />
-                            <p>{`Category: ${product.category}`}</p>
+                            <p>Publication: <strong>{product.publication}</strong></p>
                             <Divider />
-                            <h4>{`Price: $${product.price}`}</h4>
-                            <Divider />
-                            <p>{product.description}</p>
-                            <Divider />
-                            <p>{`Publication: ${product.publication}`}</p>
+                            <RatingContainer>
+                            <Rating name="read-only" value={product.rating} readOnly /><span className='num-review'>{`from ${product.numReviews} review`}</span>
+                            </RatingContainer>
                             </InfoContainer>
-                        </Grid>
+                            </ImgAndInfo>
 
-                        <Grid item md={3} sm={6} xs={12}>
+                            <DescriptionContainer>
+                                <p>{product.description}</p>
+                            </DescriptionContainer>
+                            
+                            
+                        </Grid>
+                        {/* <Grid item md={5} sm={6}>
+                            
+                        </Grid> */}
+
+                        <Grid item md={3} sm={5} xs={12}>
                             <AddToCartContainer component={Paper}>
                                 <h3>{`Price: $${product.price}`}</h3>
                                 <Divider />
@@ -120,19 +122,22 @@ function Product({match, history}) {
                                 }
                                 
                                 <ButtonContainer>
-                                
-                                <StyledButton 
-                                    variant='contained' 
-                                    disabled={product.countInStock ? false:true} 
-                                    onClick={()=>{addToCartHandler()}}
-                                    >Add To Cart</StyledButton>
+                                    <Button
+                                        variant='contained'
+                                        color='primary'
+                                        disabled={product.countInStock ? false:true} 
+                                        onClick={()=>{addToCartHandler()}}
+                                    >
+                                    Add To Cart
+                                    </Button>
                                 </ButtonContainer>
                                 
                             </AddToCartContainer>
                         </Grid>
                         <Grid item sm={4} xs={12}>
                                 <h2>Reviews</h2>
-                                {product.reviews.length === 0 && <Alert severity='info'>No Reviews</Alert>}
+                                {product.reviews.length === 0 && <Alert
+                                 severity='info'>No Reviews</Alert>}
                                 {product.reviews.map( review => (
                                     <ReviewContainer key={review._id}>
                                         <h4>{review.name}</h4>
@@ -182,7 +187,7 @@ function Product({match, history}) {
                                             color='primary'
                                             onClick={submitReviewHandler}
                                         >
-                                            Hellooo
+                                            Submit
                                         </Button>
                                         </ModalBody>
                                         
@@ -193,7 +198,7 @@ function Product({match, history}) {
                         </Grid>
                     </Grid>
             }
-        </Container>
+        </StyledContainer>
     )
 };
 
