@@ -22,7 +22,7 @@ function HomePage({match, history}) {
     useEffect(()=>{
         console.log(GridRef)
         dispatch(fetchProductsList(pageNumber));
-    
+
     }, [dispatch, pageNumber])
 
     const handlePagination = (e, v) => {

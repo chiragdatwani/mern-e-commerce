@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {fetchProduct, createProductReview} from '../../actions/productActions'
 import {Button, Divider, FormControl, Grid, InputLabel, MenuItem, Modal, Paper, Select, TextField } from '@material-ui/core'
-import Stars from '../../components/Stars';
-import { InfoContainer, AddToCartContainer, StyledContainer, StyledButton, ButtonContainer, ReviewContainer, ModalBody, ImgAndInfo, RatingContainer, DescriptionContainer } from './Product.elements';
+import { InfoContainer, AddToCartContainer, StyledContainer, ButtonContainer, ReviewContainer, ModalBody, ImgAndInfo, RatingContainer, DescriptionContainer } from './Product.elements';
 import Loader from '../../components/Loader/Loader'
 import { Alert, Rating } from '@material-ui/lab';
 import types from '../../actions/types';
@@ -25,7 +24,7 @@ function Product({match, history}) {
     const {userInfo} = currentUser;
 
     const productReviewCreate = useSelector(state => state.productReviewCreate);
-    const {loading:loadingReview, success:successReview, error:errorReview} = productReviewCreate;
+    const { success:successReview, error:errorReview} = productReviewCreate;
 
     useEffect(()=>{
         if(successReview){
@@ -64,7 +63,7 @@ function Product({match, history}) {
             {loading ? <Loader /> :
                 error ? <Alert severity="error">{error}</Alert> :
                     <Grid container justify='space-between' spacing={3}>
-                        <Grid item md={7} sm={7} xs={12} >
+                        <Grid item md={7} sm={7} xs={12} style={{backgroundColor:'#f9f9f9f9'}}>
                             <ImgAndInfo>
                             <img src={product.image} alt={product.name} />
                             <InfoContainer component='div'>
@@ -92,7 +91,7 @@ function Product({match, history}) {
                             
                         </Grid> */}
 
-                        <Grid item md={3} sm={5} xs={12}>
+                        <Grid item md={3} sm={5} xs={12} >
                             <AddToCartContainer component={Paper}>
                                 <h3>{`Price: $${product.price}`}</h3>
                                 <Divider />

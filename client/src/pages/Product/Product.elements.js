@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {List, Button, Card, Container} from '@material-ui/core'
+import {Card, Container} from '@material-ui/core'
 
 export const InfoContainer = styled.div`
 

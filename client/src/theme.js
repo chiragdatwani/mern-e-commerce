@@ -5,7 +5,7 @@ export const myTheme = createMuiTheme({
     palette: {
 
         primary: {
-            main:'#4A2FF9'
+            main:'#624af9'
         },
         romance: {
             main: '#CD1E28'

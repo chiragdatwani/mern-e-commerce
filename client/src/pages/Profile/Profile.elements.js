@@ -32,6 +32,5 @@ export const StyledLink = styled(Link)`
 export const StyledTableRow = styled(TableRow)`
     & :hover{
         cursor: pointer;
-        background-color: #f5f5f5f5;
     }
 `

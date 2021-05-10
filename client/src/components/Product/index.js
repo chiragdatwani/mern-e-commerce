@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, CardActionArea, CardContent, CardMedia, Grid, Paper, Typography} from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import {CardContainer, ImageContainer, Info, StyledLink} from './Product.elements'
 import Stars from '../Stars/index'
 
@@ -11,7 +11,7 @@ function Product({product}) {
         <Grid item  md={3}>
             <StyledLink to={`/product/${product._id}`} >
             <CardContainer elevation={5}>
-                <ImageContainer>
+                <ImageContainer className='card-img'>
                     <img src={product.image} alt={product.name}/>
                 </ImageContainer>
                 <Info>

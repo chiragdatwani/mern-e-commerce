@@ -11,9 +11,9 @@ export const ImageContainer = styled.div`
         width: 100px;
         height: 150px;
         position: absolute;
-        /* box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px; */
+        transition: all .3s ease-in-out;
         box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
-        /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+        
         left: -10px;
         & img{
                 width: 100px;
@@ -28,10 +28,17 @@ export const CardContainer = styled(Paper)`
         width: 260px;
         display: flex;
         align-items: center;
+        transition: all 3.s ease;
         position: relative;
         @media (max-width: 1130px){
                 width: 240px;
-        }
+        };
+        &:hover {
+                .card-img{
+                        left: -15px;
+                }
+        }       
+        
 `
 
 export const Info = styled.div`

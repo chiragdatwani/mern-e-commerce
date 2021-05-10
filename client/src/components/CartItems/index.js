@@ -19,7 +19,7 @@ const CartItems = ({items}) => {
                 <Table>
                 <TableBody>
                 {
-                     items.map((item)=>(
+                    items.map((item)=>(
                     <TableRow key={item.product}>
                         <TableCell align="left">
                             <Image src={item.image} alt={item.name}/>
@@ -41,9 +41,9 @@ const CartItems = ({items}) => {
                             displayEmpty
                             inputProps={{ 
                                 name: 'quantity',
-                                id: 'qty'
-                             }} >
-                                 <MenuItem value="" disabled>Quantity</MenuItem>
+                                id: item.name,
+                            }} >
+                                <MenuItem value="" disabled>Quantity</MenuItem>
                                 {[...Array(item.countInStock).keys()].map(x => (
                                     <MenuItem key={x+1} value={x+1}>{x + 1}</MenuItem>
                                 ))}

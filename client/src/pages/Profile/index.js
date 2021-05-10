@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Alert } from '@material-ui/lab';
-import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@material-ui/core';
+import { Button, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserDetails, updateUserProfile } from '../../actions/userActions'
-import { FormContainer, StyledButton, StyledLink, StyledTableRow } from './Profile.elements'
+import { FormContainer, StyledTableRow } from './Profile.elements'
 import { Grid } from '@material-ui/core';
 import ClearIcon from '@material-ui/icons/Clear';
 import { getMyOrders } from '../../actions/orderActions';
@@ -64,7 +64,7 @@ const ProfilePage = ({location, history}) => {
     }, [history, userInfo, user, dispatch])
     return (
         <div className='profile-page'>
-
+            <Container maxWidth={'lg'}>
                 <Grid container spacing={3}>
                     <Grid item md={3} xs={12}>
                         <h2>Profile</h2>
@@ -106,7 +106,7 @@ const ProfilePage = ({location, history}) => {
                             value={confirmPassword} 
                             onChange={(e)=>setConfirmPassword(e.target.value)}
                         />
-                        <StyledButton type='submit'>Update Profile</StyledButton>
+                        <Button type='submit' color='primary' variant='contained'>Update Profile</Button>
                         </form>
                         </FormContainer>
                     </Grid>
@@ -148,10 +148,8 @@ const ProfilePage = ({location, history}) => {
                         </TableContainer>
                         }
                     </Grid>
-
-
                 </Grid>
-            
+            </Container>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { addToCart } from '../../actions/cartActions';
-import { Card, CardContent, Grid } from '@material-ui/core'
+import { Button, Card, CardContent, Container, Grid } from '@material-ui/core'
 import { Alert } from '@material-ui/lab';
 import CartItems from '../../components/CartItems'
 import { StyledButton } from './Cart.elements';
@@ -31,8 +31,10 @@ const CartPage = ({match, location, history}) => {
     return (
         <div className='cart-page'>
 
-            <>
-            <p style={{fontSize: '2em'}}>Shopping Cart</p>
+            <Container maxWidth={'lg'}>
+
+            
+            <h2>SHOPPING CART</h2>
             <Grid container spacing={3} justify='center'>
                 <Grid item xs = {12} sm={8}>
                 {cartItems.length === 0 ? (
@@ -49,7 +51,7 @@ const CartPage = ({match, location, history}) => {
                             <h3>Total Amount : ${cartItems.reduce((acc,item) => (acc + item.qty * item.price), 0).toFixed(2)}</h3>
                             <hr/>
     
-                            <StyledButton onClick={checkoutHandler} variant={cartItems.length === 0? 'disabled':'contained'}>Proceed To Checkout</StyledButton>
+                            <Button onClick={checkoutHandler} color='primary' variant={cartItems.length === 0? 'disabled':'contained'}>Proceed To Checkout</Button>
                             
                         </CardContent>
                         
@@ -57,9 +59,7 @@ const CartPage = ({match, location, history}) => {
                 </Grid>
             </Grid>
             
-            
-            </>
-            
+            </Container>
         </div>
     )
 }
