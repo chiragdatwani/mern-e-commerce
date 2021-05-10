@@ -1,10 +1,10 @@
-import { Paper, TextField } from '@material-ui/core';
+import { Button, Container, Paper, TextField } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { registerUser } from '../../actions/userActions'
-import { FormContainer, StyledButton } from './Register.elements'
+import { FormContainer, RegisterContainer, ImgContainer } from './Register.elements'
 
 const RegisterPage = ({location, history}) => {
 
@@ -41,8 +41,10 @@ const RegisterPage = ({location, history}) => {
 
     return (
         <div className='login-page'>
+            <Container maxWidth={'lg'}>
+                <RegisterContainer>
             <FormContainer component={Paper} justify='left' maxWidth='xs'>
-                <h1>Sign Up</h1>
+                <h2>NEW USER</h2>
                 {message && <Alert severity='error'>{message}</Alert>}
                 {error && <Alert severity='error'>{error}</Alert>}
                 {loading && <Alert severity='info'>{error}</Alert>}
@@ -82,12 +84,16 @@ const RegisterPage = ({location, history}) => {
                     value={confirmPassword} 
                     onChange={(e)=>setConfirmPassword(e.target.value)}
                 />
-                <StyledButton type='submit'>Sign In</StyledButton>
+                <Button color='primary' variant='contained' type='submit'>Sign Up</Button>
                 </form>
 
                 <p>Already have an account? <Link to={redirect? `/login?redirect=${redirect}`:'/login'}  style={{textDecoration:'none'}}>Login Here</Link></p>
             </FormContainer>
-            
+            <ImgContainer>
+                        <img src={process.env.PUBLIC_URL + '/icons/illustration2.jpg'} alt="img" />
+                    </ImgContainer>
+            </RegisterContainer>
+            </Container>
         </div>
     )
 }

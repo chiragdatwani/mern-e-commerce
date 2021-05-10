@@ -50,7 +50,7 @@ export const GridContainer = styled(Grid)`
                 color: #8C3AC7;
                 transform: scale(1.3);
             };
-            background-color: #ffffff;
+            background-color: inherit;
         };
     };
     & .romance{
