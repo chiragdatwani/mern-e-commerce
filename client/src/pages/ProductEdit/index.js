@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Alert } from '@material-ui/lab';
-import { CircularProgress, Input, Paper, TextField } from '@material-ui/core';
+import { CircularProgress, Container, Input, Paper, TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct, updateProductAdmin } from '../../actions/productActions'
 import { FormContainer, StyledButton, StyledLink } from './ProductEdit.elements'
@@ -101,7 +101,8 @@ const ProductEdit = ({match, history}) => {
 
     return (
         <div className='productedit-page'>
-            <StyledLink to='/admin/productlist'>Go Back</StyledLink>
+            <Container maxWidth={'lg'}>
+                <StyledLink to='/admin/productlist'>Go Back</StyledLink>
                 {updateError && <Alert severity='error'>{updateError}</Alert>}
                 {updateSuccess && <Alert severity='success'>Updated Successfully</Alert>
                 }
@@ -175,10 +176,10 @@ const ProductEdit = ({match, history}) => {
                             onChange={(e)=>setDescription(e.target.value)}
                         />
                         <StyledButton type='submit'>Update Product</StyledButton>
-                        </form>
-                        </FormContainer>
+                    </form>
+                </FormContainer>
                     
-            
+            </Container>
         </div>
     )
 }
