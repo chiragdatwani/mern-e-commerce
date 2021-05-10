@@ -41,6 +41,7 @@ const PlaceOrder = ({history}) => {
 
     return (
         <div className='placerorder-page'>
+            <Container maxWidth={'lg'}>
             <StepperNav stepNumber={3} />
             <Grid container spacing={4}>
                 <Grid item xs={12} md={8}>
@@ -85,12 +86,13 @@ const PlaceOrder = ({history}) => {
                         <ShippingMessage>(Orders above $50 have free shipping)</ShippingMessage>
                         {error ? <Alert severity='error'>{error}</Alert>: <></>}
                         <Divider />
-                        <Button onClick={handleSubmit}>PLACE ORDER</Button>
+                        <Button style={{marginTop: '12px'}} variant='contained' color='primary' onClick={handleSubmit}>PLACE ORDER</Button>
                         </CardContent>
                     </Card>
                     </Container>
                 </Grid>
             </Grid>
+            </Container>
         </div>
     )
 }

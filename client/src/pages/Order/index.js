@@ -74,6 +74,7 @@ const Order = ({match, history}) => {
 
     return (
         <div className='placerorder-page'>
+            <Container maxWidth={'lg'}>
             { loading ? <Loader /> : 
             error ? <Alert severity='error'>{error}</Alert> :
             <>
@@ -177,7 +178,7 @@ const Order = ({match, history}) => {
             </>
             
             }
-            
+            </Container>
         </div>
     )
 }
