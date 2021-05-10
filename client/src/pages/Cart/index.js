@@ -4,7 +4,6 @@ import { addToCart } from '../../actions/cartActions';
 import { Button, Card, CardContent, Container, Grid } from '@material-ui/core'
 import { Alert } from '@material-ui/lab';
 import CartItems from '../../components/CartItems'
-import { StyledButton } from './Cart.elements';
 
 
 const CartPage = ({match, location, history}) => {
@@ -30,35 +29,30 @@ const CartPage = ({match, location, history}) => {
     
     return (
         <div className='cart-page'>
-
             <Container maxWidth={'lg'}>
-
-            
-            <h2>SHOPPING CART</h2>
-            <Grid container spacing={3} justify='center'>
-                <Grid item xs = {12} sm={8}>
-                {cartItems.length === 0 ? (
-                <Alert severity="warning">{'Shopping cart is empty'}</Alert>) :(
-                <CartItems items={cartItems} />
-                    
-                )} 
-                </Grid>
-                <Grid item xs={12} sm={4} md={3}>
-                    <Card>
-                        <CardContent>
-
-                            <h3>Total Items : {cartItems.reduce((acc,item) => (acc + item.qty), 0)}</h3>
-                            <h3>Total Amount : ${cartItems.reduce((acc,item) => (acc + item.qty * item.price), 0).toFixed(2)}</h3>
-                            <hr/>
-    
-                            <Button onClick={checkoutHandler} color='primary' variant={cartItems.length === 0? 'disabled':'contained'}>Proceed To Checkout</Button>
-                            
-                        </CardContent>
+                <h2 style={{marginTop : '35px'}}>SHOPPING CART</h2>
+                <Grid container spacing={3} justify='center'>
+                    <Grid item xs = {12} sm={8}>
+                    {cartItems.length === 0 ? (
+                    <Alert severity="warning">{'Shopping cart is empty'}</Alert>) :(
+                    <CartItems items={cartItems} />
                         
-                    </Card>
+                    )} 
+                    </Grid>
+                    <Grid item xs={12} sm={4} md={3}>
+                        <Card>
+                            <CardContent>
+                                <h3>Total Items : {cartItems.reduce((acc,item) => (acc + item.qty), 0)}</h3>
+                                <h3>Total Amount : ${cartItems.reduce((acc,item) => (acc + item.qty * item.price), 0).toFixed(2)}</h3>
+                                <hr/>
+        
+                                <Button onClick={checkoutHandler} color='primary' variant={cartItems.length === 0? 'disabled':'contained'}>Proceed To Checkout</Button>
+                                
+                            </CardContent>
+                            
+                        </Card>
+                    </Grid>
                 </Grid>
-            </Grid>
-            
             </Container>
         </div>
     )

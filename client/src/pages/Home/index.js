@@ -35,29 +35,29 @@ function HomePage({match, history}) {
         <div className='home-page'>
             <HomeMain />
             <Container maxWidth={'lg'}>
-            <GenreSelector />
-            <TopRated>
-                <h1>Top Rated Books</h1>
-                {loading ? <div style={{height:GridRef.current.offsetHeight + 60, width:GridRef.current.offsetWidth, display: 'grid', placeItems: 'center'}}> <Loader /> </div> : 
-                    error ? <Alert severity="error">{error}</Alert>:
-                    <>
-                        <Grid ref={GridRef} container spacing={3} justify={'center'} alignContent={'center'} alignItems={'center'}>
-                            {products.map( product => (
-                                <Product key={product._id}product={product}/>
-                            ))}
-                        </Grid>
-                        <PaginationContainer>
-                            <Pagination 
-                            count={totalPages} 
-                            page={page} 
-                            onChange={handlePagination}
-                            size='large'
-                            color='primary'
-                            />
-                        </PaginationContainer>
-                    </>
-                }
-            </TopRated>
+                <GenreSelector />
+                <TopRated>
+                    <h1>Top Rated Books</h1>
+                    {loading ? <div style={{height:GridRef.current.offsetHeight + 60, width:GridRef.current.offsetWidth, display: 'grid', placeItems: 'center'}}> <Loader /> </div> : 
+                        error ? <Alert severity="error">{error}</Alert>:
+                        <>
+                            <Grid ref={GridRef} container spacing={3} justify={'center'} alignContent={'center'} alignItems={'center'}>
+                                {products.map( product => (
+                                    <Product key={product._id}product={product}/>
+                                ))}
+                            </Grid>
+                            <PaginationContainer>
+                                <Pagination 
+                                count={totalPages} 
+                                page={page} 
+                                onChange={handlePagination}
+                                size='large'
+                                color='primary'
+                                />
+                            </PaginationContainer>
+                        </>
+                    }
+                </TopRated>
             </Container>
         </div>
     )

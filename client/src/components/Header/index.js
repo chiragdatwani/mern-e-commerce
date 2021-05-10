@@ -43,7 +43,7 @@ function Header() {
                     <NavContainer>
                         <Typography variant="h6" >
                             <StyledLink to='/'>
-                                <img src={process.env.PUBLIC_URL + '/icon/open-book.png'} alt='logo'
+                                <img src={process.env.PUBLIC_URL + '/icons/open-book.png'} alt='logo'
                                 />
                             </StyledLink>
                         </Typography>
