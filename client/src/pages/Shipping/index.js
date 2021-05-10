@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Paper, TextField } from '@material-ui/core';
+import { Button, Container, Paper, TextField } from '@material-ui/core';
 import { FormContainer, StyledButton } from './Shipping.elements';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveShippingAddress } from '../../actions/cartActions';
@@ -25,46 +25,48 @@ const ShippingPage = ({ history }) => {
     }
     return (
         <div className='shipping-page'>
-            <StepperNav stepNumber={1}/>
-            <FormContainer component={Paper} justify='left' maxWidth='xs'>
-                <h1>SHIPPING</h1>
-                <form onSubmit={submitHandler}>
-                <TextField
-                required
-                variant='outlined'
-                margin='dense'
-                fullWidth 
-                label="Address"
-                value={address}
-                onChange={(e)=>setAddress(e.target.value)}/>
-                <TextField 
-                required
-                margin='dense'
-                variant='outlined'
-                fullWidth
-                label="City"
-                value={city}
-                onChange={(e)=>setCity(e.target.value)}/>
-                <TextField 
-                required
-                margin='dense'
-                variant='outlined'
-                fullWidth
-                label="Postal Code"
-                value={postalCode}
-                onChange={(e)=>setPostalCode(e.target.value)}/>
-                <TextField 
-                required
-                margin='dense'
-                variant='outlined'
-                fullWidth
-                label="Country"
-                value={country}
-                onChange={(e)=>setCountry(e.target.value)}/>
-                <StyledButton type='submit'>Continue</StyledButton>
-                </form>
-
-            </FormContainer>
+            <Container maxWidth={'lg'}>
+                <StepperNav stepNumber={1}/>
+                <FormContainer component={Paper} justify='left' maxWidth='xs'>
+                    <h2>SHIPPING</h2>
+                    <form onSubmit={submitHandler}>
+                    <TextField
+                    required
+                    variant='outlined'
+                    margin='dense'
+                    fullWidth 
+                    label="Address"
+                    value={address}
+                    onChange={(e)=>setAddress(e.target.value)}/>
+                    <TextField 
+                    required
+                    margin='dense'
+                    variant='outlined'
+                    fullWidth
+                    label="City"
+                    value={city}
+                    onChange={(e)=>setCity(e.target.value)}/>
+                    <TextField 
+                    required
+                    margin='dense'
+                    variant='outlined'
+                    fullWidth
+                    label="Postal Code"
+                    value={postalCode}
+                    onChange={(e)=>setPostalCode(e.target.value)}/>
+                    <TextField 
+                    required
+                    margin='dense'
+                    style={{marginBottom: '15px'}}
+                    variant='outlined'
+                    fullWidth
+                    label="Country"
+                    value={country}
+                    onChange={(e)=>setCountry(e.target.value)}/>
+                    <Button variant='contained' color='primary' type='submit'>Continue</Button>
+                    </form>
+                </FormContainer>
+            </Container>
         </div>
     )
 }
