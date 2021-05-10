@@ -162,11 +162,11 @@ const Order = ({match, history}) => {
                                 </div>
                             ):
                             <StyledLink to='/'>
-                                <Button variant='contained'>Continue Shopping</Button>
+                                <Button variant='contained' color='primary'>Continue Shopping</Button>
                             </StyledLink>
                             }
                             {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered && (
-                                <Button onClick={deliverHandler}>
+                                <Button variant='contained' color='primary' onClick={deliverHandler}>
                                     Mark As Delivered
                                 </Button>
                             )}

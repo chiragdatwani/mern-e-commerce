@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteUser, getUserList } from '../../actions/userActions';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
@@ -38,6 +38,7 @@ const UserList = ({history}) => {
 
     return (
         <div className='userlist_page'>
+            <Container maxWidth={'lg'}>
             {
             loading ? <Loader /> : error ? <Alert severity='error'>{error}</Alert> : (
                 <>
@@ -69,6 +70,7 @@ const UserList = ({history}) => {
                 </>
             )
             }
+            </Container>
         </div>
     )
 }

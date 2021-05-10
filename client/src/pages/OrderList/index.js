@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import Loader from '../../components/Loader/Loader';
 import ClearIcon from '@material-ui/icons/Clear';
@@ -30,6 +30,7 @@ const OrderList = ({history}) => {
 
     return (
         <div className='orderlist_page'>
+            <Container maxWidth={'lg'}>
             {
             loading ? <Loader /> : error ? <Alert severity='error'>{error}</Alert> : (
                 <>
@@ -66,6 +67,7 @@ const OrderList = ({history}) => {
                 </>
             )
             }
+            </Container>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Button, CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
+import { Button, CircularProgress, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import Loader from '../../components/Loader/Loader';
 import { fetchProductsList, deleteProductAdmin, createProductAdmin } from '../../actions/productActions';
@@ -53,6 +53,7 @@ const ProductList = ({history}) => {
 
     return (
         <div className='productlist_page'>
+            <Container maxWidth={'lg'}>
             {
             loading ? <Loader /> : error ? <Alert severity='error'>{error}</Alert> : (
                 <>
@@ -111,6 +112,7 @@ const ProductList = ({history}) => {
                 </>
             )
             }
+            </Container>
         </div>
     )
 }
