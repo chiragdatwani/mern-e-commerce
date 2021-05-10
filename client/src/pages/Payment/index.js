@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormControl, FormControlLabel, Paper, Radio, RadioGroup } from '@material-ui/core';
+import { Button, Container, FormControl, FormControlLabel, Paper, Radio, RadioGroup } from '@material-ui/core';
 import { FormContainer, StyledButton } from './Payment.elements';
 import { useDispatch, useSelector } from 'react-redux';
 import { savePaymentMethod } from '../../actions/cartActions';
@@ -27,6 +27,7 @@ const PaymentPage = ({ history }) => {
 
     return (
         <div className='shipping-page'>
+            <Container maxWidth={'lg'} >
             <StepperNav stepNumber={2}/>
             <FormContainer component={Paper} justify='left' maxWidth='xs'>
                 <h2>PAYMENT METHOD</h2>
@@ -37,10 +38,11 @@ const PaymentPage = ({ history }) => {
                             <FormControlLabel value='Cash on Delivery' control={<Radio/>} label='Cash on delivery'/>
                         </RadioGroup>
                     </FormControl>
-                <StyledButton type='submit'>Continue</StyledButton>
+                <Button variant='contained' color='primary' type='submit'>Continue</Button>
                 </form>
 
             </FormContainer>
+            </Container>
         </div>
     )
 }

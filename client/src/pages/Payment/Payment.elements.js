@@ -8,7 +8,17 @@ export const FormContainer = styled(Container)`
     & > h2 {
         margin-top: 0;
         margin-bottom: 0.9rem;
+    };
+    & > form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        & button{
+            width: 108px;
+            margin-top: 10px;
+        }
     }
+
 
 `
 

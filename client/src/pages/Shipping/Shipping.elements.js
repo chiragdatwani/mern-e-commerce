@@ -11,15 +11,3 @@ export const FormContainer = styled(Container)`
     }
 
 `
-
-export const StyledButton = styled(Button)`
-    margin-top: 25px;
-    width: 100%;
-    background-color: black;
-    color: white;
-    & :hover{
-        color: black;
-        font-weight: bold;
-    }
-
-`
