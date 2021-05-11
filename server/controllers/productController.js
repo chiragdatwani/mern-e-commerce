@@ -47,7 +47,6 @@ export const getProductsByGenre = asyncHandler( async (req,res) => {
 
     const genre = req.params.genre
     const products = await Product.find({category : genre });
-    console.log(products);
     res.json(products)
 });
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Container, Paper, TextField } from '@material-ui/core';
-import { FormContainer, StyledButton } from './Shipping.elements';
+import { FormContainer } from './Shipping.elements';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveShippingAddress } from '../../actions/cartActions';
 import StepperNav from '../../components/StepperNav';

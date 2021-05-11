@@ -50,7 +50,6 @@ export const StyledLink = styled(Link)`
     align-items: center;
     & > img{
         width: 50px;
-        margin-top: 10px;
     }
     
     @media (max-width:400px){

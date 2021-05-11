@@ -17,7 +17,7 @@ function Product({product}) {
                 <Info>
                     <h4>{product.name}</h4>
                     <Stars rating={product.rating} text={`from ${product.numReviews} reviews`} />
-                    <p>${product.price}</p>
+                    <p>${product.price.toFixed(2)}</p>
                 </Info>
             </CardContainer>
             </StyledLink>

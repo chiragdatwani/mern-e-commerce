@@ -76,7 +76,7 @@ main {
   animation: GradientBackground 12s ease infinite; */
   margin: -70px auto 0 auto;
   padding: 125px 0 0 0;
-  height: 200px;
+  height: 250px;
 }
 
 .romance-page{
@@ -130,11 +130,10 @@ main {
 .back-blur-genre {
   content: ' ';
   position: relative;
-  top: -80px;
   pointer-events: none;
   left: 0;
   width: 100%;
-  height: 100.2%;
+  height: 100.3%;
   background: linear-gradient(0deg, rgba(255,255,255,1) 0%,rgba(255, 255, 255, 0) 25%);
 }
 
