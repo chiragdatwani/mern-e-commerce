@@ -23,7 +23,7 @@ const SearchPage = ({match}) => {
         <div className='search-page'>
             <Container maxWidth={'lg'}>
                 <h2 style={{margin: '40px 0 50px 0'}}>{`Search results for: ${match.params.keyword}`}</h2>
-                {loading ? <Loader /> : products && products.length == 0 ? <Alert severity='error'>{`Can't find any related books`}</Alert> : (
+                {loading ? <Loader /> : products && products.length === 0 ? <Alert severity='error'>{`Can't find any related books`}</Alert> : (
                     <Grid container spacing={3} justify={'center'} alignContent={'center'} alignItems={'center'}>
                         {products.map( product => (
                             <Product key={product._id}product={product}/>

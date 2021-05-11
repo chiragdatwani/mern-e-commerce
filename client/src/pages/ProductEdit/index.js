@@ -4,7 +4,7 @@ import { Alert } from '@material-ui/lab';
 import { Button, CircularProgress, Container, Input, InputLabel, MenuItem, Paper, Select, TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct, updateProductAdmin } from '../../actions/productActions'
-import { FormContainer, StyledButton, StyledLink } from './ProductEdit.elements'
+import { FormContainer, StyledLink } from './ProductEdit.elements'
 import types from '../../actions/types';
 
 const ProductEdit = ({match, history}) => {

@@ -1,14 +1,21 @@
 import { Container } from '@material-ui/core'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import ProductCarousel from '../ProductsCarousel'
 import { Heading, Main } from './HomeMain'
+import {TweenMax, Power3} from 'gsap';
 
 const HomeMain = () => {
+
+    let headingRef = useRef(null);
+
+    useEffect(() => {
+        TweenMax.from(headingRef, 1, {opacity: 0, y: 100, ease: Power3.easeOut })
+    }, [])
     return (
         <div className='home-main'>
             <Container maxWidth={'lg'}>
-                <Main>
-                    <Heading>
+                <Main ref={el => headingRef = el}>
+                    <Heading >
                         Lose yourself between the lines!
                         Select from a wide range of books.
                     </Heading>

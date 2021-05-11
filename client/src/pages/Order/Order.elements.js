@@ -26,4 +26,8 @@ export const Message = styled.div`
 export const StyledLink = styled(Link)`
         color: inherit;
         text-decoration: none;
+        & button{
+            margin: 10px 0 20px 17px;
+        }
+        
 `

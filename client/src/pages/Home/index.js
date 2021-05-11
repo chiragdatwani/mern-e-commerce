@@ -10,7 +10,6 @@ import HomeMain from '../../components/HomeMain';
 import GenreSelector from '../../components/GenreSelector';
 
 
-
 function HomePage({match, history}) {
 
     const pageNumber = Number(match.params.page) || 1;
@@ -20,7 +19,7 @@ function HomePage({match, history}) {
     const{loading, error, products, page, totalPages} = productList
 
     useEffect(()=>{
-        console.log(GridRef)
+        
         dispatch(fetchProductsList(pageNumber));
 
     }, [dispatch, pageNumber])

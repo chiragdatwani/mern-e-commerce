@@ -59,7 +59,6 @@ const Order = ({match, history}) => {
                 setSdkReady(true)
             }
         }
-         
 
     }, [history, userInfo, order, orderId, successPay, successDeliver, dispatch])
 
@@ -73,7 +72,7 @@ const Order = ({match, history}) => {
     }
 
     return (
-        <div className='placerorder-page'>
+        <div className='order-page'>
             <Container maxWidth={'lg'}>
             { loading ? <Loader /> : 
             error ? <Alert severity='error'>{error}</Alert> :

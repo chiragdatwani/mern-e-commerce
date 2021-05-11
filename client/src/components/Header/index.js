@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { AppBar, Toolbar, Typography, Button, Menu, MenuItem } from '@material-ui/core'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PersonIcon from '@material-ui/icons/Person';
@@ -7,6 +7,7 @@ import {NavContainer, ButtonContainer, StyledLink} from './Header.elements'
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../actions/userActions';
 import SearchBox from '../SearchBox';
+import {TweenMax} from 'gsap';
 
 function Header() {
 
@@ -36,11 +37,16 @@ function Header() {
         setAnchorElAdmin(null);
     };
 
+    let headerRef = useRef(null)
+    useEffect(() => {
+        TweenMax.from(headerRef, 2, {opacity: 0})
+    }, [])
+
     return (
-        <header>
+        <header >
             <AppBar position="static" color='primary'>
                 <Toolbar>
-                    <NavContainer>
+                    <NavContainer ref={el => headerRef = el}>
                         <Typography variant="h6" >
                             <StyledLink to='/'>
                                 <img src={process.env.PUBLIC_URL + '/icons/open-book.png'} alt='logo'
