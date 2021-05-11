@@ -1,20 +1,22 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, CircularProgress, Container, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@material-ui/core';
-import { Alert } from '@material-ui/lab';
+import { Alert, Pagination } from '@material-ui/lab';
 import Loader from '../../components/Loader/Loader';
 import { fetchProductsList, deleteProductAdmin, createProductAdmin } from '../../actions/productActions';
-import { Edit, Delete, ButtonContainer } from './ProductList.elements';
+import { Edit, Delete, ButtonContainer, PaginationContainer } from './ProductList.elements';
 import types from '../../actions/types';
 
 
-const ProductList = ({history}) => {
+const ProductList = ({history, match}) => {
+
+    const pageNumber = Number(match.params.page) || 1;
 
     const currentUser = useSelector( state => state.currentUser);
     const { userInfo } = currentUser;
 
     const productList = useSelector( state => state.productList);
-    const { products, loading, error } = productList;
+    const { products, loading, error, totalPages, page } = productList;
 
     const deleteProduct = useSelector( state => state.deleteProduct);
     const { loading: loadingDelete, error: errorDelete, success: successDelete } = deleteProduct;
@@ -34,8 +36,11 @@ const ProductList = ({history}) => {
         dispatch(createProductAdmin())
     }
 
+    const handlePagination = (e, v) => {
+        history.push(`/admin/productlist/page/${v}`)
+    }
+
     useEffect(() => {
-        document.title = 'Products List';
         dispatch({
             type: types.PRODUCT_CREATE_RESET
         });
@@ -47,9 +52,9 @@ const ProductList = ({history}) => {
         if(successCreate){
             history.push(`/admin/product/${createdProduct._id}/edit`)
         }else{
-            dispatch(fetchProductsList())
+            dispatch(fetchProductsList(pageNumber))
         }
-    }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct])
+    }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct, pageNumber])
 
     return (
         <div className='productlist_page'>
@@ -109,6 +114,15 @@ const ProductList = ({history}) => {
                             </TableBody>
                             </Table>
                         </TableContainer>
+                        <PaginationContainer>
+                            <Pagination
+                                count={totalPages} 
+                                page={page} 
+                                onChange={handlePagination}
+                                size='large'
+                                color='primary'
+                            />
+                        </PaginationContainer>
                 </>
             )
             }

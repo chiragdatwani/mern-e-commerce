@@ -72,7 +72,7 @@ export const deleteProduct = asyncHandler( async (req,res) => {
 export const createProduct = asyncHandler( async (req,res) => {
 
     const product = new Product({
-        name: 'Product',
+        name: 'Book Name',
         price: 0,
         user: req.user._id,
         image: '/images/sample.jpg',
@@ -82,7 +82,7 @@ export const createProduct = asyncHandler( async (req,res) => {
         publication: 'Publication',
         countInStock: 0,
         numReviews: 0,
-        description: 'Product Description'
+        description: 'Book Description'
     });
 
     const createdProduct = await product.save();

@@ -21,3 +21,11 @@ export const ButtonContainer = styled.div`
     margin-bottom: 15px;
     float: right;
 `
+export const PaginationContainer = styled.div`
+    
+    margin:  40px auto;
+    & ul {
+        justify-content: center;
+    }
+    
+`

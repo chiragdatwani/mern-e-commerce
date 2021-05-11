@@ -47,7 +47,7 @@ const App = () => {
               <Route path='/placeorder' component={PlaceOrder} />
               <Route path='/order/:id' component={Order} />
               <Route path='/admin/userlist' component={UserList} />
-              <Route path='/admin/productlist' component={ProductList} />
+              <Route path='/admin/productlist/page/:page' component={ProductList} />
               <Route path='/admin/product/:id/edit' component={ProductEdit} />
               <Route path='/admin/orderlist' component={OrderList} />
               

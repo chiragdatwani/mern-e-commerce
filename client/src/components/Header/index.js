@@ -95,7 +95,7 @@ function Header() {
                                         <StyledLink to='/admin/userlist'>Users</StyledLink>
                                     </MenuItem>
                                     <MenuItem onClick={handleAdminMenuClose}>
-                                        <StyledLink to='/admin/productlist'>Products</StyledLink>
+                                        <StyledLink to='/admin/productlist/page/1'>Products</StyledLink>
                                     </MenuItem>
                                     <MenuItem onClick={handleAdminMenuClose}>
                                         <StyledLink to='/admin/orderlist'>Orders</StyledLink>

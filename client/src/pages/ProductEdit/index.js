@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Alert } from '@material-ui/lab';
-import { CircularProgress, Container, Input, Paper, TextField } from '@material-ui/core';
+import { CircularProgress, Container, Input, InputLabel, MenuItem, Paper, Select, TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct, updateProductAdmin } from '../../actions/productActions'
 import { FormContainer, StyledButton, StyledLink } from './ProductEdit.elements'
@@ -153,13 +153,28 @@ const ProductEdit = ({match, history}) => {
                             value={publication}
                             onChange={(e)=>setPublication(e.target.value)}
                         />
-                        <TextField 
-                            required 
-                            margin='dense'
-                            fullWidth label="Category" 
+                        <InputLabel id="select-genre">Genre</InputLabel>
+                        <Select
+                            labelId="select-genre"
                             value={category}
                             onChange={(e)=>setCategory(e.target.value)}
-                        />
+                        >
+                            <MenuItem value={'thriller'}>Thriller</MenuItem>
+                            <MenuItem value={'romance'}>Romance</MenuItem>
+                            <MenuItem value={'young-adult'}>Young Adult</MenuItem>
+                            <MenuItem value={'science-fiction'}>Science Fiction</MenuItem>
+                            <MenuItem value={'fantasy'}>Fantasy</MenuItem>
+                            <MenuItem value={'poetry'}>Poetry</MenuItem>
+                            <MenuItem value={'biography'}>Biography</MenuItem>
+                            <MenuItem value={'self-help'}>Self Help</MenuItem>
+                        </Select>
+                        {/* <TextField 
+                            required 
+                            margin='dense'
+                            fullWidth label="Genre" 
+                            value={category}
+                            onChange={(e)=>setCategory(e.target.value)}
+                        /> */}
                         <TextField 
                             required 
                             margin='dense'
@@ -178,7 +193,6 @@ const ProductEdit = ({match, history}) => {
                         <StyledButton type='submit'>Update Product</StyledButton>
                     </form>
                 </FormContainer>
-                    
             </Container>
         </div>
     )
