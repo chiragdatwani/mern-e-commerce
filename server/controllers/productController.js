@@ -9,7 +9,7 @@ export const getProducts = asyncHandler( async (req,res) => {
     const pageSize = 8;
     const page = Number(req.query.page) || 1;
     const count = await Product.countDocuments({});
-    const products = await Product.find({}).limit(pageSize).skip(pageSize * (page - 1))
+    const products = await Product.find({}).sort({ rating: -1}).limit(pageSize).skip(pageSize * (page - 1))
     res.json({products, page, totalPages: Math.ceil(count / pageSize)})
 });
 
@@ -35,7 +35,19 @@ export const searchProducts = asyncHandler( async (req,res) => {
 
     const keyword = req.params.keyword
     const regex = new RegExp(keyword, 'ig')
-    const products = await Product.find({name: regex});
+    const products = await Product.find({$or: [{name: regex}, {author: regex}]});
+    console.log(products);
+    res.json(products)
+});
+
+// @desc Get products by genre
+// @route GET /api/products/genre/:genre
+// @access Public
+export const getProductsByGenre = asyncHandler( async (req,res) => {
+
+    const genre = req.params.genre
+    const products = await Product.find({category : genre });
+    console.log(products);
     res.json(products)
 });
 

@@ -4,7 +4,7 @@ import Header from './components/Header/';
 import Product from './pages/Product'
 import Footer from './components/Footer/';
 import HomePage from './pages/Home';
-import { Box, ThemeProvider } from '@material-ui/core';
+import { ThemeProvider } from '@material-ui/core';
 import CartPage from './pages/Cart';
 import LoginPage from './pages/Login';
 import RegisterPage from './pages/Register';
@@ -18,6 +18,7 @@ import UserList from './pages/UserList';
 import ProductList from './pages/ProductList';
 import ProductEdit from './pages/ProductEdit';
 import OrderList from './pages/OrderList';
+import GenrePage from './pages/Genre'
 
 
 
@@ -30,12 +31,13 @@ const App = () => {
       
       
       <ThemeProvider theme={myTheme}>
-      <Box component={'div'} >
+      
         <Header />
           <main>
               <Route path='/' exact component={HomePage} />
               <Route path='/page/:page' exact component={HomePage} />
               <Route path='/product/:id' exact component={Product} />
+              <Route path='/genre/:genre' component={GenrePage} />
               <Route path='/cart/:id?' component={CartPage} />
               <Route path='/login' component={LoginPage} />
               <Route path='/register' component={RegisterPage} />
@@ -48,9 +50,10 @@ const App = () => {
               <Route path='/admin/productlist' component={ProductList} />
               <Route path='/admin/product/:id/edit' component={ProductEdit} />
               <Route path='/admin/orderlist' component={OrderList} />
+              
           </main>
         <Footer />
-        </Box>
+        
         </ThemeProvider>
      
         
