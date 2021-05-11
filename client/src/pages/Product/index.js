@@ -87,13 +87,10 @@ function Product({match, history}) {
                             
                             
                         </Grid>
-                        {/* <Grid item md={5} sm={6}>
-                            
-                        </Grid> */}
-
+                        
                         <Grid item md={3} sm={5} xs={12} >
                             <AddToCartContainer component={Paper}>
-                                <h3>{`Price: $${product.price}`}</h3>
+                                <h3>{`Price: $${product.price && product.price.toFixed(2)}`}</h3>
                                 <Divider />
                                 <h3>{`Status: ${product.countInStock ? 'In Stock': 'Out of stock'}`}</h3>
                                 <Divider />

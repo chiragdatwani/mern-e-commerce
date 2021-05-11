@@ -19,6 +19,7 @@ import ProductList from './pages/ProductList';
 import ProductEdit from './pages/ProductEdit';
 import OrderList from './pages/OrderList';
 import GenrePage from './pages/Genre'
+import SearchPage from './pages/Search';
 
 
 
@@ -50,6 +51,7 @@ const App = () => {
               <Route path='/admin/productlist/page/:page' component={ProductList} />
               <Route path='/admin/product/:id/edit' component={ProductEdit} />
               <Route path='/admin/orderlist' component={OrderList} />
+              <Route path='/search/:keyword' component={SearchPage} />
               
           </main>
         <Footer />

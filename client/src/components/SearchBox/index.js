@@ -1,7 +1,7 @@
-import { Divider, ListItemText } from '@material-ui/core'
 import React, { useState, useEffect } from 'react'
+import { Divider, ListItemText } from '@material-ui/core'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import { SearchContainer, SearchList, StyledInput } from './SearchBox.elements'
 import SearchIcon from "@material-ui/icons/Search";
 import {MyList, MyListItem} from './SearchBox.elements'
@@ -36,10 +36,17 @@ const SearchBox = () => {
     
     },[keyword])
 
+    let history = useHistory();
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        history.push(`/search/${keyword}`)
+        setKeyword('');
+    };
+
     return (
         
         <SearchContainer>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <StyledInput
                     placeholder = 'Search for book or author'
                     value={keyword}

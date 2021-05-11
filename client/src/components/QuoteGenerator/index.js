@@ -17,12 +17,12 @@ const QuoteGenerator = ({genre}) => {
         youngadult: [
             {quote: "“I like the night. Without the dark, we'd never see the stars.”" , by: '― Stephen Meyer, Twilight'},
             {quote: "“You don't get to choose if you get hurt in this world...but you do have some say in who hurts you. I like my choices.”" , by: '― John Green, The Fault in Our Stars'},
-            {quote: "There's nothing like deep breaths after laughing that hard. Nothing in the world like a sore stomach for the right reasons." , by: '― Stephen Chbosky, The Perks if Being a Wallflower'}
+            {quote: "“There's nothing like deep breaths after laughing that hard. Nothing in the world like a sore stomach for the right reasons.”" , by: '― Stephen Chbosky, The Perks if Being a Wallflower'}
         ],
         sciencefiction: [
             {quote: "“That makes me a pirate! A space pirate!”" , by: '― Andy Weir, The Martian'},
-            {quote: "Who controls the past controls the future. Who controls the present controls the past." , by: '― George Orwell, 1984'},
-            {quote: "Time is an illusion. Lunchtime doubly so." , by: "― Douglas Adams, Hitchhiker's Guide to the Galaxy"}
+            {quote: "“Who controls the past controls the future. Who controls the present controls the past.”" , by: '― George Orwell, 1984'},
+            {quote: "“Time is an illusion. Lunchtime doubly so.”" , by: "― Douglas Adams, Hitchhiker's Guide to the Galaxy"}
         ],
         fantasy : [
             {quote: "“It is our choices, Harry, that show what we truly are, far more than our abilities.”" , by: '― J.K. Rowling, Harry Potter and the Chamber of Secrets'},
@@ -68,7 +68,7 @@ const QuoteGenerator = ({genre}) => {
                         QuoteRef.current.style.opacity = '1'
                     }, 1000);
                 }
-            }, 8000);
+            }, 7000);
             return () => clearInterval(interval);
         // eslint-disable-next-line
     }, [genre])
