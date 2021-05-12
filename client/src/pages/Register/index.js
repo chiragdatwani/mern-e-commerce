@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { registerUser } from '../../actions/userActions'
 import { FormContainer, RegisterContainer, ImgContainer } from './Register.elements';
 import { TweenMax, Power3 } from 'gsap';
+import Meta from '../../components/Meta';
 
 const RegisterPage = ({location, history}) => {
 
@@ -49,6 +50,7 @@ const RegisterPage = ({location, history}) => {
 
     return (
         <div className='login-page'>
+            <Meta title="Join Now | Book Attic" />
             <Container maxWidth={'lg'}>
                 <RegisterContainer>
             <FormContainer component={Paper} justify='left' maxWidth='xs' ref={ el => formRef = el}>

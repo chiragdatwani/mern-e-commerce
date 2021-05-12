@@ -4,6 +4,7 @@ import { Alert } from '@material-ui/lab';
 import axios from 'axios';
 import Loader from '../../components/Loader/Loader';
 import Product from '../../components/Product';
+import Meta from '../../components/Meta';
 
 const SearchPage = ({match}) => {
 
@@ -21,6 +22,7 @@ const SearchPage = ({match}) => {
 
     return (
         <div className='search-page'>
+            <Meta title={`Search Result for ${match.params.keyword}`} />
             <Container maxWidth={'lg'}>
                 <h2 style={{margin: '40px 0 50px 0'}}>{`Search results for: ${match.params.keyword}`}</h2>
                 {loading ? <Loader /> : products && products.length === 0 ? <Alert severity='error'>{`Can't find any related books`}</Alert> : (

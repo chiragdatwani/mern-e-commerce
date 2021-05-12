@@ -8,6 +8,7 @@ import Loader from '../../components/Loader/Loader';
 import { Message, OrderItem, ShippingMessage, SummaryItem, StyledLink } from './Order.elements';
 import axios from 'axios';
 import types from '../../actions/types';
+import Meta from '../../components/Meta';
 
 const Order = ({match, history}) => {
 
@@ -30,8 +31,7 @@ const Order = ({match, history}) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        document.title = 'Order';
-
+        
         if(!userInfo || !userInfo.name){
             history.push('/login')
         }
@@ -73,6 +73,7 @@ const Order = ({match, history}) => {
 
     return (
         <div className='order-page'>
+            <Meta title="Your Order | Book Attic" />
             <Container maxWidth={'lg'}>
             { loading ? <Loader /> : 
             error ? <Alert severity='error'>{error}</Alert> :

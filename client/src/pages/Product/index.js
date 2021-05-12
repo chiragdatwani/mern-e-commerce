@@ -9,6 +9,7 @@ import types from '../../actions/types';
 import { gsap, TweenMax, Power3 } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import Meta from '../../components/Meta';
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -94,6 +95,7 @@ function Product({match, history}) {
 
     return (
         <StyledContainer maxWidth={'lg'} >
+            <Meta title={product.name ? `${product.name} | Book Attic` : "Book Details | Book Attic"} />
             {loading ? <Loader /> :
                 error ? <Alert severity="error">{error}</Alert> :
                     <Grid container justify='space-between' spacing={3}>

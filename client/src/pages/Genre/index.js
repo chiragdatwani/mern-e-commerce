@@ -6,6 +6,7 @@ import Product from '../../components/Product';
 import QuoteGenerator from '../../components/QuoteGenerator';
 import {gsap, TweenMax, Power3} from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import Meta from '../../components/Meta';
 gsap.registerPlugin(ScrollToPlugin);
 
 const GenrePage = ({match}) => {
@@ -32,6 +33,7 @@ const GenrePage = ({match}) => {
 
     return (
         <div style={{marginBottom: '30px'}}>
+            <Meta title={`${genre.split('-').map(e => (e.charAt(0).toUpperCase() + e.slice(1))).join(' ')} Books | Book Attic`} />
             <div className={`genre-page ${genre}-page`} >
                 <Container maxWidth={'lg'} ref={el => quoteRef = el}>
                     <QuoteGenerator genre={genre.split('-').join('')}/>

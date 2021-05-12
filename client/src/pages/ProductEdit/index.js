@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProduct, updateProductAdmin } from '../../actions/productActions'
 import { FormContainer, StyledLink } from './ProductEdit.elements'
 import types from '../../actions/types';
+import Meta from '../../components/Meta';
 
 const ProductEdit = ({match, history}) => {
 
@@ -101,6 +102,7 @@ const ProductEdit = ({match, history}) => {
 
     return (
         <div className='productedit-page'>
+            <Meta title="Product Edit | Book Attic" />
             <Container maxWidth={'lg'}>
                 <StyledLink to='/admin/productlist'>Go Back</StyledLink>
                 {updateError && <Alert severity='error'>{updateError}</Alert>}

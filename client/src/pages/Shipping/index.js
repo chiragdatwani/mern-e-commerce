@@ -4,6 +4,7 @@ import { FormContainer } from './Shipping.elements';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveShippingAddress } from '../../actions/cartActions';
 import StepperNav from '../../components/StepperNav';
+import Meta from '../../components/Meta';
 
 
 const ShippingPage = ({ history }) => {
@@ -25,6 +26,7 @@ const ShippingPage = ({ history }) => {
     }
     return (
         <div className='shipping-page'>
+            <Meta title="Shipping | Book Attic" />
             <Container maxWidth={'lg'}>
                 <StepperNav stepNumber={1}/>
                 <FormContainer component={Paper} justify='left' maxWidth='xs'>

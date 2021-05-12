@@ -7,6 +7,7 @@ import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
 import Loader from '../../components/Loader/Loader';
 import { Delete } from './UserList.elements';
+import Meta from '../../components/Meta';
 
 const UserList = ({history}) => {
 
@@ -27,7 +28,7 @@ const UserList = ({history}) => {
     }
 
     useEffect(() => {
-        document.title = 'Users List';
+        
         if(userInfo && userInfo.isAdmin){
             dispatch(getUserList())
         }else{
@@ -38,6 +39,7 @@ const UserList = ({history}) => {
 
     return (
         <div className='userlist_page'>
+            <Meta title="Users List | Book Attic" />
             <Container maxWidth={'lg'}>
             {
             loading ? <Loader /> : error ? <Alert severity='error'>{error}</Alert> : (

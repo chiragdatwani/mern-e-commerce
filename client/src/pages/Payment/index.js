@@ -4,10 +4,11 @@ import { FormContainer } from './Payment.elements';
 import { useDispatch, useSelector } from 'react-redux';
 import { savePaymentMethod } from '../../actions/cartActions';
 import StepperNav from '../../components/StepperNav';
+import Meta from '../../components/Meta';
 
 
 const PaymentPage = ({ history }) => {
-    document.title = 'Payment';
+    
     const cart = useSelector(state => state.cart);
     const {shippingAddress} = cart
 
@@ -27,6 +28,7 @@ const PaymentPage = ({ history }) => {
 
     return (
         <div className='shipping-page'>
+            <Meta title="Payment | Book Attic" />
             <Container maxWidth={'lg'} >
             <StepperNav stepNumber={2}/>
             <FormContainer component={Paper} justify='left' maxWidth='xs'>

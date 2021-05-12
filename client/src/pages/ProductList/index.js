@@ -6,6 +6,7 @@ import Loader from '../../components/Loader/Loader';
 import { fetchProductsList, deleteProductAdmin, createProductAdmin } from '../../actions/productActions';
 import { Edit, Delete, ButtonContainer, PaginationContainer } from './ProductList.elements';
 import types from '../../actions/types';
+import Meta from '../../components/Meta';
 
 
 const ProductList = ({history, match}) => {
@@ -58,6 +59,7 @@ const ProductList = ({history, match}) => {
 
     return (
         <div className='productlist_page'>
+            <Meta title="Products List | Book Attic" />
             <Container maxWidth={'lg'}>
             {
             loading ? <Loader /> : error ? <Alert severity='error'>{error}</Alert> : (

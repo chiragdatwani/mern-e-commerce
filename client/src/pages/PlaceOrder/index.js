@@ -3,6 +3,7 @@ import { Alert } from '@material-ui/lab';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createOrder } from '../../actions/orderActions';
+import Meta from '../../components/Meta';
 import StepperNav from '../../components/StepperNav'
 import { OrderItem, ShippingMessage, SummaryItem } from './PlaceOrder.elements';
 
@@ -41,6 +42,7 @@ const PlaceOrder = ({history}) => {
 
     return (
         <div className='placerorder-page'>
+            <Meta title="Your Order | Book Attic" />
             <Container maxWidth={'lg'}>
             <StepperNav stepNumber={3} />
             <Grid container spacing={4}>

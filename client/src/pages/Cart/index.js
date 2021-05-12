@@ -4,6 +4,7 @@ import { addToCart } from '../../actions/cartActions';
 import { Button, Card, CardContent, Container, Grid } from '@material-ui/core'
 import { Alert } from '@material-ui/lab';
 import CartItems from '../../components/CartItems'
+import Meta from '../../components/Meta';
 
 
 const CartPage = ({match, location, history}) => {
@@ -21,7 +22,7 @@ const CartPage = ({match, location, history}) => {
     }
 
     useEffect(() => {
-        document.title = 'My Cart';
+
         if(productId){
             dispatch(addToCart(productId, qty))
         }
@@ -29,6 +30,7 @@ const CartPage = ({match, location, history}) => {
     
     return (
         <div className='cart-page'>
+            <Meta title="My Cart | Book Attic" />
             <Container maxWidth={'lg'}>
                 <h2 style={{marginTop : '35px'}}>SHOPPING CART</h2>
                 <Grid container spacing={3} justify='center'>

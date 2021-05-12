@@ -6,6 +6,7 @@ import Loader from '../../components/Loader/Loader';
 import ClearIcon from '@material-ui/icons/Clear';
 import { StyledTableRow } from './OrderList.elements';
 import { getOrders } from '../../actions/orderActions';
+import Meta from '../../components/Meta';
 
 
 const OrderList = ({history}) => {
@@ -20,7 +21,7 @@ const OrderList = ({history}) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        document.title = 'Orders List';
+        
         if(!userInfo || !userInfo.isAdmin){
             history.push('/login')
         }
@@ -30,6 +31,7 @@ const OrderList = ({history}) => {
 
     return (
         <div className='orderlist_page'>
+            <Meta title="Orders List | Book Attic" />
             <Container maxWidth={'lg'}>
             {
             loading ? <Loader /> : error ? <Alert severity='error'>{error}</Alert> : (

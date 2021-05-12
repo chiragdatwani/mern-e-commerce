@@ -8,6 +8,7 @@ import { Alert, Pagination } from '@material-ui/lab';
 import { PaginationContainer, TopRated } from './Home.elements';
 import HomeMain from '../../components/HomeMain';
 import GenreSelector from '../../components/GenreSelector';
+import Meta from '../../components/Meta';
 
 
 
@@ -32,6 +33,7 @@ function HomePage({match, history}) {
 
     return (
         <div className='home-page'>
+            <Meta title="Book Attic | Buy books online" />
             <HomeMain />
             <Container maxWidth={'lg'}>
                 <GenreSelector />

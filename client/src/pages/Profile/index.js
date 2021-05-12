@@ -8,6 +8,7 @@ import { Grid } from '@material-ui/core';
 import ClearIcon from '@material-ui/icons/Clear';
 import { getMyOrders } from '../../actions/orderActions';
 import Loader from '../../components/Loader/Loader';
+import Meta from '../../components/Meta';
 
 const ProfilePage = ({location, history}) => {
 
@@ -46,7 +47,6 @@ const ProfilePage = ({location, history}) => {
     }
     
     useEffect(() => {
-        document.title = 'Join Now!';
 
         if(!userInfo){
             history.push('/login') 
@@ -64,6 +64,7 @@ const ProfilePage = ({location, history}) => {
     }, [history, userInfo, user, dispatch])
     return (
         <div className='profile-page'>
+            <Meta title={`${name} | Book Attic`} />
             <Container maxWidth={'lg'}>
                 <Grid container spacing={3}>
                     <Grid item md={3} xs={12}>
