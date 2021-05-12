@@ -38,5 +38,7 @@ export const Heading = styled.h1`
         flex: 0.5;
         font-size:1.8rem;
         text-align:center;
+        font-weight: 500;
+        word-spacing: 0.1px;
     }
 `

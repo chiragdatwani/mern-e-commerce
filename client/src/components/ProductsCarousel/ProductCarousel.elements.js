@@ -96,6 +96,8 @@ export const CarouselItem = styled(Paper)`
             };
             @media (max-width: 400px){
                 font-size:10px;
+                border: 1px solid white;
+                padding: 8px 8px;
             };
 
             &:hover{
