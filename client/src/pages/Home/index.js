@@ -10,6 +10,7 @@ import HomeMain from '../../components/HomeMain';
 import GenreSelector from '../../components/GenreSelector';
 
 
+
 function HomePage({match, history}) {
 
     const pageNumber = Number(match.params.page) || 1;
@@ -18,8 +19,9 @@ function HomePage({match, history}) {
     const productList = useSelector((state) => state.productList)
     const{loading, error, products, page, totalPages} = productList
 
+    const gridRef = useRef(null)
+
     useEffect(()=>{
-        
         dispatch(fetchProductsList(pageNumber));
 
     }, [dispatch, pageNumber])
@@ -28,8 +30,6 @@ function HomePage({match, history}) {
         history.push(`/page/${v}`)
     }
 
-    const GridRef = useRef(null)
-
     return (
         <div className='home-page'>
             <HomeMain />
@@ -37,11 +37,11 @@ function HomePage({match, history}) {
                 <GenreSelector />
                 <TopRated>
                     <h1>Top Rated Books</h1>
-                    {loading ? <div style={{height:GridRef.current.offsetHeight + 60, width:GridRef.current.offsetWidth, display: 'grid', placeItems: 'center'}}> <Loader /> </div> : 
+                    {loading ? <div style={{height:gridRef.current.offsetHeight + 60, width:gridRef.current.offsetWidth, display: 'grid', placeItems: 'center'}}> <Loader /> </div> : 
                         error ? <Alert severity="error">{error}</Alert>:
                         <>
-                            <Grid ref={GridRef} container spacing={3} justify={'center'} alignContent={'center'} alignItems={'center'}>
-                                {products.map( product => (
+                            <Grid ref={gridRef} container spacing={3} justify={'center'} alignContent={'center'} alignItems={'center'}>
+                                {products.map( (product) => (
                                     <Product key={product._id}product={product}/>
                                 ))}
                             </Grid>

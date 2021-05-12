@@ -98,7 +98,7 @@ main {
 }
 
 .science-fiction-page{
-  background: linear-gradient(80deg, #eee4b2, #EAD25D, #E8C51B);
+  background: linear-gradient(80deg, #dfcf84, #EAD25D, #E8C51B);
   background-size: 600% 600%;
   animation: GradientBackground 10s ease infinite;
 }

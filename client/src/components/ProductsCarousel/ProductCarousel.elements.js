@@ -2,6 +2,26 @@ import { Paper } from '@material-ui/core'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
 
+export const LoaderContainer = styled.div`
+    display: grid;
+    place-items: center;
+    height: 15rem;
+    width: 25rem;
+
+    @media (max-width: 1000px){
+        height: 12rem;
+        width: 20rem;
+    };
+    @media (max-width: 1000px){
+        margin-top: 40px
+    };
+    @media (max-width: 400px){
+        margin-top: 30px;
+        height: 10rem;
+        width: 17rem;
+    };
+`
+
 export const CarouselItem = styled(Paper)`
     background-color: rgba(255,255,255,0.25);
     backdrop-filter: hue-rotate(5deg);
@@ -91,6 +111,8 @@ export const CarouselItem = styled(Paper)`
     }
 
 `
+
+
 
 export const StyledLink = styled(Link)`
     text-decoration: none;

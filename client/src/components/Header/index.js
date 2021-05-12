@@ -7,7 +7,7 @@ import {NavContainer, ButtonContainer, StyledLink} from './Header.elements'
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../../actions/userActions';
 import SearchBox from '../SearchBox';
-import {TweenMax} from 'gsap';
+import {TweenMax, Power3} from 'gsap';
 
 function Header() {
 
@@ -39,7 +39,7 @@ function Header() {
 
     let headerRef = useRef(null)
     useEffect(() => {
-        TweenMax.from(headerRef, 2, {opacity: 0})
+        TweenMax.from(headerRef, .8, {opacity: 0, y: -50, ease: Power3.easeOut,delay: 1.2})
     }, [])
 
     return (

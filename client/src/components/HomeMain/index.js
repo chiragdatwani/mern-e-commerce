@@ -9,7 +9,7 @@ const HomeMain = () => {
     let headingRef = useRef(null);
 
     useEffect(() => {
-        TweenMax.from(headingRef, 1, {opacity: 0, y: 100, ease: Power3.easeOut })
+        TweenMax.from(headingRef, 1.2, {opacity: 0, y: 100, ease: Power3.easeOut, delay: 0.5})
     }, [])
     return (
         <div className='home-main'>
