@@ -10,7 +10,9 @@ node_modules/
 /coverage
 
 # production
-/build
+/client/build
+/server/data
+/server/seeder.js
 
 # misc
 .DS_Store

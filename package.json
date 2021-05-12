@@ -23,7 +23,8 @@
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node server/seeder",
-    "data:destroy": "node server/seeder -d"
+    "data:destroy": "node server/seeder -d",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "repository": {
     "type": "git",
