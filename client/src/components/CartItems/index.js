@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Paper, Table, TableBody, TableCell, TableRow, Select, MenuItem } from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete';
 import { Image,StyledLink,StyledTable } from './CartItems.elements'
 import { useDispatch } from 'react-redux';
 import { addToCart, removeFromCart } from '../../actions/cartActions';
+import { TweenMax, Power3 } from 'gsap';
 
 const CartItems = ({items}) => {
 
@@ -13,14 +14,19 @@ const CartItems = ({items}) => {
         dispatch(removeFromCart(id))
     }
 
+    let rowRef = useRef([]);
+    useEffect(() => {
+        TweenMax.from(rowRef.current, 2, {opacity: 0, y: 20, stagger: .2, ease: Power3.easeOut})
+    }, [])
+
     return (
         // <TableContainer component={Paper}>
             <StyledTable component={Paper}>
                 <Table>
                 <TableBody>
                 {
-                    items.map((item)=>(
-                    <TableRow key={item.product}>
+                    items.map((item, index)=>(
+                    <TableRow ref={el => rowRef.current[index] = el} key={item.product}>
                         <TableCell align="left">
                             <Image src={item.image} alt={item.name}/>
                         </TableCell>

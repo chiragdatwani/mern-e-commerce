@@ -28,6 +28,7 @@ function Product({match, history}) {
     const { success:successReview, error:errorReview} = productReviewCreate;
 
     //useRefs for GSAP
+    let divRef = useRef(null);
     let imgRef = useRef(null);
     let nameRef = useRef(null);
     let authorRef = useRef(null);
@@ -38,20 +39,23 @@ function Product({match, history}) {
     let divCRef = useRef(null);
     let ratingRef = useRef(null);
     let descRef = useRef(null);
-    let priceRef = useRef(null)
+    let priceRef = useRef(null);
+    let reviewsRef = useRef(null);
 
     useEffect(()=>{
-        TweenMax.from(imgRef, 1, {opacity: 0, x: -30, ease: Power3.easeOut});
-        TweenMax.from(nameRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 0.5});
-        TweenMax.from(authorRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 0.6});
-        TweenMax.from(divARef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 0.7});
-        TweenMax.from(genreRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 0.8});
-        TweenMax.from(divBRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 0.9});
-        TweenMax.from(pubRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1});
-        TweenMax.from(divCRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.1});
-        TweenMax.from(ratingRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.2});
-        TweenMax.from(descRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.3});
-        TweenMax.from(priceRef, 1, {opacity: 0, x: 40, ease: Power3.easeOut, delay: 1});
+        TweenMax.from(divRef, 1, {opacity: 0, ease: Power3.easeOut, delay: 0.2});
+        TweenMax.from(imgRef, 1, {opacity: 0, x: -30, ease: Power3.easeOut, delay: 0.5});
+        TweenMax.from(nameRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1});
+        TweenMax.from(authorRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.1});
+        TweenMax.from(divARef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.2});
+        TweenMax.from(genreRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.3});
+        TweenMax.from(divBRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.4});
+        TweenMax.from(pubRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.5});
+        TweenMax.from(divCRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.6});
+        TweenMax.from(ratingRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.7});
+        TweenMax.from(descRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.8});
+        TweenMax.from(priceRef, 1, {opacity: 0, x: 40, ease: Power3.easeOut, delay: 1.5});
+        TweenMax.from(reviewsRef, 1, {opacity: 0, ease: Power3.easeOut, delay: 2.2})
         if(successReview){
             alert('Thanks for your review');
             setRatingValue(3);
@@ -88,7 +92,8 @@ function Product({match, history}) {
             {loading ? <Loader /> :
                 error ? <Alert severity="error">{error}</Alert> :
                     <Grid container justify='space-between' spacing={3}>
-                        <Grid item md={7} sm={7} xs={12} style={{backgroundColor:'#f9f9f9f9'}}>
+                        <Grid item md={7} sm={7} xs={12} ref={ el => divRef = el }
+                        style={{backgroundColor:'#f9f9f9f9'}}>
                             <ImgAndInfo>
                             <img ref={ el => imgRef = el } src={product.image} alt={product.name} />
                             <InfoContainer component='div'>
@@ -155,10 +160,10 @@ function Product({match, history}) {
                                 
                             </AddToCartContainer>
                         </Grid>
-                        <Grid item sm={4} xs={12}>
+                        <Grid item sm={4} xs={12} ref={ el => reviewsRef = el }>
                                 <h2>Reviews</h2>
                                 {product.reviews.length === 0 && <Alert
-                                 severity='info'>No Reviews</Alert>}
+                                severity='info'>No Reviews</Alert>}
                                 {product.reviews.map( review => (
                                     <ReviewContainer key={review._id}>
                                         <h4>{review.name}</h4>
