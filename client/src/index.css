@@ -35,7 +35,7 @@ code {
 }
 
 main {
-  margin-bottom: 80px;
+  margin-bottom: 100px;
   min-height: 80vh;
 }
 
@@ -159,7 +159,7 @@ footer{
     justify-content: center;
     bottom: 0;
     left:0;
-    height: 80px;
+    height: 100px;
     width: 100%;
 }
 

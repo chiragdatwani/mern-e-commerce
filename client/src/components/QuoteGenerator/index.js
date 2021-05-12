@@ -5,9 +5,9 @@ const QuoteGenerator = ({genre}) => {
     
     const quotes = {
         thriller: [
-            {quote: '“Nobody’s ever been arrested for a murder; they have only ever been arrested for not planning it properly.”' , by: '― Terry Hayes, I Am Pilgrim'},
+            {quote: '“Someone doesn’t always need a gun to kill you. Sometimes, their actions are enough. You don’t need an assassin to kill you. Sometimes, a lover is enough.”' , by: '― Namrata Gupta, Together We Were (W)hole'},
             {quote: '“The sweetest smiles hold the darkest secrets...”' , by: '― Sara Shepard, Flawless'},
-            {quote: '“Someone doesn’t always need a gun to kill you. Sometimes, their actions are enough. You don’t need an assassin to kill you. Sometimes, a lover is enough.”' , by: '― Namrata Gupta, Together We Were (W)hole'}
+            {quote: '“Nobody’s ever been arrested for a murder; they have only ever been arrested for not planning it properly.”' , by: '― Terry Hayes, I Am Pilgrim'}
         ],
         romance: [
             {quote: '“You should be kissed and often, and by someone who knows how.”' , by: '― Margaret Mitchell, Gone With The Wind'},
@@ -51,6 +51,7 @@ const QuoteGenerator = ({genre}) => {
     const [currentQuote, setCurrentQuote] = useState(quotes[genre][0]);
 
     useEffect(() => {
+            let isMounted = true;
             let count = 0;
             const interval = setInterval(() => {
                 if(count < 2){
@@ -58,16 +59,25 @@ const QuoteGenerator = ({genre}) => {
                     count++;
                     setTimeout(() => {
                     setCurrentQuote(quotes[genre][count]);
-                    QuoteRef.current.style.opacity = '1'
+                    if(isMounted){
+                        QuoteRef.current.style.opacity = '1'
+                    }    
                 }, 1000);
                 }else{
                     QuoteRef.current.style.opacity = '0'
                     count = 0;
                     setTimeout(() => {
                         setCurrentQuote(quotes[genre][count]);
-                        QuoteRef.current.style.opacity = '1'
+                        if(isMounted){
+                            QuoteRef.current.style.opacity = '1'
+                        }  
                     }, 1000);
                 }
+
+                return(() => { 
+                    isMounted = false;
+                    clearInterval(interval);
+                })
             }, 7000);
             return () => clearInterval(interval);
         // eslint-disable-next-line

@@ -36,7 +36,6 @@ export const searchProducts = asyncHandler( async (req,res) => {
     const keyword = req.params.keyword
     const regex = new RegExp(keyword, 'ig')
     const products = await Product.find({$or: [{name: regex}, {author: regex}]});
-    console.log(products);
     res.json(products)
 });
 

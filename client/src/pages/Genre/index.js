@@ -4,7 +4,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import Loader from '../../components/Loader/Loader';
 import Product from '../../components/Product';
 import QuoteGenerator from '../../components/QuoteGenerator';
-import {TweenMax, Power3} from 'gsap';
+import {gsap, TweenMax, Power3} from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+gsap.registerPlugin(ScrollToPlugin);
 
 const GenrePage = ({match}) => {
 
@@ -17,6 +19,7 @@ const GenrePage = ({match}) => {
     let prodsRef = useRef(null);
 
     useEffect(()=>{
+        TweenMax.to(window, 0.3, {scrollTo: 0, ease: Power3.easeOut});
         TweenMax.from(quoteRef, 1.5, {opacity: 0, y:40, ease: Power3.easeOut})
         TweenMax.from(prodsRef, 1.5, {opacity: 0, y:40, ease: Power3.easeOut, delay: 0.5})
         const fetchProducts = async() => {
@@ -28,7 +31,7 @@ const GenrePage = ({match}) => {
     }, [match, genre])
 
     return (
-        <div >
+        <div style={{marginBottom: '30px'}}>
             <div className={`genre-page ${genre}-page`} >
                 <Container maxWidth={'lg'} ref={el => quoteRef = el}>
                     <QuoteGenerator genre={genre.split('-').join('')}/>

@@ -6,7 +6,11 @@ import { InfoContainer, AddToCartContainer, StyledContainer, ButtonContainer, Re
 import Loader from '../../components/Loader/Loader'
 import { Alert, Rating } from '@material-ui/lab';
 import types from '../../actions/types';
-import { TweenMax, Power3 } from 'gsap'
+import { gsap, TweenMax, Power3 } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 
 
 function Product({match, history}) {
@@ -43,19 +47,20 @@ function Product({match, history}) {
     let reviewsRef = useRef(null);
 
     useEffect(()=>{
+        TweenMax.to(window, 0.2, {scrollTo: 0, ease: Power3.easeOut});
         TweenMax.from(divRef, 1, {opacity: 0, ease: Power3.easeOut, delay: 0.2});
-        TweenMax.from(imgRef, 1, {opacity: 0, x: -30, ease: Power3.easeOut, delay: 0.5});
+        TweenMax.from(imgRef, 1, { opacity: 0, x: -30, ease: Power3.easeOut, delay: 0.5});
         TweenMax.from(nameRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1});
         TweenMax.from(authorRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.1});
-        TweenMax.from(divARef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.2});
-        TweenMax.from(genreRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.3});
-        TweenMax.from(divBRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.4});
-        TweenMax.from(pubRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.5});
-        TweenMax.from(divCRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.6});
-        TweenMax.from(ratingRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.7});
-        TweenMax.from(descRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.8});
-        TweenMax.from(priceRef, 1, {opacity: 0, x: 40, ease: Power3.easeOut, delay: 1.5});
-        TweenMax.from(reviewsRef, 1, {opacity: 0, ease: Power3.easeOut, delay: 2.2})
+        TweenMax.from(divARef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.1});
+        TweenMax.from(genreRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.2});
+        TweenMax.from(divBRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.2});
+        TweenMax.from(pubRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.3});
+        TweenMax.from(divCRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.3});
+        TweenMax.from(ratingRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.4});
+        TweenMax.from(descRef, 1, {opacity: 0, y: 30, ease: Power3.easeOut, delay: 1.5});
+        TweenMax.from(priceRef, 1, {opacity: 0, x: 40, ease: Power3.easeOut, delay: 1.3});
+        TweenMax.from(reviewsRef, 1, {opacity: 0, ease: Power3.easeOut, delay: 1.7})
         if(successReview){
             alert('Thanks for your review');
             setRatingValue(3);

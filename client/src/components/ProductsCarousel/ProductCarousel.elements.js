@@ -24,7 +24,6 @@ export const LoaderContainer = styled.div`
 
 export const CarouselItem = styled(Paper)`
     background-color: rgba(255,255,255,0.25);
-    backdrop-filter: hue-rotate(5deg);
     display: flex;
     height: 15rem;
     color: white;

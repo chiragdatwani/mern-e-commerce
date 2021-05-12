@@ -20,13 +20,12 @@ const ProductCarousel = () => {
 
         fetchProducts();
 
-    },[products])
+    },[])
 
     return (
         <>
         {products.length === 0 && <LoaderContainer><Loader /></LoaderContainer>}
         <Carousel 
-        
             animation='fade'
             NextIcon={<ArrowForwardIosRoundedIcon />}
             PrevIcon={<ArrowBackIosRoundedIcon />}

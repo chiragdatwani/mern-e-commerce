@@ -31,8 +31,8 @@ const LoginPage = ({location, history}) => {
 
     useEffect(() => {
         
-        TweenMax.from(formRef, 1 , {opacity: 0, y: 30, ease: Power3.easeOut});
-        TweenMax.from(imgRef, 1 , {opacity: 0, x: 50, ease: Power3.easeOut, delay: 0.2});
+        TweenMax.from(formRef, 1 , {opacity: 0, y: 30, ease: Power3.easeOut, delay: 0.2});
+        TweenMax.from(imgRef, 1 , {opacity: 0, x: 50, ease: Power3.easeOut});
 
         if(userInfo){
             history.push(redirect) 
