@@ -1,10 +1,11 @@
 import { Button, Container, Paper, TextField } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { registerUser } from '../../actions/userActions'
-import { FormContainer, RegisterContainer, ImgContainer } from './Register.elements'
+import { FormContainer, RegisterContainer, ImgContainer } from './Register.elements';
+import { TweenMax, Power3 } from 'gsap';
 
 const RegisterPage = ({location, history}) => {
 
@@ -33,7 +34,14 @@ const RegisterPage = ({location, history}) => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState(null)
 
+    //refs for GSAP
+    let formRef = useRef(null);
+    let imgRef = useRef(null);
+
     useEffect(() => {
+
+        TweenMax.from(formRef, 1 , {opacity: 0, y: 30, ease: Power3.easeOut});
+        TweenMax.from(imgRef, 1 , {opacity: 0, x: 50, ease: Power3.easeOut, delay: 0.2});
         if(userInfo){
             history.push(redirect) 
         }
@@ -43,7 +51,7 @@ const RegisterPage = ({location, history}) => {
         <div className='login-page'>
             <Container maxWidth={'lg'}>
                 <RegisterContainer>
-            <FormContainer component={Paper} justify='left' maxWidth='xs'>
+            <FormContainer component={Paper} justify='left' maxWidth='xs' ref={ el => formRef = el}>
                 <h2>NEW USER</h2>
                 {message && <Alert severity='error'>{message}</Alert>}
                 {error && <Alert severity='error'>{error}</Alert>}
@@ -90,7 +98,7 @@ const RegisterPage = ({location, history}) => {
                 <p>Already have an account? <Link to={redirect? `/login?redirect=${redirect}`:'/login'}  style={{textDecoration:'none'}}>Login Here</Link></p>
             </FormContainer>
             <ImgContainer>
-                        <img src={process.env.PUBLIC_URL + '/icons/illustration2.jpg'} alt="img" />
+                        <img ref={ el => imgRef = el} src={process.env.PUBLIC_URL + '/icons/illustration2.jpg'} alt="img" />
                     </ImgContainer>
             </RegisterContainer>
             </Container>
