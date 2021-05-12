@@ -22,6 +22,7 @@ const Container = styled.div`
         align-items: center;
         justify-content: center;
         text-decoration: none;
+        color: black;
         & img{
             width: 25px;
             margin-left: 10px;
