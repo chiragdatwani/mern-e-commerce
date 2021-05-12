@@ -29,7 +29,6 @@ export const CarouselItem = styled(Paper)`
     color: white;
     width: 25rem;
     padding: 10px;
-
     @media (max-width: 1000px){
         height: 12rem;
         width: 20rem;

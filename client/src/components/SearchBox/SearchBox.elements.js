@@ -46,7 +46,6 @@ export const SearchList = styled.div`
     position: absolute;
     margin-top: 5px;
     width: 36%;
-    z-index: 111;
     
     @media (max-width: 500px){
         width: 50%

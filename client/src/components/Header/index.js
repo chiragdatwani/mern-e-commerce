@@ -45,7 +45,7 @@ function Header() {
     return (
         <header >
             <AppBar position="static" color='primary'>
-                <Toolbar>
+                <Toolbar style={{zIndex: '1'}}>
                     <NavContainer ref={el => headerRef = el}>
                         <Typography variant="h6" >
                             <StyledLink to='/'>
