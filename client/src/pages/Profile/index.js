@@ -120,7 +120,7 @@ const ProfilePage = ({location, history}) => {
 
                         <TableContainer component={Paper}>
                             <Table>
-                            <TableHead fullWidth>
+                            <TableHead>
                                 <TableRow>
                                     <TableCell component="th" scope="row">ID</TableCell>
                                     <TableCell align='right'>Date</TableCell>

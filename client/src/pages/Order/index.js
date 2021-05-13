@@ -127,14 +127,14 @@ const Order = ({match, history}) => {
                         order.orderItems.length === 0 ? <Alert>No Items to Display</Alert> :
                         
                             order.orderItems.map( item => (
-                                <>
+                                <div key={item._id}>
                                 <OrderItem>
                                     <img style= {{width: '50px'}} src={item.image} alt={item.name} />
                                     <p>{item.name}</p>
                                     <p>{`${item.qty} x ${item.price} = ${item.qty*item.price}`}</p>
                                 </OrderItem>
                                 <Divider />
-                                </>
+                                </div>
                                 ))
                     }
                 </Grid>
