@@ -6,6 +6,14 @@ export const PaginationContainer = styled.div`
     & ul {
         justify-content: center;
     }
+
+    @media (max-width: 450px){
+        & .MuiPaginationItem-sizeLarge{
+            height: 32px;
+            min-width: 32px;
+            padding: 0;
+        }
+    }
     
 `
 
