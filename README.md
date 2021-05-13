@@ -1,4 +1,5 @@
 # BookAttic is an online bookstore made using the MERN stack.
+[Link](https://bookattic.herokuapp.com/) to the website.
 
 ## Table of contents
 * [General info](#general-info)
