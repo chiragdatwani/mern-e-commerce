@@ -35,7 +35,7 @@ const Order = ({match, history}) => {
         if(!userInfo || !userInfo.name){
             history.push('/login')
         }
-
+        dispatch({ type: types.ORDER_CREATE_RESET })
         const addPayPalScript = async () => {
             const {data: clientId } = await axios.get('/api/config/paypal');
             const script = document.createElement('script');
@@ -63,7 +63,6 @@ const Order = ({match, history}) => {
     }, [history, userInfo, order, orderId, successPay, successDeliver, dispatch])
 
     const successPaymentHandler = (paymentResult) => {
-        console.log(paymentResult);
         dispatch(payOrder(orderId, paymentResult))
     }
 
@@ -150,13 +149,17 @@ const Order = ({match, history}) => {
                         <SummaryItem>Total:  <strong>${order.totalPrice}</strong></SummaryItem>
                         <ShippingMessage>(Orders above $100 have free shipping)</ShippingMessage>
                         </CardContent>
-                        <CardActionArea>
+                        
                             {!order.isPaid ? (
                             <div>
                                 {loadingPay && <CircularProgress/>}
                                 {sdkReady ? (
+                                    <>
                                     <PayPalButton amount={order.totalPrice}
                                     onSuccess={successPaymentHandler}/>
+                                        <p style={{margin: '0 5px', fontSize: '12px'}}>Test Email: <strong>sb-7eglp6046533@personal.example.com</strong></p>
+                                        <p style={{margin: '5px 5px', fontSize: '12px'}}>Test Password: <strong>EscD8'j.</strong></p>
+                                    </>
                                 ) :
                                 <CircularProgress/>}
                                 </div>
@@ -170,7 +173,7 @@ const Order = ({match, history}) => {
                                     Mark As Delivered
                                 </Button>
                             )}
-                        </CardActionArea>
+                        
                     </Card>
                     </Container>
                 </Grid>
