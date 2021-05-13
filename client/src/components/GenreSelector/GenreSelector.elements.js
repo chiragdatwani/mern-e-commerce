@@ -18,11 +18,11 @@ export const GridContainer = styled(Grid)`
         border-radius: 15px;
         display: grid;
         place-items: center;
-        transition: all .3s ease-in;
+        transition: all .3s ease-in-out;
         & h3{
             color: #ffffff;
             text-transform: uppercase;
-            transition: all .3s ease-in;
+            transition: all .3s ease-in-out;
         };
         &:hover{
             cursor: pointer;

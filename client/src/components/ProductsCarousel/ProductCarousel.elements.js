@@ -81,7 +81,7 @@ export const CarouselItem = styled(Paper)`
             padding: 10px 10px;
             text-align: center;
             text-transform: uppercase;
-            transition: 0.5s;
+            transition: 0.3s;
             color: white;            
             display: flex;
             width:58%;
