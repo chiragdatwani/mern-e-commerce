@@ -65,14 +65,14 @@ const PlaceOrder = ({history}) => {
                         cart.cartItems.length === 0 ? <Alert>Your Cart is Empty</Alert> :
                         
                             cart.cartItems.map( item => (
-                                <>
+                                <div key={item._id}>
                                 <OrderItem>
                                     <img style= {{width: '50px'}} src={item.image} alt={item.name} />
                                     <p>{item.name}</p>
                                     <p>{`${item.qty} x ${item.price} = ${item.qty*item.price}`}</p>
                                 </OrderItem>
                                 <Divider />
-                                </>
+                                </div>
                                 ))
                     }
                 </Grid>

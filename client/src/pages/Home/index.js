@@ -45,7 +45,7 @@ function HomePage({match, history}) {
                 <GenreSelector />
                 <TopRated>
                     <h1 ref={headingRef}>Top Rated Books</h1>
-                    {loading ? <div style={{height:gridRef.current.offsetHeight + 60, width:gridRef.current.offsetWidth, display: 'grid', placeItems: 'center'}}> <Loader /> </div> : 
+                    {loading ? <div style={{height:gridRef.current.offsetHeight + 60, width:gridRef.current.offsetWidth, display: 'grid', placeItems: 'center'}}></div> : 
                         error ? <Alert severity="error">{error}</Alert>:
                         <>
                             <Grid ref={gridRef} container spacing={3} justify={'center'} alignContent={'center'} alignItems={'center'}>

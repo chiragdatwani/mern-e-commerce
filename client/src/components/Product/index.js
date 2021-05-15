@@ -11,7 +11,7 @@ function Product({product}) {
     let prodRef = useRef([]);
     
     useEffect(() => {
-        TweenMax.from(prodRef, 1.2, {scrollTrigger: prodRef, opacity: 0, y: 20, ease: Power3.easeOut, delay: 0.5})
+        TweenMax.from(prodRef, 1.2, {scrollTrigger: prodRef, opacity: 0, y: 20, ease: Power3.easeOut})
     }, [])
 
     return (
