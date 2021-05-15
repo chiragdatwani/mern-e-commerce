@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Grid } from '@material-ui/core/';
 import { GridContainer } from './GenreSelector.elements';
 import { Link } from 'react-router-dom';
-import {gsap, TweenMax, Power3} from 'gsap';
+import { TweenMax, Power3 } from 'gsap';
 
 const GenreSelector = () => {
 

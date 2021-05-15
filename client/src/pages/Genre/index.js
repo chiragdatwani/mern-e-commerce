@@ -4,9 +4,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import Loader from '../../components/Loader/Loader';
 import Product from '../../components/Product';
 import QuoteGenerator from '../../components/QuoteGenerator';
+import Meta from '../../components/Meta';
 import {gsap, TweenMax, Power3} from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import Meta from '../../components/Meta';
+
 gsap.registerPlugin(ScrollToPlugin);
 
 const GenrePage = ({match}) => {
@@ -18,6 +19,7 @@ const GenrePage = ({match}) => {
 
     let quoteRef = useRef(null);
     let prodsRef = useRef(null);
+
 
     useEffect(()=>{
         TweenMax.to(window, 0.3, {scrollTo: 0, ease: Power3.easeOut});

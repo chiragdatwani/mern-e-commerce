@@ -9,6 +9,10 @@ import { PaginationContainer, TopRated } from './Home.elements';
 import HomeMain from '../../components/HomeMain';
 import GenreSelector from '../../components/GenreSelector';
 import Meta from '../../components/Meta';
+import {gsap, TweenMax, Power3} from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+gsap.registerPlugin(ScrollToPlugin);
 
 
 
@@ -20,15 +24,17 @@ function HomePage({match, history}) {
     const productList = useSelector((state) => state.productList)
     const{loading, error, products, page, totalPages} = productList
 
-    const gridRef = useRef(null)
+    const gridRef = useRef(null);
+    const headingRef = useRef(null);
 
     useEffect(()=>{
         dispatch(fetchProductsList(pageNumber));
-
     }, [dispatch, pageNumber])
 
     const handlePagination = (e, v) => {
+        TweenMax.to(window,  0.3, {scrollTo: headingRef.current.offsetTop, ease: Power3.easeOut} )
         history.push(`/page/${v}`)
+        
     }
 
     return (
@@ -38,7 +44,7 @@ function HomePage({match, history}) {
             <Container maxWidth={'lg'}>
                 <GenreSelector />
                 <TopRated>
-                    <h1>Top Rated Books</h1>
+                    <h1 ref={headingRef}>Top Rated Books</h1>
                     {loading ? <div style={{height:gridRef.current.offsetHeight + 60, width:gridRef.current.offsetWidth, display: 'grid', placeItems: 'center'}}> <Loader /> </div> : 
                         error ? <Alert severity="error">{error}</Alert>:
                         <>
