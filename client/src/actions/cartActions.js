@@ -49,3 +49,9 @@ export const savePaymentMethod = (data) => (dispatch) => {
 
     localStorage.setItem('paymentMethod', JSON.stringify(data))
 }
+
+export const clearCart = () => {
+    return {
+        type: types.CART_CLEAR
+    }
+};

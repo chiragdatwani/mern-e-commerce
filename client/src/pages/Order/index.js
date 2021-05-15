@@ -9,6 +9,7 @@ import { Message, OrderItem, ShippingMessage, SummaryItem, StyledLink } from './
 import axios from 'axios';
 import types from '../../actions/types';
 import Meta from '../../components/Meta';
+import { clearCart } from '../../actions/cartActions';
 
 const Order = ({match, history}) => {
 
@@ -51,6 +52,7 @@ const Order = ({match, history}) => {
             dispatch({ type: types.ORDER_PAY_RESET })
             dispatch({ type: types.ORDER_DELIVER_RESET })
             dispatch(getOrderDetails(orderId))
+            dispatch(clearCart());
         } else if (!order.isPaid){
 
             if(!window.paypal){
@@ -63,7 +65,8 @@ const Order = ({match, history}) => {
     }, [history, userInfo, order, orderId, successPay, successDeliver, dispatch])
 
     const successPaymentHandler = (paymentResult) => {
-        dispatch(payOrder(orderId, paymentResult))
+        dispatch(payOrder(orderId, paymentResult));
+        
     }
 
     const deliverHandler = () => {
@@ -147,7 +150,7 @@ const Order = ({match, history}) => {
                         </SummaryItem>
                         <SummaryItem>Shipping:  <strong>${order.shippingPrice}</strong></SummaryItem>
                         <SummaryItem>Total:  <strong>${order.totalPrice}</strong></SummaryItem>
-                        <ShippingMessage>(Orders above $100 have free shipping)</ShippingMessage>
+                        <ShippingMessage>(Orders above $50 have free shipping)</ShippingMessage>
                         </CardContent>
                         
                             {!order.isPaid ? (
